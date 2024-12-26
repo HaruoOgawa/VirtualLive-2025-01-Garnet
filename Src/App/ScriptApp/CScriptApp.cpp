@@ -286,6 +286,32 @@ namespace app
 			{
 				SoundClip->SetPlayPos(m_TimelineController->GetPlayBackTime());
 				SoundClip->PlayOneShot();
+
+				for (const auto& Object : m_SceneController->GetObjectList())
+				{
+					// Animation
+					{
+						const auto& Clip = Object->GetAnimationController()->GetCurrentClip();
+						if (Clip)
+						{
+							Clip->SetCurrentTime(m_TimelineController->GetPlayBackTime());
+						}
+					}
+
+					// BlendShape
+					{
+						const auto& PlayingBlendShapeSet = Object->GetBlendShapeController()->GetPlayingBlendShapeSet();
+						const auto& BlendShapeClipMap = Object->GetBlendShapeController()->GetBlendShapeClipMap();
+
+						for (const auto& Name : PlayingBlendShapeSet)
+						{
+							const auto& Clip = BlendShapeClipMap.find(Name);
+							if (Clip == BlendShapeClipMap.end()) continue;
+
+							Clip->second->SetCurrentTime(m_TimelineController->GetPlayBackTime());
+						}
+					}
+				}
 			}
 			else
 			{
