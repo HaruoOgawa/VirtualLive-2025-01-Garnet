@@ -16,19 +16,19 @@
     "scenetextureset": {
         "frametextures": null
     },
-    "sound": {
-        "bgm": {
-            "filename": "Resources/Sound/Decorate.wav",
-            "autoplay": true,
-            "loop": true
-        }
-    },
     "animations": [
         {
             "filename": "Resources/Motion/decorate.vmd",
             "name": "DanceMotion"
         }
     ],
+    "sound": {
+        "bgm": {
+            "filename": "Resources/Sound/decorate_short.wav",
+            "autoplay": false,
+            "loop": false
+        }
+    },
     "timeline": {
         "filename": "Resources\\Scene\\VirtualLive.tl"
     },
@@ -46,29 +46,231 @@
             "renderpasslist": [
                 "MainResultPass"
             ],
-            "animation":{
+            "animation": {
+                "blendshapes": [
+                    {
+                        "index": 0,
+                        "key": "Face",
+                        "loop": false,
+                        "motionname": "DanceMotion"
+                    }
+                ],
+                "humanbonelist": [
+                    {
+                        "bonename": "Hips",
+                        "nodename": "BoneNode_4"
+                    },
+                    {
+                        "bonename": "LeftUpperLeg",
+                        "nodename": "BoneNode_60"
+                    },
+                    {
+                        "bonename": "RightUpperLeg",
+                        "nodename": "BoneNode_56"
+                    },
+                    {
+                        "bonename": "LeftLowerLeg",
+                        "nodename": "BoneNode_61"
+                    },
+                    {
+                        "bonename": "RightLowerLeg",
+                        "nodename": "BoneNode_57"
+                    },
+                    {
+                        "bonename": "LeftFoot",
+                        "nodename": "BoneNode_62"
+                    },
+                    {
+                        "bonename": "RightFoot",
+                        "nodename": "BoneNode_58"
+                    },
+                    {
+                        "bonename": "Spine",
+                        "nodename": "BoneNode_10"
+                    },
+                    {
+                        "bonename": "Chest",
+                        "nodename": "BoneNode_11"
+                    },
+                    {
+                        "bonename": "Neck",
+                        "nodename": "BoneNode_12"
+                    },
+                    {
+                        "bonename": "Head",
+                        "nodename": "BoneNode_13"
+                    },
+                    {
+                        "bonename": "LeftShoulder",
+                        "nodename": "BoneNode_35"
+                    },
+                    {
+                        "bonename": "RightShoulder",
+                        "nodename": "BoneNode_14"
+                    },
+                    {
+                        "bonename": "LeftUpperArm",
+                        "nodename": "BoneNode_36"
+                    },
+                    {
+                        "bonename": "RightUpperArm",
+                        "nodename": "BoneNode_15"
+                    },
+                    {
+                        "bonename": "LeftLowerArm",
+                        "nodename": "BoneNode_38"
+                    },
+                    {
+                        "bonename": "RightLowerArm",
+                        "nodename": "BoneNode_17"
+                    },
+                    {
+                        "bonename": "LeftHand",
+                        "nodename": "BoneNode_40"
+                    },
+                    {
+                        "bonename": "RightHand",
+                        "nodename": "BoneNode_19"
+                    },
+                    {
+                        "bonename": "LeftEye",
+                        "nodename": "BoneNode_66"
+                    },
+                    {
+                        "bonename": "RightEye",
+                        "nodename": "BoneNode_65"
+                    },
+                    {
+                        "bonename": "LeftThumbProximal",
+                        "nodename": "BoneNode_41"
+                    },
+                    {
+                        "bonename": "LeftThumbIntermediate",
+                        "nodename": "BoneNode_42"
+                    },
+                    {
+                        "bonename": "LeftThumbDistal",
+                        "nodename": "BoneNode_43"
+                    },
+                    {
+                        "bonename": "LeftIndexProximal",
+                        "nodename": "BoneNode_53"
+                    },
+                    {
+                        "bonename": "LeftIndexIntermediate",
+                        "nodename": "BoneNode_54"
+                    },
+                    {
+                        "bonename": "LeftIndexDistal",
+                        "nodename": "BoneNode_55"
+                    },
+                    {
+                        "bonename": "LeftMiddleProximal",
+                        "nodename": "BoneNode_50"
+                    },
+                    {
+                        "bonename": "LeftMiddleIntermediate",
+                        "nodename": "BoneNode_51"
+                    },
+                    {
+                        "bonename": "LeftMiddleDistal",
+                        "nodename": "BoneNode_52"
+                    },
+                    {
+                        "bonename": "LeftRingProximal",
+                        "nodename": "BoneNode_47"
+                    },
+                    {
+                        "bonename": "LeftRingIntermediate",
+                        "nodename": "BoneNode_48"
+                    },
+                    {
+                        "bonename": "LeftRingDistal",
+                        "nodename": "BoneNode_49"
+                    },
+                    {
+                        "bonename": "LeftLittleProximal",
+                        "nodename": "BoneNode_44"
+                    },
+                    {
+                        "bonename": "LeftLittleIntermediate",
+                        "nodename": "BoneNode_45"
+                    },
+                    {
+                        "bonename": "LeftLittleDistal",
+                        "nodename": "BoneNode_46"
+                    },
+                    {
+                        "bonename": "RightThumbIntermediate",
+                        "nodename": "BoneNode_21"
+                    },
+                    {
+                        "bonename": "RightThumbDistal",
+                        "nodename": "BoneNode_22"
+                    },
+                    {
+                        "bonename": "RightIndexProximal",
+                        "nodename": "BoneNode_32"
+                    },
+                    {
+                        "bonename": "RightIndexIntermediate",
+                        "nodename": "BoneNode_33"
+                    },
+                    {
+                        "bonename": "RightIndexDistal",
+                        "nodename": "BoneNode_34"
+                    },
+                    {
+                        "bonename": "RightMiddleProximal",
+                        "nodename": "BoneNode_29"
+                    },
+                    {
+                        "bonename": "RightMiddleIntermediate",
+                        "nodename": "BoneNode_30"
+                    },
+                    {
+                        "bonename": "RightMiddleDistal",
+                        "nodename": "BoneNode_31"
+                    },
+                    {
+                        "bonename": "RightRingProximal",
+                        "nodename": "BoneNode_26"
+                    },
+                    {
+                        "bonename": "RightRingIntermediate",
+                        "nodename": "BoneNode_27"
+                    },
+                    {
+                        "bonename": "RightRingDistal",
+                        "nodename": "BoneNode_28"
+                    },
+                    {
+                        "bonename": "RightLittleProximal",
+                        "nodename": "BoneNode_23"
+                    },
+                    {
+                        "bonename": "RightLittleIntermediate",
+                        "nodename": "BoneNode_24"
+                    },
+                    {
+                        "bonename": "RightLittleDistal",
+                        "nodename": "BoneNode_25"
+                    }
+                ],
                 "humanoidclips": [
                     {
                         "ik": true,
                         "index": 0,
                         "key": "Dance",
-                        "loop": true,
+                        "loop": false,
                         "motionname": "DanceMotion"
                     }
                 ],
-                "blendshapes": [
-                    {
-                        "index": 0,
-                        "key": "Face",
-                        "loop": true,
-                        "motionname": "DanceMotion"
-                    }
-                ],
-                "playmotion": "Dance",
-                "playmotionindex": -1,
                 "playblendshapes": [
                     "Face"
-                ]
+                ],
+                "playmotion": "Dance",
+                "playmotionindex": -1
             },
             "transform": {
                 "pos": [
@@ -150,6 +352,31 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 1,
                             "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.34117650985717773,
+                                0.19215689599514008,
+                                0.24313730001449585,
+                                0.5
+                            ]
                         }
                     ]
                 },
@@ -268,6 +495,31 @@
                             "texturebuffername": "MainTexture",
                             "textureindex": 2,
                             "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 2,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.501960813999176,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
                         }
                     ]
                 },
@@ -573,6 +825,31 @@
                 },
                 {
                     "meshindex": 0,
+                    "primitiveindex": 7,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
                     "primitiveindex": 8,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -627,6 +904,31 @@
                             "texturebuffername": "MainTexture",
                             "textureindex": 5,
                             "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 8,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.501960813999176,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
                         }
                     ]
                 },
@@ -691,6 +993,31 @@
                 },
                 {
                     "meshindex": 0,
+                    "primitiveindex": 9,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.250980406999588,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
                     "primitiveindex": 10,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -745,6 +1072,31 @@
                             "texturebuffername": "MainTexture",
                             "textureindex": 7,
                             "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 10,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.34117650985717773,
+                                0.19215689599514008,
+                                0.24313730001449585,
+                                0.5
+                            ]
                         }
                     ]
                 },
@@ -814,6 +1166,31 @@
                 },
                 {
                     "meshindex": 0,
+                    "primitiveindex": 11,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
                     "primitiveindex": 12,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -873,6 +1250,31 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 10,
                             "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 12,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
                         }
                     ]
                 },
@@ -1173,6 +1575,31 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 4,
                             "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 17,
+                    "materialframe": "basic_toon_outline_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "edgeSize",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "edgeColor",
+                            "type": "vec4",
+                            "value": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.5
+                            ]
                         }
                     ]
                 },

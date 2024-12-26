@@ -22,6 +22,9 @@
 namespace app
 {
 	CScriptApp::CScriptApp() :
+		m_PlayMode(EPlayMode::Play),
+		m_LocalTime(0.0f),
+		m_LocalDeltaTime(0.0f),
 		m_SceneController(std::make_shared<scene::CSceneController>()),
 		m_CameraSwitchToggle(true),
 		m_MainCamera(nullptr),
@@ -47,6 +50,10 @@ namespace app
 		m_DrawInfo->GetLightProjection()->SetFar(100.0f);
 
 		m_SceneController->SetDefaultPass("MainResultPass");
+
+#ifdef _DEBUG
+		m_PlayMode = EPlayMode::Stop;
+#endif // _DEBUG
 
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow->SetDefaultPass("MainResultPass", "");
@@ -87,15 +94,7 @@ namespace app
 
 	bool CScriptApp::Update(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker, const std::shared_ptr<input::CInputState>& InputState)
 	{
-		if (!m_FileModifier->Update(pLoadWorker)) return false;
-
-		if (pLoadWorker->IsLoaded())
-		{
-			if (!m_TimelineController->Update(m_DrawInfo->GetDeltaSecondsTime(), InputState)) return false;
-		}
-
-		if (!m_SceneController->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState, m_TimelineController)) return false;
-
+		// カメラはローカル時間の影響を受けたくないので先に計算
 		m_MainCamera->Update(m_DrawInfo->GetDeltaSecondsTime(), InputState);
 
 		if (InputState->IsKeyUp(input::EKeyType::KEY_TYPE_SPACE))
@@ -111,6 +110,32 @@ namespace app
 				m_MainCamera = m_TraceCamera;
 			}
 		}
+
+		if (!m_FileModifier->Update(pLoadWorker)) return false;
+
+		// タイムラインもローカル時間の影響を受けたくない
+		if (pLoadWorker->IsLoaded())
+		{
+			if (!m_TimelineController->Update(m_DrawInfo->GetDeltaSecondsTime(), InputState)) return false;
+		}
+		
+		// 再生時間
+		{
+			float PrevLocalTime = m_LocalTime;
+
+			if (m_PlayMode == EPlayMode::Play)
+			{
+				// 常にタイムラインからの再生時間を渡す
+				m_LocalTime = m_TimelineController->GetPlayBackTime();
+			}
+
+			m_LocalDeltaTime = m_LocalTime - PrevLocalTime;
+
+			m_DrawInfo->SetSecondsTime(m_LocalTime);
+			m_DrawInfo->SetDeltaSecondsTime(m_LocalDeltaTime);
+		}
+
+		if (!m_SceneController->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState, m_TimelineController)) return false;
 
 		if (!m_MainFrameRenderer->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
 
@@ -235,6 +260,65 @@ namespace app
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow->AddLog(gui::EGUILogType::Error, Message);
 #endif
+	}
+
+	// タイムライン再生停止イベント
+	void CScriptApp::OnPlayedTimeline(bool IsPlay)
+	{
+		//
+		if (IsPlay)
+		{
+			m_PlayMode = EPlayMode::Play;
+			// タイムラインの再生時間から再開する
+			m_LocalTime = m_TimelineController->GetPlayBackTime();
+		}
+		else
+		{
+			m_PlayMode = EPlayMode::Pause;
+		}
+
+		//
+		const auto& Sound = m_SceneController->GetSound();
+		const auto& SoundClip = std::get<0>(Sound);
+		if (SoundClip)
+		{
+			if (IsPlay)
+			{
+				SoundClip->SetPlayPos(m_TimelineController->GetPlayBackTime());
+				SoundClip->PlayOneShot();
+			}
+			else
+			{
+				SoundClip->Stop();
+			}
+		}
+	}
+
+	// シーン再生モード変更イベント
+	void CScriptApp::OnChangeScenePlayMode(const std::string& Mode)
+	{
+		if (Mode == "Play")
+		{
+			m_PlayMode = EPlayMode::Play;
+			m_TimelineController->Play();
+		}
+		else if (Mode == "Stop")
+		{
+			m_PlayMode = EPlayMode::Stop;
+
+			m_LocalTime = 0.0f;
+			m_LocalDeltaTime = 0.0f;
+
+			m_TimelineController->Stop();
+			m_TimelineController->SetPlayBackTime(0.0f);
+			m_SceneController->Reset();
+		}
+		else if (Mode == "Pause")
+		{
+			m_PlayMode = EPlayMode::Pause;
+
+			m_TimelineController->Stop();
+		}
 	}
 
 	// Getter
