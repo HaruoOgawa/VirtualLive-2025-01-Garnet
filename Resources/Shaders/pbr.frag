@@ -13,7 +13,8 @@ layout(binding = 0) uniform UniformBufferObject{
 	mat4 model;
     mat4 view;
     mat4 proj;
-	mat4 lightVPMat;
+	mat4 lightVMat;
+	mat4 lightPMat;
 
 	vec4 lightDir;
 	vec4 lightColor;
@@ -28,8 +29,7 @@ layout(binding = 0) uniform UniformBufferObject{
     float normalMapScale;
 
 	float occlusionStrength;
-    // MipCountには反射キューブマップかIBLのSpecularMapの値が入っている(これらは必ずどちらか一方しか使用されないため)
-	float mipCount;
+    float mipCount;
     float ShadowMapX;
     float ShadowMapY;
 
@@ -43,7 +43,7 @@ layout(binding = 0) uniform UniformBufferObject{
     int   useShadowMap;
     int   useIBL;
 
-	int   useSkinMeshAnimation;
+    int   useSkinMeshAnimation;
     int   useDirCubemap;
     int   pad1;
     int   pad2;
@@ -302,6 +302,9 @@ vec2 ComputePCF(vec2 uv)
 float CalcShadow(vec3 lsp, vec3 nomral, vec3 lightDir)
 {
 	vec2 moments = ComputePCF(lsp.xy);
+
+	// DepthBufferの値は-1.0 ~ 1.0になっているので0.0 ~ 1.0に補正する
+	moments = moments * 0.5 + 0.5;
 
 	// マッハバンド対策のShadow Bias
 	// ShadowBiasとは深度のオフセットのこと
@@ -591,13 +594,17 @@ void main(){
 	// LightSpaceScreenPos
 	if(ubo.useShadowMap != 0)
 	{
+		// https://qiita.com/Haru86_/items/d563ce1f65cf55e547a3
+		// 正規化デバイス座標(NDC)に変換する
 		vec3 lsp = f_LightSpacePos.xyz / f_LightSpacePos.w;
+		// スクリーンUVとデプスを取り出す
 		lsp = lsp * 0.5 + 0.5;
+		
 		float shadowCol = 1.0;
 
-		//bool outSide = f_LightSpacePos.z <= 0.0f || (lsp.x < 0 || lsp.y < 0) || (lsp.x > 1 || lsp.y > 1);
+		bool outSide = (lsp.x < 0.0 || lsp.y < 0.0 || lsp.z < 0.0) || (lsp.x > 1.0 || lsp.y > 1.0 || lsp.z > 1.0);
 
-		//if(!outSide)
+		if(!outSide)
 		{
 			shadowCol = CalcShadow(lsp, n, l);
 		}

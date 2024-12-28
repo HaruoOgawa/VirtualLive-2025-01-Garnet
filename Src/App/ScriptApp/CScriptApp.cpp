@@ -170,6 +170,7 @@ namespace app
 		// ShadowPass
 		{
 			if (!pGraphicsAPI->BeginRender("ShadowPass")) return false;
+			// CameraとProjectionにはライト用の値を使用するように注意する
 			if (!m_SceneController->Draw(pGraphicsAPI, m_DrawInfo->GetLightCamera(), m_DrawInfo->GetLightProjection(), m_DrawInfo)) return false;
 			
 			if (!pGraphicsAPI->EndRender()) return false;

@@ -11,7 +11,8 @@ layout(binding = 0) uniform UniformBufferObject{
 	mat4 model;
     mat4 view;
     mat4 proj;
-	mat4 lightVPMat;
+	mat4 lightVMat;
+	mat4 lightPMat;
 
 	vec4 lightDir;
 	vec4 lightColor;
@@ -99,5 +100,5 @@ void main(){
     f_WorldPos = WorldPos;
     f_WorldTangent = WorldTangent;
     f_WorldBioTangent = WorldBioTangent;
-    f_LightSpacePos = ubo.lightVPMat * WorldPos;
+    f_LightSpacePos = ubo.lightPMat * ubo.lightVMat * WorldPos;
 }
