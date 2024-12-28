@@ -140,7 +140,6 @@
               "type": "float",
               "initValue": [ 1.0 ],
               "input": {
-                "hide": true
               }
             },
             {
@@ -148,7 +147,6 @@
               "type": "float",
               "initValue": [ 1.0 ],
               "input": {
-                "hide": true
               }
             },
             {

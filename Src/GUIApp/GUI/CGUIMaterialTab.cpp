@@ -109,7 +109,7 @@ namespace gui
 		if (ImGui::TreeNodeEx(Material->GetMaterialName().c_str(), ImGuiTreeNodeFlags_Framed))
 		{
 			// MaterialFrame
-			if (pGraphicsAPI->IsEnabledRuntimeShaderEditing())
+			//if (pGraphicsAPI->IsEnabledRuntimeShaderEditing())
 			{
 				const auto& CurrentMaterialFrame = Material->GetMaterialFrame();
 
@@ -340,7 +340,7 @@ namespace gui
 			}
 
 			// Texture
-			if (pGraphicsAPI->IsEnabledRuntimeShaderEditing())
+			//if (pGraphicsAPI->IsEnabledRuntimeShaderEditing())
 			{
 				const auto& TextureSet = Object->GetTextureSet();
 

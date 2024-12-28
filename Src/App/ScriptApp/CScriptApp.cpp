@@ -45,9 +45,9 @@ namespace app
 		m_ViewCamera->SetPos(glm::vec3(-7.0f, 1.0f, 0.0f));
 		m_MainCamera = m_ViewCamera;
 
-		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(-2.358f, 15.6f, -0.59f));
-		m_DrawInfo->GetLightProjection()->SetNear(2.0f);
-		m_DrawInfo->GetLightProjection()->SetFar(100.0f);
+		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(5.0f, 5.0f, 5.0f));
+		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
+		m_DrawInfo->GetLightProjection()->SetFar(70.5f);
 
 		m_SceneController->SetDefaultPass("MainResultPass");
 
@@ -67,13 +67,21 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
+		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
 
 		m_MainFrameRenderer = std::make_shared<graphics::CFrameRenderer>(pGraphicsAPI, "", pGraphicsAPI->FindOffScreenRenderPass("MainResultPass")->GetFrameTextureList());
 		if (!m_MainFrameRenderer->Create(pLoadWorker, "Resources\\MaterialFrame\\FrameTexture_MF.json")) return false;
+
+		const auto& ShadowPass = pGraphicsAPI->FindOffScreenRenderPass("ShadowPass");
+		if (ShadowPass)
+		{
+			m_SceneController->AddFrameTexture(ShadowPass->GetDepthTexture());
+		}
 
 		return true;
 	}
@@ -159,6 +167,14 @@ namespace app
 	bool CScriptApp::Draw(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker, const std::shared_ptr<input::CInputState>& InputState,
 		const std::shared_ptr<gui::IGUIEngine>& GUIEngine)
 	{
+		// ShadowPass
+		{
+			if (!pGraphicsAPI->BeginRender("ShadowPass")) return false;
+			if (!m_SceneController->Draw(pGraphicsAPI, m_DrawInfo->GetLightCamera(), m_DrawInfo->GetLightProjection(), m_DrawInfo)) return false;
+			
+			if (!pGraphicsAPI->EndRender()) return false;
+		}
+		
 		// MainResultPass
 		{
 			if (!pGraphicsAPI->BeginRender("MainResultPass")) return false;
