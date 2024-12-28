@@ -314,17 +314,19 @@ float CalcShadow(vec3 lsp, vec3 nomral, vec3 lightDir)
 	// https://drive.google.com/file/d/1tyDT7xQVSYzKnZXt6vvDwt-rlWEjVGDP/view?usp=sharing
 	// 床の法線とライト方向の成す角度が垂直になるほど、Biasを強くする
 	// https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping
-	float ShadowBias = max(0.005, 0.05 * (1.0 - dot(nomral, lightDir)) );
+	float ShadowBias = max(0.0, 0.001 * (1.0 - dot(nomral, lightDir)) );
 
 	float distance = lsp.z - ShadowBias;
 
 	// ShadowMapの深度よりも手前なので普通に描画する
-	if((distance) <= moments.x)
+	if(distance <= moments.x)
 	{
 		return 1.0;
 	}
 	
-	// 後ろなので影にする
+	return 0.1;
+
+	/*// 後ろなので影にする
 	// バリアンスの計算
 	float variance = moments.y - (moments.x * moments.x);
 	variance = max(0.005, variance);
@@ -335,7 +337,7 @@ float CalcShadow(vec3 lsp, vec3 nomral, vec3 lightDir)
 	// 本来影になるところに光がにじんでいるようなアーティファクトが出ることがあるのでその対策
 	//p_max = ReduceLightBleeding(0.1, p_max);
 
-	return p_max;
+	return p_max;*/
 }
 
 vec2 CastDirToSt(vec3 Dir)
