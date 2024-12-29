@@ -47,7 +47,7 @@ namespace app
 
 		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(5.0f, 5.0f, 5.0f));
 		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
-		m_DrawInfo->GetLightProjection()->SetFar(70.5f);
+		m_DrawInfo->GetLightProjection()->SetFar(100.0f);
 
 		m_SceneController->SetDefaultPass("MainResultPass");
 
@@ -119,6 +119,25 @@ namespace app
 			}
 		}
 
+		// ライトカメラの位置をメインカメラを元に決定する
+		{
+			// ライトカメラの位置をメインカメラの注視点から決める方法もあるが、今回は定点でやる
+			glm::vec3 SceneCenter = glm::vec3(0.0f);
+
+			const auto& LightCamera = m_DrawInfo->GetLightCamera();
+			glm::vec3 LightViewDir = LightCamera->GetViewDir();
+
+			// 注視点はメインカメラに揃える
+			m_DrawInfo->GetLightCamera()->SetCenter(SceneCenter);
+
+			// 座標は注視点からライトのViewDir方向にメインカメラ距離分移動した場所にする
+			const float CameraLength = m_DrawInfo->GetLightProjection()->GetFar() * 0.5f;
+
+			glm::vec3 LightPos = SceneCenter + (-1.0f) * CameraLength * LightViewDir;
+			m_DrawInfo->GetLightCamera()->SetPos(LightPos);
+		}
+
+		//
 		if (!m_FileModifier->Update(pLoadWorker)) return false;
 
 		// タイムラインもローカル時間の影響を受けたくない

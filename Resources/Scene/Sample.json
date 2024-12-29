@@ -42,7 +42,8 @@
             "enable": true,
             "rootnodes": [
                 0,
-                1
+                1,
+                2
             ],
             "nodes": [
                 {
@@ -88,6 +89,28 @@
                     },
                     "enable": true,
                     "meshindex": 1
+                },
+                {
+                    "name": "OutAreaObj",
+                    "transform": {
+                        "pos": [
+                            -20.0,
+                            1.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 2
                 }
             ],
             "meshs": [
@@ -95,6 +118,13 @@
                     "primitives": [
                         {
                             "type": "cube"
+                        }
+                    ]
+                },
+                {
+                    "primitives": [
+                        {
+                            "type": "sphere"
                         }
                     ]
                 },
@@ -210,6 +240,39 @@
                             "texturename": ""
                         }
                     ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -256,9 +319,9 @@
                             0.0
                         ],
                         "scale": [
-                            50.0,
+                            100.0,
                             0.10000000149011612,
-                            50.0
+                            100.0
                         ]
                     },
                     "enable": true,
@@ -299,7 +362,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1318926840
                             ]
                         }
                     ],
