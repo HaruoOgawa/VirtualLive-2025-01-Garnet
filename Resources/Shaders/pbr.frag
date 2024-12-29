@@ -303,8 +303,10 @@ float CalcShadow(vec3 lsp, vec3 nomral, vec3 lightDir)
 {
 	vec2 moments = ComputePCF(lsp.xy);
 
-	// DepthBufferの値は-1.0 ~ 1.0になっているので0.0 ~ 1.0に補正する
+	#ifndef USE_OPENGL
+	// Vulkan・WebGPUではDepthBufferの値が-1.0 ~ 1.0になっているので0.0 ~ 1.0に補正する
 	moments = moments * 0.5 + 0.5;
+	#endif
 
 	// マッハバンド対策のShadow Bias
 	// ShadowBiasとは深度のオフセットのこと
