@@ -44,6 +44,8 @@ namespace app
 		float	  m_LocalTime;
 		float	  m_LocalDeltaTime;
 
+		std::shared_ptr<object::C3DObject> m_Liver;
+
 	public:
 		CScriptApp();
 		virtual ~CScriptApp() = default;

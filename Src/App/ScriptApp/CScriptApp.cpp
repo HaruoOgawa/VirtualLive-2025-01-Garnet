@@ -40,14 +40,15 @@ namespace app
 		m_GraphicsEditingWindow(std::make_shared<gui::CGraphicsEditingWindow>()),
 #endif // USE_GUIENGINE
 		m_FileModifier(std::make_shared<CFileModifier>()),
-		m_TimelineController(std::make_shared<timeline::CTimelineController>())
+		m_TimelineController(std::make_shared<timeline::CTimelineController>()),
+		m_Liver(nullptr)
 	{
 		m_ViewCamera->SetPos(glm::vec3(-7.0f, 1.0f, 0.0f));
 		m_MainCamera = m_ViewCamera;
 
-		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(5.0f, 5.0f, 5.0f));
+		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(0.5f, 1.5f, -1.0f));
 		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
-		m_DrawInfo->GetLightProjection()->SetFar(100.0f);
+		m_DrawInfo->GetLightProjection()->SetFar(10.0f);
 
 		m_SceneController->SetDefaultPass("MainResultPass");
 
@@ -67,8 +68,8 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
@@ -119,18 +120,16 @@ namespace app
 			}
 		}
 
-		// ライトカメラの位置をメインカメラを元に決定する
+		// ライトカメラの位置を演者を中心に決定する
+		if(m_Liver)
 		{
-			// ライトカメラの位置をメインカメラの注視点から決める方法もあるが、今回は定点でやる
-			glm::vec3 SceneCenter = glm::vec3(0.0f);
+			glm::vec3 SceneCenter = m_Liver->GetPos();
 
 			const auto& LightCamera = m_DrawInfo->GetLightCamera();
 			glm::vec3 LightViewDir = LightCamera->GetViewDir();
 
-			// 注視点はメインカメラに揃える
 			m_DrawInfo->GetLightCamera()->SetCenter(SceneCenter);
 
-			// 座標は注視点からライトのViewDir方向にメインカメラ距離分移動した場所にする
 			const float CameraLength = m_DrawInfo->GetLightProjection()->GetFar() * 0.5f;
 
 			glm::vec3 LightPos = SceneCenter + (-1.0f) * CameraLength * LightViewDir;
@@ -276,6 +275,11 @@ namespace app
 					m_TraceCamera->SetTargetNode(Node);
 				}
 			}
+		}
+
+		//
+		{
+			m_Liver = m_SceneController->FindObjectByName("koyori");
 		}
 
 		return true;
