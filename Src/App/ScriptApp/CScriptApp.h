@@ -23,10 +23,17 @@ namespace app
 	{
 		std::shared_ptr<scene::CSceneController> m_SceneController;
 
+		//
 		std::shared_ptr<camera::CCamera> m_MainCamera;
 		std::shared_ptr<camera::CCamera> m_ViewCamera;
 		std::shared_ptr<camera::CTraceCamera> m_TraceCamera;
 		std::shared_ptr<projection::CProjection> m_Projection;
+
+		// •½–Ê”½ŽË(Planer Reflection)
+		std::shared_ptr<camera::CCamera> m_PRCamera;
+		std::shared_ptr<projection::CProjection> m_PRProjection;
+
+		//
 		std::shared_ptr<graphics::CDrawInfo> m_DrawInfo;
 
 		std::shared_ptr<graphics::CFrameRenderer> m_MainFrameRenderer;

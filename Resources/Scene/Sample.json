@@ -20,7 +20,8 @@
             "filename": "",
             "renderpasslist": [
                 "MainResultPass",
-                "ShadowPass"
+                "ShadowPass",
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -94,7 +95,7 @@
                     "name": "OutAreaObj",
                     "transform": {
                         "pos": [
-                            -20.0,
+                            7.0,
                             1.0,
                             0.0
                         ],
@@ -281,13 +282,14 @@
             "filename": "",
             "renderpasslist": [
                 "MainResultPass",
-                "ShadowPass"
+                "ShadowPass",
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
                     0.0,
                     0.0,
-                    0.0
+                    -1.0
                 ],
                 "rotate": [
                     0.0,
@@ -319,9 +321,9 @@
                             0.0
                         ],
                         "scale": [
-                            100.0,
+                            40.0,
                             0.10000000149011612,
-                            100.0
+                            20.0
                         ]
                     },
                     "enable": true,
@@ -362,7 +364,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1318926840
+                                1318926964
                             ]
                         }
                     ],

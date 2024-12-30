@@ -35,6 +35,8 @@ namespace app
 #endif // USE_VIEWER_CAMERA
 		m_TraceCamera(std::make_shared<camera::CTraceCamera>()),
 		m_Projection(std::make_shared<projection::CProjection>()),
+		m_PRCamera(std::make_shared<camera::CCamera>()),
+		m_PRProjection(std::make_shared<projection::CProjection>()),
 		m_DrawInfo(std::make_shared<graphics::CDrawInfo>()),
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow(std::make_shared<gui::CGraphicsEditingWindow>()),
@@ -68,12 +70,13 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
 		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
+		if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
 
 		m_MainFrameRenderer = std::make_shared<graphics::CFrameRenderer>(pGraphicsAPI, "", pGraphicsAPI->FindOffScreenRenderPass("MainResultPass")->GetFrameTextureList());
 		if (!m_MainFrameRenderer->Create(pLoadWorker, "Resources\\MaterialFrame\\FrameTexture_MF.json")) return false;
@@ -82,6 +85,12 @@ namespace app
 		if (ShadowPass)
 		{
 			m_SceneController->AddFrameTexture(ShadowPass->GetDepthTexture());
+		}
+		
+		const auto& PlanerReflectionPass = pGraphicsAPI->FindOffScreenRenderPass("PlanerReflectionPass");
+		if (PlanerReflectionPass)
+		{
+			m_SceneController->AddFrameTexture(PlanerReflectionPass->GetFrameTexture());
 		}
 
 		return true;
@@ -121,9 +130,10 @@ namespace app
 		}
 
 		// ライトカメラの位置を演者を中心に決定する
-		if(m_Liver)
+		//if(m_Liver)
 		{
-			glm::vec3 SceneCenter = m_Liver->GetPos();
+			//glm::vec3 SceneCenter = m_Liver->GetPos();
+			glm::vec3 SceneCenter = glm::vec3(0.0f);
 
 			const auto& LightCamera = m_DrawInfo->GetLightCamera();
 			glm::vec3 LightViewDir = LightCamera->GetViewDir();
@@ -191,6 +201,13 @@ namespace app
 			// CameraとProjectionにはライト用の値を使用するように注意する
 			if (!m_SceneController->Draw(pGraphicsAPI, m_DrawInfo->GetLightCamera(), m_DrawInfo->GetLightProjection(), m_DrawInfo)) return false;
 			
+			if (!pGraphicsAPI->EndRender()) return false;
+		}
+
+		// PlanerReflectionPass
+		{
+			if (!pGraphicsAPI->BeginRender("PlanerReflectionPass")) return false;
+			if (!m_SceneController->Draw(pGraphicsAPI, m_PRCamera, m_PRProjection, m_DrawInfo)) return false;
 			if (!pGraphicsAPI->EndRender()) return false;
 		}
 		
@@ -277,9 +294,28 @@ namespace app
 			}
 		}
 
-		//
+		// シャドウマッピング
 		{
 			m_Liver = m_SceneController->FindObjectByName("koyori");
+		}
+
+		// 平面反射
+		{
+			const auto& Object = m_SceneController->FindObjectByName("Plane");
+			if (Object)
+			{
+				const auto& Node = Object->FindNodeByName("Plane");
+
+				if (Node)
+				{
+					glm::vec3 ViewDir = glm::vec3(0.0f, 1.0f, 1.0f);
+
+					m_PRCamera->SetPos(Node->GetWorldPos());
+					m_PRCamera->SetCenter(glm::vec3(Node->GetWorldPos() + ViewDir));
+
+					m_PRProjection->SetScreenResolution(40.0f, 20.0f);
+				}
+			}
 		}
 
 		return true;
