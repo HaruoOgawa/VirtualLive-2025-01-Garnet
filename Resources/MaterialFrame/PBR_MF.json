@@ -40,7 +40,15 @@
               }
             },
             {
-              "name": "lightVPMat",
+              "name": "lightVMat",
+              "type": "mat4",
+              "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+              "input": {
+                "hide": true
+              }
+            },
+            {
+              "name": "lightPMat",
               "type": "mat4",
               "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
               "input": {
@@ -140,7 +148,6 @@
               "type": "float",
               "initValue": [ 1.0 ],
               "input": {
-                "hide": true
               }
             },
             {
@@ -148,7 +155,6 @@
               "type": "float",
               "initValue": [ 1.0 ],
               "input": {
-                "hide": true
               }
             },
             {

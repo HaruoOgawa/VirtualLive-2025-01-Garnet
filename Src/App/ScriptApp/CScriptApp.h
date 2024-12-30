@@ -10,6 +10,13 @@ namespace camera { class CTraceCamera; }
 
 namespace app
 {
+	enum class EPlayMode
+	{
+		Play,
+		Stop,
+		Pause,
+	};
+
 	class CFileModifier;
 
 	class CScriptApp : public CApp
@@ -32,6 +39,12 @@ namespace app
 		std::shared_ptr<timeline::CTimelineController> m_TimelineController;
 
 		bool m_CameraSwitchToggle;
+
+		EPlayMode m_PlayMode;
+		float	  m_LocalTime;
+		float	  m_LocalDeltaTime;
+
+		std::shared_ptr<object::C3DObject> m_Liver;
 
 	public:
 		CScriptApp();
@@ -62,6 +75,12 @@ namespace app
 
 		// エラー通知イベント
 		virtual void OnAssertError(const std::string& Message) override;
+
+		// タイムライン再生停止イベント
+		virtual void OnPlayedTimeline(bool IsPlay) override;
+
+		// シーン再生モード変更イベント
+		virtual void OnChangeScenePlayMode(const std::string& Mode) override;
 
 		// Getter
 		virtual std::vector<std::shared_ptr<object::C3DObject>> GetObjectList() const override;
