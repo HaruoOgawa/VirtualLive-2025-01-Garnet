@@ -229,11 +229,10 @@
               }
             },
             {
-              "name": "pad1",
+              "name": "useFrameTexture",
               "type": "int",
               "initValue": [ 0 ],
               "input": {
-                "hide": true
               }
             },
             {
@@ -360,6 +359,14 @@
           "textureIndex": -1,
           "type": "texture",
           "textureUsage": "2d"
+        },
+        {
+          "name": "frameTexture",
+          "viewBinding": 24,
+          "samplerBinding": 25,
+          "textureIndex": -1,
+          "type": "texture",
+          "textureUsage": "frame"
         }
       ]
     }

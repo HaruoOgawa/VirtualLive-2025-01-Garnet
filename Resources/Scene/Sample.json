@@ -187,6 +187,11 @@
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
                             "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "frameTexture",
+                            "textureindex": -1,
+                            "texturename": ""
                         }
                     ]
                 },
@@ -239,6 +244,11 @@
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
                             "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "frameTexture",
+                            "textureindex": -1,
+                            "texturename": ""
                         }
                     ]
                 },
@@ -270,6 +280,11 @@
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "frameTexture",
                             "textureindex": -1,
                             "texturename": ""
                         }
@@ -361,10 +376,24 @@
                             ]
                         },
                         {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                0.7639999985694885
+                            ]
+                        },
+                        {
+                            "name": "useFrameTexture",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1318926965
+                                1065353216
                             ]
                         }
                     ],
@@ -392,6 +421,11 @@
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "frameTexture",
+                            "textureindex": 1,
                             "texturename": ""
                         }
                     ]
