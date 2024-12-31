@@ -37,6 +37,7 @@ namespace app
 		m_Projection(std::make_shared<projection::CProjection>()),
 		m_PRCamera(std::make_shared<camera::CCamera>()),
 		m_PRProjection(std::make_shared<projection::CProjection>()),
+		m_RPPlanePos(glm::vec3(0.0f)),
 		m_DrawInfo(std::make_shared<graphics::CDrawInfo>()),
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow(std::make_shared<gui::CGraphicsEditingWindow>()),
@@ -144,6 +145,32 @@ namespace app
 
 			glm::vec3 LightPos = SceneCenter + (-1.0f) * CameraLength * LightViewDir;
 			m_DrawInfo->GetLightCamera()->SetPos(LightPos);
+		}
+
+		// 平面反射用カメラの位置を決定する
+		// メインカメラと反射面がなすViewDirを面対象にした方向
+		{
+			// そのまま位置にも使うので正規化は不要
+			glm::vec3 ViewDir = m_RPPlanePos - m_MainCamera->GetPos();
+
+			// 反射面は常に上を向いているとする
+			glm::vec3 Normal = glm::vec3(0.0f, 1.0f, 0.0f);
+
+			// 反射ベクトル
+			glm::vec3 RefDir = glm::reflect(ViewDir, Normal);
+
+			// 平面の中心から反射ベクトル分戻したのがカメラの座標
+			m_PRCamera->SetPos(m_RPPlanePos - RefDir);
+
+			// 反射面でカメラ描画が遮蔽されるのでNearをRefDirにしてその間の描画をしないようにする
+			m_PRProjection->SetNear(glm::length(RefDir));
+
+			// 視野角を計算
+			// https://www.edmundoptics.jp/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view/
+			float H = 10.0f; // 視錐台の横幅
+			float f = glm::length(RefDir); // 焦点距離(Near)
+			float FOV = glm::degrees(2.0f * glm::atan(H / (2.0f * f)));
+			m_PRProjection->SetFOV(FOV);
 		}
 
 		//
@@ -308,12 +335,14 @@ namespace app
 
 				if (Node)
 				{
-					glm::vec3 ViewDir = glm::vec3(0.0f, 1.0f, 1.0f);
+					// NodeのWorldMatrixはObjectTransformを乗算する必要がある
+					// ToDo: もしかしたらNodeのWorldMatrixに入ってた方がいいのか？
+					// でもボーン計算とかずれそうだよ？
+					m_RPPlanePos = Object->GetObjectTransform()->GetPos() +  Node->GetWorldPos();
+					m_PRCamera->SetCenter(m_RPPlanePos);
 
-					m_PRCamera->SetPos(Node->GetWorldPos());
-					m_PRCamera->SetCenter(glm::vec3(Node->GetWorldPos() + ViewDir));
-
-					m_PRProjection->SetScreenResolution(40.0f, 20.0f);
+					// 平面のサイズ比をカメラ比率とする
+					m_PRProjection->SetScreenResolution(40, 20);
 				}
 			}
 		}
