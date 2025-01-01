@@ -45,7 +45,7 @@ layout(binding = 0) uniform UniformBufferObject{
 
     int   useSkinMeshAnimation;
     int   useDirCubemap;
-    int   useFrameTexture;
+    int   pad1;
     int   pad2;
 } ubo;
 
@@ -61,7 +61,6 @@ layout(binding = 16) uniform sampler2D IBL_Diffuse_Texture;
 layout(binding = 18) uniform sampler2D IBL_Specular_Texture;
 layout(binding = 20) uniform sampler2D IBL_GGXLUT_Texture;
 layout(binding = 22) uniform sampler2D cubeMap2DTexture;
-layout(binding = 22) uniform sampler2D frameTexture;
 #else
 layout(binding = 2) uniform texture2D baseColorTexture;
 layout(binding = 3) uniform sampler baseColorTextureSampler;
@@ -95,9 +94,6 @@ layout(binding = 21) uniform sampler IBL_GGXLUT_TextureSampler;
 
 layout(binding = 22) uniform texture2D cubeMap2DTexture;
 layout(binding = 23) uniform sampler cubeMap2DTextureSampler;
-
-layout(binding = 24) uniform texture2D frameTexture;
-layout(binding = 25) uniform sampler frameTextureSampler;
 #endif
 
 // なんかUnityPBRでもみた値だなぁ
@@ -572,18 +568,6 @@ void main(){
 		// https://cgworld.jp/terms/%E3%82%A2%E3%83%B3%E3%83%93%E3%82%A8%E3%83%B3%E3%83%88.html
 		vec3 gi_diffuse = clamp(specular, 0.04, 1.0);
 		col.rgb += gi_diffuse * diffuse;
-	}
-
-	// (仮) フレームテクスチャのアサイン
-	if(ubo.useFrameTexture != 0)
-	{
-		vec2 frameUV = vec2(1.0 - f_Texcoord.x, f_Texcoord.y);
-
-		#ifdef USE_OPENGL
-		col.rgb += texture(frameTexture, frameUV).rgb;
-		#else
-		col.rgb += texture(sampler2D(frameTexture, frameTextureSampler), frameUV).rgb;
-		#endif
 	}
 
 	// AO Mapの適応

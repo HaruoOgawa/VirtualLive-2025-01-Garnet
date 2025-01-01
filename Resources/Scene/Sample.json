@@ -1,6 +1,10 @@
 {
     "materialframes": [
         {
+            "name": "PlanerReflection_Mat",
+            "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
+        },
+        {
             "name": "pbr_mat",
             "filename": "Resources/MaterialFrame/PBR_MF.json"
         }
@@ -187,11 +191,6 @@
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
                             "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "frameTexture",
-                            "textureindex": -1,
-                            "texturename": ""
                         }
                     ]
                 },
@@ -244,11 +243,6 @@
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
                             "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "frameTexture",
-                            "textureindex": -1,
-                            "texturename": ""
                         }
                     ]
                 },
@@ -280,11 +274,6 @@
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "frameTexture",
                             "textureindex": -1,
                             "texturename": ""
                         }
@@ -383,17 +372,10 @@
                             ]
                         },
                         {
-                            "name": "useFrameTexture",
-                            "type": "int",
-                            "value": [
-                                1065353216
-                            ]
-                        },
-                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1065353216
+                                1318926964
                             ]
                         }
                     ],
@@ -422,7 +404,78 @@
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
                             "texturename": ""
-                        },
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Floor",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0
+            ],
+            "nodes": [
+                {
+                    "name": "Floor",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "board"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "PlanerReflection_Mat",
+                    "cull": "none",
+                    "textures": [
                         {
                             "texturebuffername": "frameTexture",
                             "textureindex": 1,

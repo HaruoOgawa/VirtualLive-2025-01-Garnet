@@ -11,6 +11,10 @@
         {
             "name": "pbr_mat",
             "filename": "Resources\\MaterialFrame\\PBR_MF.json"
+        },
+        {
+            "name": "PlanerReflection_Mat",
+            "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
         }
     ],
     "scenetextureset": {

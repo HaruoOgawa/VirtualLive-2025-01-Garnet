@@ -43,7 +43,7 @@ layout(binding = 0) uniform UniformBufferObject{
 
     int   useSkinMeshAnimation;
     int   useDirCubemap;
-    int   useFrameTexture;
+    int   pad1;
     int   pad2;
 } ubo;
 

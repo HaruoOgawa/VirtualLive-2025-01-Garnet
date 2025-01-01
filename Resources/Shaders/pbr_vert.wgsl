@@ -27,7 +27,7 @@ struct UniformBufferObject {
     useIBL: i32,
     useSkinMeshAnimation: i32,
     useDirCubemap: i32,
-    useFrameTexture: i32,
+    pad1_: i32,
     pad2_: i32,
 }
 
