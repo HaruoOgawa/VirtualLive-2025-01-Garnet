@@ -47,8 +47,7 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainResultPass",
-                "PlanerReflectionPass"
+                "MainResultPass"
             ],
             "transform": {
                 "pos": [
@@ -1019,8 +1018,7 @@
             ],
             "renderpasslist": [
                 "MainResultPass",
-                "ShadowPass",
-                "PlanerReflectionPass"
+                "ShadowPass"
             ],
             "animation": {
                 "blendshapes": [
@@ -16289,8 +16287,7 @@
             "filename": "",
             "renderpasslist": [
                 "MainResultPass",
-                "ShadowPass",
-                "PlanerReflectionPass"
+                "ShadowPass"
             ],
             "transform": {
                 "pos": [
