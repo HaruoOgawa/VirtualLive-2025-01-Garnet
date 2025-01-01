@@ -32,7 +32,7 @@ namespace app
 		// •½–Ê”½ŽË(Planer Reflection)
 		std::shared_ptr<camera::CCamera>		 m_PRCamera;
 		std::shared_ptr<projection::CProjection> m_PRProjection;
-		glm::vec3								 m_RPPlanePos;
+		glm::mat4								 m_RPPlaneWorldMatrix;
 
 		//
 		std::shared_ptr<graphics::CDrawInfo> m_DrawInfo;

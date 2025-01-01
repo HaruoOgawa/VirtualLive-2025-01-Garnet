@@ -577,10 +577,12 @@ void main(){
 	// (仮) フレームテクスチャのアサイン
 	if(ubo.useFrameTexture != 0)
 	{
+		vec2 frameUV = vec2(1.0 - f_Texcoord.x, f_Texcoord.y);
+
 		#ifdef USE_OPENGL
-		col.rgb += texture(frameTexture, f_Texcoord).rgb;
+		col.rgb += texture(frameTexture, frameUV).rgb;
 		#else
-		col.rgb += texture(sampler2D(frameTexture, frameTextureSampler), f_Texcoord).rgb;
+		col.rgb += texture(sampler2D(frameTexture, frameTextureSampler), frameUV).rgb;
 		#endif
 	}
 

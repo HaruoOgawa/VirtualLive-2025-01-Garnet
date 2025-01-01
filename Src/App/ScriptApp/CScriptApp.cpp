@@ -37,7 +37,7 @@ namespace app
 		m_Projection(std::make_shared<projection::CProjection>()),
 		m_PRCamera(std::make_shared<camera::CCamera>()),
 		m_PRProjection(std::make_shared<projection::CProjection>()),
-		m_RPPlanePos(glm::vec3(0.0f)),
+		m_RPPlaneWorldMatrix(glm::mat4(1.0f)),
 		m_DrawInfo(std::make_shared<graphics::CDrawInfo>()),
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow(std::make_shared<gui::CGraphicsEditingWindow>()),
@@ -105,6 +105,7 @@ namespace app
 	bool CScriptApp::Resize(int Width, int Height)
 	{
 		m_Projection->SetScreenResolution(Width, Height);
+		m_PRProjection->SetScreenResolution(Width, Height);
 
 		m_DrawInfo->GetLightProjection()->SetScreenResolution(Width, Height);
 
@@ -150,27 +151,35 @@ namespace app
 		// 平面反射用カメラの位置を決定する
 		// メインカメラと反射面がなすViewDirを面対象にした方向
 		{
-			// そのまま位置にも使うので正規化は不要
-			glm::vec3 ViewDir = m_RPPlanePos - m_MainCamera->GetPos();
+			glm::vec3 forwardWorldSpace = m_MainCamera->GetViewDir();
+			glm::vec3 upWorldSpace = m_MainCamera->GetUpVector();
+			glm::vec3 posWorldSpace = m_MainCamera->GetPos();
+			glm::vec3 centerWorldSpace = m_MainCamera->GetCenter();
 
-			// 反射面は常に上を向いているとする
-			glm::vec3 Normal = glm::vec3(0.0f, 1.0f, 0.0f);
+			// ワールド座標系から反射面座標系に変換
+			glm::mat4 PlaneWorldMatrix = m_RPPlaneWorldMatrix;
 
-			// 反射ベクトル
-			glm::vec3 RefDir = glm::reflect(ViewDir, Normal);
+			glm::vec3 forwardPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(forwardWorldSpace.x, forwardWorldSpace.y, forwardWorldSpace.z, 0.0f);
+			glm::vec3 upPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(upWorldSpace.x, upWorldSpace.y, upWorldSpace.z, 0.0f);
+			glm::vec3 posPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(posWorldSpace.x, posWorldSpace.y, posWorldSpace.z, 1.0f);
+			glm::vec3 centerPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(centerWorldSpace.x, centerWorldSpace.y, centerWorldSpace.z, 1.0f);
 
-			// 平面の中心から反射ベクトル分戻したのがカメラの座標
-			m_PRCamera->SetPos(m_RPPlanePos - RefDir);
+			// 面対称な位置に変換
+			forwardPlaneSpace.y *= -1.0f;
+			upPlaneSpace.y *= -1.0f;
+			posPlaneSpace.y *= -1.0f;
+			centerPlaneSpace.y *= -1.0f;
 
-			// 反射面でカメラ描画が遮蔽されるのでNearをRefDirにしてその間の描画をしないようにする
-			m_PRProjection->SetNear(glm::length(RefDir));
+			// 反射面座標系からワールド座標系に戻す
+			forwardWorldSpace = PlaneWorldMatrix * glm::vec4(forwardPlaneSpace.x, forwardPlaneSpace.y, forwardPlaneSpace.z, 0.0f);
+			upWorldSpace = PlaneWorldMatrix * glm::vec4(upPlaneSpace.x, upPlaneSpace.y, upPlaneSpace.z, 0.0f);
+			posWorldSpace = PlaneWorldMatrix * glm::vec4(posPlaneSpace.x, posPlaneSpace.y, posPlaneSpace.z, 1.0f);
+			centerWorldSpace = PlaneWorldMatrix * glm::vec4(centerPlaneSpace.x, centerPlaneSpace.y, centerPlaneSpace.z, 1.0f);
 
-			// 視野角を計算
-			// https://www.edmundoptics.jp/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view/
-			float H = 10.0f; // 視錐台の横幅
-			float f = glm::length(RefDir); // 焦点距離(Near)
-			float FOV = glm::degrees(2.0f * glm::atan(H / (2.0f * f)));
-			m_PRProjection->SetFOV(FOV);
+			// 反射カメラに反射ベクトルを反映する
+			m_PRCamera->SetPos(posWorldSpace);
+			m_PRCamera->SetUpVector(upWorldSpace);
+			m_PRCamera->SetCenter(centerWorldSpace);
 		}
 
 		//
@@ -335,14 +344,9 @@ namespace app
 
 				if (Node)
 				{
-					// NodeのWorldMatrixはObjectTransformを乗算する必要がある
-					// ToDo: もしかしたらNodeのWorldMatrixに入ってた方がいいのか？
-					// でもボーン計算とかずれそうだよ？
-					m_RPPlanePos = Object->GetObjectTransform()->GetPos() +  Node->GetWorldPos();
-					m_PRCamera->SetCenter(m_RPPlanePos);
-
-					// 平面のサイズ比をカメラ比率とする
-					m_PRProjection->SetScreenResolution(40, 20);
+					// ScaleとRotateは含めないようにする。Plane座標系への変換がおかしくなるため
+					glm::vec3 RPPlanePos = Object->GetObjectTransform()->GetPos() + Node->GetWorldPos();
+					m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), RPPlanePos);
 				}
 			}
 		}
