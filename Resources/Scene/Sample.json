@@ -7,6 +7,10 @@
         {
             "name": "pbr_mat",
             "filename": "Resources/MaterialFrame/PBR_MF.json"
+        },
+        {
+            "name": "pbr_stencil_mat",
+            "filename": "Resources\\MaterialFrame\\PBR_Stencil_MF.json"
         }
     ],
     "scenetextureset": {
@@ -347,7 +351,7 @@
                 {
                     "meshindex": 0,
                     "primitiveindex": 0,
-                    "materialframe": "pbr_mat",
+                    "materialframe": "pbr_stencil_mat",
                     "cull": "back",
                     "uniformvalues": [
                         {

@@ -2,6 +2,11 @@
     "name": "PlanerReflection_Mat",
     "zwrite" : false,
     "depthfunc" : "always",
+    "stencil":{
+        "enabled" : true,
+        "value" : 1,
+        "comp" : "equal"
+      },
     "shaderList": [
       {
         "name": "renderboard",

@@ -13,6 +13,10 @@
             "filename": "Resources\\MaterialFrame\\PBR_MF.json"
         },
         {
+            "name": "pbr_stencil_mat",
+            "filename": "Resources\\MaterialFrame\\PBR_Stencil_MF.json"
+        },
+        {
             "name": "PlanerReflection_Mat",
             "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
         }
