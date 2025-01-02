@@ -7,7 +7,7 @@
       "value" : 1,
       "comp" : "equal"
     },
-    "blendtype" : "transparent",
+    "blendtype" : "additive",
     "shaderList": [
       {
         "name": "renderboard",
