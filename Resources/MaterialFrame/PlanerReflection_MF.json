@@ -3,10 +3,11 @@
     "zwrite" : false,
     "depthfunc" : "always",
     "stencil":{
-        "enabled" : true,
-        "value" : 1,
-        "comp" : "equal"
-      },
+      "enabled" : true,
+      "value" : 1,
+      "comp" : "equal"
+    },
+    "blendtype" : "transparent",
     "shaderList": [
       {
         "name": "renderboard",
