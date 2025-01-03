@@ -71,8 +71,8 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, true)) return false;
@@ -132,10 +132,10 @@ namespace app
 		}
 
 		// ライトカメラの位置を演者を中心に決定する
-		//if(m_Liver)
+		if(m_Liver)
 		{
-			//glm::vec3 SceneCenter = m_Liver->GetPos();
-			glm::vec3 SceneCenter = glm::vec3(0.0f);
+			glm::vec3 SceneCenter = m_Liver->GetPos();
+			//glm::vec3 SceneCenter = glm::vec3(0.0f);
 
 			const auto& LightCamera = m_DrawInfo->GetLightCamera();
 			glm::vec3 LightViewDir = LightCamera->GetViewDir();
@@ -337,16 +337,24 @@ namespace app
 
 		// 平面反射
 		{
-			const auto& Object = m_SceneController->FindObjectByName("Plane");
+			const auto& Object = m_SceneController->FindObjectByName("LiveStage");
+			//const auto& Object = m_SceneController->FindObjectByName("Plane");
 			if (Object)
 			{
-				const auto& Node = Object->FindNodeByName("Plane");
+				const auto& Node = Object->FindNodeByName("StageReflection");
+				//const auto& Node = Object->FindNodeByName("Plane");
 
 				if (Node)
 				{
 					// ScaleとRotateは含めないようにする。Plane座標系への変換がおかしくなるため
 					glm::vec3 RPPlanePos = Object->GetObjectTransform()->GetPos() + Node->GetWorldPos();
 					m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), RPPlanePos);
+
+					// Projection行列をカメラと指定した平面の間を描画対象から外すものに変換する
+					glm::vec3 n = glm::vec3(0.0f, 1.0f, 0.0f); // 平面は上を向いているものとする(平面方程式の法線)
+					glm::vec3 p = RPPlanePos; // 平面内の任意の点
+					float d = (-1.0f) * glm::dot(n, p);
+					m_PRProjection->EnabledObliqueMat(true, glm::vec4(n.x, n.y, n.z, d));
 				}
 			}
 		}
