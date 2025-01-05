@@ -340,29 +340,10 @@ namespace app
 			m_Liver = m_SceneController->FindObjectByName("koyori");
 		}
 
-		// 平面反射
+		// 平面反射の座標を指定
 		{
-			//const auto& Object = m_SceneController->FindObjectByName("LiveStage");
-			//const auto& Object = m_SceneController->FindObjectByName("Plane");
-			//if (Object)
-			{
-				//const auto& Node = Object->FindNodeByName("StageReflection");
-				//const auto& Node = Object->FindNodeByName("Plane");
-
-				//if (Node)
-				{
-					// ScaleとRotateは含めないようにする。Plane座標系への変換がおかしくなるため
-					//m_RPPlanePos = Object->GetObjectTransform()->GetPos() + Node->GetWorldPos();
-					m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
-					m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
-
-					// Projection行列をカメラと指定した平面の間を描画対象から外すものに変換する
-					glm::vec3 n = glm::vec3(0.0f, 1.0f, 0.0f); // 平面は上を向いているものとする(平面方程式の法線)
-					glm::vec3 p = m_RPPlanePos; // 平面内の任意の点
-					float d = (-1.0f) * glm::dot(n, p);
-					//m_PRProjection->EnabledObliqueMat(true, glm::vec4(n.x, n.y, n.z, d));
-				}
-			}
+			m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
+			m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
 		}
 
 		return true;

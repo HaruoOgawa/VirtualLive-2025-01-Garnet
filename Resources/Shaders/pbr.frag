@@ -560,24 +560,24 @@ void main(){
 		col.rgb = NdotL * (specular + diffuse);
 	}
 
-	// よくわからんが、if文が2回ネストになっているとComputeIBLが動かないのでひとまずif文の外に置いておく
+	// 間接光
+	// ハイライトだけでは光が当たらない部分が真っ黒になってしまうので間接光を適応する必要がある
 	if(ubo.useIBL != 0)
 	{
 		// IBL
 		col.rgb += ComputeIBL(pbrParam, v, n);
 	}
-	else
+	else if(ubo.useCubeMap != 0 || ubo.useDirCubemap != 0)
 	{
 		// 反射カラーを計算
 		col.rgb += ComputeReflectionColor(pbrParam, v, n) * F;
-
-		// 疑似的な環境光(ライトの反対方向が暗くなりすぎないようにするための対策)
-		// 本来はGIやIBLで代用するところだが、ひとまずこのような簡易的な方法で代用
-		// GIやIBLを使用するときはプリプロセッサでここは実行されないようにする
-		// (Cubemapを外したとき、これがないと真っ暗になる)
+	}
+	else
+	{
+		// IBLやリフレクションプローブが有効な時はそれらが間接光の役割を果たすが、そうでない時はAmbientLight(単純な色の加算)を使用する
 		// https://cgworld.jp/terms/%E3%82%A2%E3%83%B3%E3%83%93%E3%82%A8%E3%83%B3%E3%83%88.html
-		vec3 gi_diffuse = clamp(specular, 0.04, 1.0);
-		col.rgb += gi_diffuse * diffuse;
+		vec3 gi_diffuse = vec3(0.1);
+		col.rgb += gi_diffuse;
 	}
 
 	// AO Mapの適応

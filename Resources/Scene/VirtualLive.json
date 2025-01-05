@@ -19,10 +19,19 @@
         {
             "name": "pbr_stencil_mat",
             "filename": "Resources\\MaterialFrame\\PBR_Stencil_MF.json"
+        },
+        {
+            "name": "simple_texture_mat",
+            "filename": "Resources/MaterialFrame/SimpleTexture_MF.json"
         }
     ],
     "scenetextureset": {
-        "frametextures": null
+        "frametextures": null,
+        "ibl": {
+            "diffuse": "Resources/IBL/output_iem.hdr",
+            "specular": "Resources/IBL/output_pmrem.hdr",
+            "ggx": "Resources/IBL/ggx_lut.jpg"
+        }
     },
     "animations": [
         {
@@ -111,10 +120,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -131,17 +147,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -167,20 +183,17 @@
                             ]
                         },
                         {
-                            "name": "baseColorFactor",
-                            "type": "vec4",
+                            "name": "metallicFactor",
+                            "type": "float",
                             "value": [
-                                0.800000011920929,
-                                0.800000011920929,
-                                0.800000011920929,
                                 1.0
                             ]
                         },
                         {
-                            "name": "roughnessFactor",
-                            "type": "float",
+                            "name": "useIBL",
+                            "type": "int",
                             "value": [
-                                0.5
+                                1
                             ]
                         },
                         {
@@ -204,17 +217,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -257,10 +270,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -277,17 +297,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -330,10 +350,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -350,17 +377,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -403,10 +430,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -423,17 +457,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -476,10 +510,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -496,17 +537,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -549,10 +590,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -569,17 +617,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -622,10 +670,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -642,17 +697,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -695,10 +750,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -715,17 +777,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -768,10 +830,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -788,17 +857,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -841,10 +910,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -861,17 +937,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -904,10 +980,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -924,17 +1007,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -967,10 +1050,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1316880384
                             ]
                         }
                     ],
@@ -987,17 +1077,17 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -16362,10 +16452,17 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1065353216
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1318910976
+                                -1082130432
                             ]
                         }
                     ],
@@ -16382,20 +16479,221 @@
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Background",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    500.0,
+                    500.0,
+                    500.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "node",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "sphere"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "simple_texture_mat",
+                    "cull": "front",
+                    "uniformvalues": [
+                        {
+                            "name": "cameraPos",
+                            "type": "vec4",
+                            "value": [
+                                3.5829575061798096,
+                                4.441318988800049,
+                                -4.863645076751709,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "lightVPMat",
+                            "type": "mat4",
+                            "value": [
+                                -1.161768913269043,
+                                -0.8656610250473022,
+                                -0.3266526162624359,
+                                -0.26726123690605164,
+                                0.0,
+                                1.4427684545516968,
+                                -0.9799578189849854,
+                                -0.8017836809158325,
+                                -0.5808844566345215,
+                                1.7313220500946045,
+                                0.6533052325248718,
+                                0.5345224738121033,
+                                0.0,
+                                -0.18034547567367554,
+                                4.011383056640625,
+                                5.100222587585449
+                            ]
+                        },
+                        {
+                            "name": "model",
+                            "type": "mat4",
+                            "value": [
+                                500.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                500.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                500.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "proj",
+                            "type": "mat4",
+                            "value": [
+                                1.29889714717865,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                2.4142134189605713,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                -1.0001999139785767,
+                                -1.0,
+                                0.0,
+                                0.0,
+                                -0.20002000033855438,
+                                0.0
+                            ]
+                        },
+                        {
+                            "name": "view",
+                            "type": "mat4",
+                            "value": [
+                                -0.7068398594856262,
+                                -0.41049277782440186,
+                                0.5760842561721802,
+                                0.0,
+                                0.0,
+                                0.8143988847732544,
+                                0.5803054571151733,
+                                0.0,
+                                -0.7073736190795898,
+                                0.41018304228782654,
+                                -0.5756495594978333,
+                                0.0,
+                                -0.9078369140625,
+                                -0.15124237537384033,
+                                -7.441162109375,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "time",
+                            "type": "float",
+                            "value": [
+                                32.00700378417969
+                            ]
+                        },
+                        {
+                            "name": "useDirSampling",
+                            "type": "int",
+                            "value": [
+                                1316880384
+                            ]
+                        },
+                        {
+                            "name": "useTexColor",
+                            "type": "int",
+                            "value": [
+                                1316880384
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "texImage",
+                            "textureindex": -1,
+                            "texturename": "bgtex"
+                        }
+                    ]
+                }
+            ],
+            "textureset": [
+                {
+                    "name": "bgtex",
+                    "filename": "Resources/IBL/output_skybox.hdr"
                 }
             ]
         },

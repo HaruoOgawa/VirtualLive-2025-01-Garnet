@@ -22,5 +22,5 @@ void main()
     vec3 col = texture(sampler2D(frameTexture, frameTextureSampler), st).rgb;
     #endif
      
-    outColor = vec4(col, 1.0);
+    outColor = vec4(col, 0.5);
 }

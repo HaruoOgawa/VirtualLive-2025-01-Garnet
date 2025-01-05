@@ -47,10 +47,7 @@ namespace gui
 			{
 				for (const auto& Renderer : Primitive->GetRendererList())
 				{
-					const auto& Material = std::get<1>(Renderer);
-					if (!Material) continue;
-
-					if (!DrawMaterialGUI(pGraphicsAPI, Object, Material, SceneController)) return false;
+					if (!DrawMaterialGUI(pGraphicsAPI, Object, Primitive, Renderer, SceneController)) return false;
 				}
 			}
 		}
@@ -88,12 +85,8 @@ namespace gui
 		{
 			for (const auto& Renderer : Primitive->GetRendererList())
 			{
-				const auto& Material = std::get<1>(Renderer);
-
-				if (!Material) continue;
-
 				// MaterialのGUIを描画
-				if (!DrawMaterialGUI(pGraphicsAPI, Object, Material, SceneController)) return false;
+				if (!DrawMaterialGUI(pGraphicsAPI, Object, Primitive, Renderer, SceneController)) return false;
 			}
 
 			
@@ -102,9 +95,12 @@ namespace gui
 		return true;
 	}
 
-	bool CGUIMaterialTab::DrawMaterialGUI(api::IGraphicsAPI* pGraphicsAPI, const std::shared_ptr<object::C3DObject>& Object, const std::shared_ptr<graphics::CMaterial>& Material,
-		const std::shared_ptr<scene::CSceneController>& SceneController)
+	bool CGUIMaterialTab::DrawMaterialGUI(api::IGraphicsAPI* pGraphicsAPI, const std::shared_ptr<object::C3DObject>& Object, const std::shared_ptr<graphics::CPrimitive>& Primitive,
+		const std::tuple<std::shared_ptr<graphics::IRenderer>, std::shared_ptr<graphics::CMaterial>>& Renderer, const std::shared_ptr<scene::CSceneController>& SceneController)
 	{
+		const auto& Material = std::get<1>(Renderer);
+		if (!Material) return true;
+
 		// マテリアル名
 		if (ImGui::TreeNodeEx(Material->GetMaterialName().c_str(), ImGuiTreeNodeFlags_Framed))
 		{
@@ -128,7 +124,7 @@ namespace gui
 							{
 								// マテリアルの置き換え
 								auto NewMaterial = MaterialFrame.second->CreateMaterial(pGraphicsAPI, Material->GetCullMode());
-								Object->ReplaceMaterial(Material, NewMaterial);
+								Primitive->ReplaceMaterial(Renderer, NewMaterial);
 							}
 						}
 
