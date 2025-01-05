@@ -177,7 +177,10 @@ vec3 CalcFrenelReflection(PBRParam param)
 // この記事によると拡散色のBRDFは近似的に『1.0 / PI』と定まるとのこと
 vec3 CalcDiffuseBRDF(PBRParam param)
 {
-	return param.diffuseColor / PI;
+	float oneminus = (1.0 - 0.04) - param.metallic * (1.0 - 0.04);
+
+	return param.diffuseColor * oneminus;
+	// return param.diffuseColor / PI;
 }
 
 // 法線の取得(ノーマルマップを使うことがある. → ついでに勉強する)
@@ -430,7 +433,7 @@ void main(){
 		}
 	}
 
-	vec4 col = vec4(1.0);
+	vec3 col = vec3(0.0);
 
 	// ラフネスとメタリックを取得。テクスチャにパッキングされていることもある
 	float perceptualRoughness = ubo.roughnessFactor;
@@ -630,7 +633,7 @@ void main(){
 	col.rgb = pow(col.rgb, vec3(1.0/2.2));
 
 	// アルファを指定
-	col.a = baseColor.a;
+	float alpha = baseColor.a;
 
-	outColor = col;
+	outColor = vec4(col, alpha);
 }
