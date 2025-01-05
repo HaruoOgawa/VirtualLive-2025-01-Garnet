@@ -1,5 +1,11 @@
 {
   "name": "pbr_mat",
+  "stencil":{
+    "enabled" : true,
+    "value" : 2,
+    "comp" : "always",
+    "pass" : "replace"
+  },
   "shaderList": [
     {
       "name": "pbr_vert",
@@ -95,6 +101,14 @@
                 "type": "range",
                 "minvalue": 0.0,
                 "maxvalue": 1.0
+              }
+            },
+            {
+              "name": "spatialCullPos",
+              "type": "vec4",
+              "initValue": [ 0.0, 0.0, 0.0, 0.0 ],
+              "input": {
+                "hide": true
               }
             },
             {
@@ -229,7 +243,7 @@
               }
             },
             {
-              "name": "pad1",
+              "name": "useSpatialCulling",
               "type": "int",
               "initValue": [ 0 ],
               "input": {

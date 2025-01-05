@@ -33,6 +33,7 @@ namespace app
 		std::shared_ptr<camera::CCamera>		 m_PRCamera;
 		std::shared_ptr<projection::CProjection> m_PRProjection;
 		glm::mat4								 m_RPPlaneWorldMatrix;
+		glm::vec3								 m_RPPlanePos;
 
 		//
 		std::shared_ptr<graphics::CDrawInfo> m_DrawInfo;

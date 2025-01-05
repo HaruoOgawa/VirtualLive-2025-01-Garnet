@@ -20,6 +20,7 @@ layout(binding = 0) uniform UniformBufferObject{
 
 	vec4 baseColorFactor;
 	vec4 emissiveFactor;
+    vec4 spatialCullPos;
 
     float time;
     float metallicFactor;
@@ -43,7 +44,7 @@ layout(binding = 0) uniform UniformBufferObject{
 
     int   useSkinMeshAnimation;
     int   useDirCubemap;
-    int   pad1;
+    int   useSpatialCulling;
     int   pad2;
 } ubo;
 

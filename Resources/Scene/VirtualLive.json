@@ -1,6 +1,10 @@
 {
     "materialframes": [
         {
+            "name": "PlanerReflection_Mat",
+            "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
+        },
+        {
             "name": "basic_toon_mat",
             "filename": "Resources/MaterialFrame/basic_toon_mf.json"
         },
@@ -15,10 +19,6 @@
         {
             "name": "pbr_stencil_mat",
             "filename": "Resources\\MaterialFrame\\PBR_Stencil_MF.json"
-        },
-        {
-            "name": "PlanerReflection_Mat",
-            "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
         }
     ],
     "scenetextureset": {
@@ -149,7 +149,7 @@
                 {
                     "meshindex": 1,
                     "primitiveindex": 0,
-                    "materialframe": "pbr_mat",
+                    "materialframe": "pbr_stencil_mat",
                     "cull": "back",
                     "uniformvalues": [
                         {
@@ -243,9 +243,9 @@
                             "name": "baseColorFactor",
                             "type": "vec4",
                             "value": [
-                                0.8040764331817627,
-                                0.7567344903945923,
-                                0.7630512118339539,
+                                0.800000011920929,
+                                0.800000011920929,
+                                0.800000011920929,
                                 1.0
                             ]
                         },
@@ -894,16 +894,6 @@
                             "type": "float",
                             "value": [
                                 1080.0
-                            ]
-                        },
-                        {
-                            "name": "baseColorFactor",
-                            "type": "vec4",
-                            "value": [
-                                0.800000011920929,
-                                0.800000011920929,
-                                0.800000011920929,
-                                1.0
                             ]
                         },
                         {
@@ -16300,7 +16290,7 @@
                 "pos": [
                     0.0,
                     -0.5,
-                    -75.0
+                    0.0
                 ],
                 "rotate": [
                     0.0,
@@ -16327,14 +16317,14 @@
                             0.0
                         ],
                         "rotate": [
+                            -90.0,
                             0.0,
-                            -0.0,
                             0.0
                         ],
                         "scale": [
                             200.0,
-                            0.10000000149011612,
-                            200.0
+                            200.0,
+                            1.0
                         ]
                     },
                     "enable": true,
@@ -16345,7 +16335,7 @@
                 {
                     "primitives": [
                         {
-                            "type": "cube"
+                            "type": "board"
                         }
                     ]
                 }
@@ -16375,7 +16365,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1
+                                1318910976
                             ]
                         }
                     ],
@@ -16403,6 +16393,82 @@
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Floor",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0
+            ],
+            "nodes": [
+                {
+                    "name": "Floor",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "board"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "PlanerReflection_Mat",
+                    "cull": "none",
+                    "textures": [
+                        {
+                            "texturebuffername": "frameTexture",
+                            "textureindex": 1,
                             "texturename": ""
                         }
                     ]

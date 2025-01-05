@@ -9,6 +9,7 @@ struct UniformBufferObject {
     cameraPos: vec4<f32>,
     baseColorFactor: vec4<f32>,
     emissiveFactor: vec4<f32>,
+    spatialCullPos: vec4<f32>,
     time: f32,
     metallicFactor: f32,
     roughnessFactor: f32,
@@ -27,7 +28,7 @@ struct UniformBufferObject {
     useIBL: i32,
     useSkinMeshAnimation: i32,
     useDirCubemap: i32,
-    pad1_: i32,
+    useSpatialCulling: i32,
     pad2_: i32,
 }
 

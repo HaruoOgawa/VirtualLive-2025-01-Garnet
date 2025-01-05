@@ -22,6 +22,7 @@ layout(binding = 0) uniform UniformBufferObject{
 
 	vec4 baseColorFactor;
 	vec4 emissiveFactor;
+	vec4 spatialCullPos;
 
     float time;
     float metallicFactor;
@@ -45,7 +46,7 @@ layout(binding = 0) uniform UniformBufferObject{
 
     int   useSkinMeshAnimation;
     int   useDirCubemap;
-    int   pad1;
+    int   useSpatialCulling;
     int   pad2;
 } ubo;
 
@@ -420,6 +421,15 @@ vec3 ComputeIBL(PBRParam pbrParam, vec3 v, vec3 n)
 }
 
 void main(){
+	// 特定のオブジェクトよりも下にある時は描画を破棄する
+	if(ubo.useSpatialCulling != 0)
+	{
+		if(f_WorldPos.y < ubo.spatialCullPos.y)
+		{
+			discard;
+		}
+	}
+
 	vec4 col = vec4(1.0);
 
 	// ラフネスとメタリックを取得。テクスチャにパッキングされていることもある
