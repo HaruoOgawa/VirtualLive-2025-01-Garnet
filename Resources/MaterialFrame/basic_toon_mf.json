@@ -1,5 +1,11 @@
 {
   "name": "basic_toon_mat",
+  "stencil":{
+    "enabled" : true,
+    "value" : 2,
+    "comp" : "always",
+    "pass" : "replace"
+  },
   "shaderList": [
     {
       "name": "basic_toon_vert",

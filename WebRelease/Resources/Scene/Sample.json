@@ -1,0 +1,489 @@
+{
+    "materialframes": [
+        {
+            "name": "PlanerReflection_Mat",
+            "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
+        },
+        {
+            "name": "pbr_mat",
+            "filename": "Resources/MaterialFrame/PBR_MF.json"
+        }
+    ],
+    "scenetextureset": {
+        "frametextures": null
+    },
+    "timeline": {
+        "filename": "Resources\\Scene\\Sample.tl"
+    },
+    "physics": {
+        "enabled": true
+    },
+    "objects": [
+        {
+            "name": "SampleObj",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass",
+                "ShadowPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.5,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0,
+                1,
+                2
+            ],
+            "nodes": [
+                {
+                    "name": "testnode",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                },
+                {
+                    "name": "Sphere",
+                    "transform": {
+                        "pos": [
+                            1.5,
+                            1.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.75,
+                            0.75,
+                            0.75
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 1
+                },
+                {
+                    "name": "OutAreaObj",
+                    "transform": {
+                        "pos": [
+                            7.0,
+                            1.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 2
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "cube"
+                        }
+                    ]
+                },
+                {
+                    "primitives": [
+                        {
+                            "type": "sphere"
+                        }
+                    ]
+                },
+                {
+                    "primitives": [
+                        {
+                            "type": "sphere"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.5,
+                                0.0,
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                1.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.48100000619888306
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Plane",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass",
+                "ShadowPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    -1.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0
+            ],
+            "nodes": [
+                {
+                    "name": "Plane",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            -90.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            10.0,
+                            10.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "board"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                0.7639999985694885
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1318926964
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Floor",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0
+            ],
+            "nodes": [
+                {
+                    "name": "Floor",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "board"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "PlanerReflection_Mat",
+                    "cull": "none",
+                    "textures": [
+                        {
+                            "texturebuffername": "frameTexture",
+                            "textureindex": 1,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

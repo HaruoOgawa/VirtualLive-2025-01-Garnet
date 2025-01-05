@@ -35,6 +35,9 @@ namespace app
 #endif // USE_VIEWER_CAMERA
 		m_TraceCamera(std::make_shared<camera::CTraceCamera>()),
 		m_Projection(std::make_shared<projection::CProjection>()),
+		m_PRCamera(std::make_shared<camera::CCamera>()),
+		m_PRProjection(std::make_shared<projection::CProjection>()),
+		m_RPPlaneWorldMatrix(glm::mat4(1.0f)),
 		m_DrawInfo(std::make_shared<graphics::CDrawInfo>()),
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow(std::make_shared<gui::CGraphicsEditingWindow>()),
@@ -72,8 +75,9 @@ namespace app
 		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
 
 		// オフスクリーンレンダリング
-		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
-		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1)) return false;
+		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, true)) return false;
+		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, false, true, false)) return false;
+		if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, false)) return false;
 
 		m_MainFrameRenderer = std::make_shared<graphics::CFrameRenderer>(pGraphicsAPI, "", pGraphicsAPI->FindOffScreenRenderPass("MainResultPass")->GetFrameTextureList());
 		if (!m_MainFrameRenderer->Create(pLoadWorker, "Resources\\MaterialFrame\\FrameTexture_MF.json")) return false;
@@ -82,6 +86,12 @@ namespace app
 		if (ShadowPass)
 		{
 			m_SceneController->AddFrameTexture(ShadowPass->GetDepthTexture());
+		}
+		
+		const auto& PlanerReflectionPass = pGraphicsAPI->FindOffScreenRenderPass("PlanerReflectionPass");
+		if (PlanerReflectionPass)
+		{
+			m_SceneController->AddFrameTexture(PlanerReflectionPass->GetFrameTexture());
 		}
 
 		return true;
@@ -95,6 +105,7 @@ namespace app
 	bool CScriptApp::Resize(int Width, int Height)
 	{
 		m_Projection->SetScreenResolution(Width, Height);
+		m_PRProjection->SetScreenResolution(Width, Height);
 
 		m_DrawInfo->GetLightProjection()->SetScreenResolution(Width, Height);
 
@@ -124,6 +135,7 @@ namespace app
 		if(m_Liver)
 		{
 			glm::vec3 SceneCenter = m_Liver->GetPos();
+			//glm::vec3 SceneCenter = glm::vec3(0.0f);
 
 			const auto& LightCamera = m_DrawInfo->GetLightCamera();
 			glm::vec3 LightViewDir = LightCamera->GetViewDir();
@@ -134,6 +146,40 @@ namespace app
 
 			glm::vec3 LightPos = SceneCenter + (-1.0f) * CameraLength * LightViewDir;
 			m_DrawInfo->GetLightCamera()->SetPos(LightPos);
+		}
+
+		// 平面反射用カメラの位置を決定する
+		// メインカメラと反射面がなすViewDirを面対象にした方向
+		{
+			glm::vec3 forwardWorldSpace = m_MainCamera->GetViewDir();
+			glm::vec3 upWorldSpace = m_MainCamera->GetUpVector();
+			glm::vec3 posWorldSpace = m_MainCamera->GetPos();
+			glm::vec3 centerWorldSpace = m_MainCamera->GetCenter();
+
+			// ワールド座標系から反射面座標系に変換
+			glm::mat4 PlaneWorldMatrix = m_RPPlaneWorldMatrix;
+
+			glm::vec3 forwardPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(forwardWorldSpace.x, forwardWorldSpace.y, forwardWorldSpace.z, 0.0f);
+			glm::vec3 upPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(upWorldSpace.x, upWorldSpace.y, upWorldSpace.z, 0.0f);
+			glm::vec3 posPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(posWorldSpace.x, posWorldSpace.y, posWorldSpace.z, 1.0f);
+			glm::vec3 centerPlaneSpace = glm::inverse(PlaneWorldMatrix) * glm::vec4(centerWorldSpace.x, centerWorldSpace.y, centerWorldSpace.z, 1.0f);
+
+			// 面対称な位置に変換
+			forwardPlaneSpace.y *= -1.0f;
+			upPlaneSpace.y *= -1.0f;
+			posPlaneSpace.y *= -1.0f;
+			centerPlaneSpace.y *= -1.0f;
+
+			// 反射面座標系からワールド座標系に戻す
+			forwardWorldSpace = PlaneWorldMatrix * glm::vec4(forwardPlaneSpace.x, forwardPlaneSpace.y, forwardPlaneSpace.z, 0.0f);
+			upWorldSpace = PlaneWorldMatrix * glm::vec4(upPlaneSpace.x, upPlaneSpace.y, upPlaneSpace.z, 0.0f);
+			posWorldSpace = PlaneWorldMatrix * glm::vec4(posPlaneSpace.x, posPlaneSpace.y, posPlaneSpace.z, 1.0f);
+			centerWorldSpace = PlaneWorldMatrix * glm::vec4(centerPlaneSpace.x, centerPlaneSpace.y, centerPlaneSpace.z, 1.0f);
+
+			// 反射カメラに反射ベクトルを反映する
+			m_PRCamera->SetPos(posWorldSpace);
+			m_PRCamera->SetUpVector(upWorldSpace);
+			m_PRCamera->SetCenter(centerWorldSpace);
 		}
 
 		//
@@ -192,6 +238,18 @@ namespace app
 			if (!m_SceneController->Draw(pGraphicsAPI, m_DrawInfo->GetLightCamera(), m_DrawInfo->GetLightProjection(), m_DrawInfo)) return false;
 			
 			if (!pGraphicsAPI->EndRender()) return false;
+		}
+
+		// PlanerReflectionPass
+		{
+			m_DrawInfo->SetSpatialCulling(true);
+			m_DrawInfo->SetSpatialCullPos(glm::vec4(m_RPPlanePos.x, m_RPPlanePos.y, m_RPPlanePos.z, 1.0f));
+
+			if (!pGraphicsAPI->BeginRender("PlanerReflectionPass")) return false;
+			if (!m_SceneController->Draw(pGraphicsAPI, m_PRCamera, m_PRProjection, m_DrawInfo)) return false;
+			if (!pGraphicsAPI->EndRender()) return false;
+
+			m_DrawInfo->SetSpatialCulling(false);
 		}
 		
 		// MainResultPass
@@ -277,9 +335,34 @@ namespace app
 			}
 		}
 
-		//
+		// シャドウマッピング
 		{
 			m_Liver = m_SceneController->FindObjectByName("koyori");
+		}
+
+		// 平面反射
+		{
+			//const auto& Object = m_SceneController->FindObjectByName("LiveStage");
+			//const auto& Object = m_SceneController->FindObjectByName("Plane");
+			//if (Object)
+			{
+				//const auto& Node = Object->FindNodeByName("StageReflection");
+				//const auto& Node = Object->FindNodeByName("Plane");
+
+				//if (Node)
+				{
+					// ScaleとRotateは含めないようにする。Plane座標系への変換がおかしくなるため
+					//m_RPPlanePos = Object->GetObjectTransform()->GetPos() + Node->GetWorldPos();
+					m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
+					m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
+
+					// Projection行列をカメラと指定した平面の間を描画対象から外すものに変換する
+					glm::vec3 n = glm::vec3(0.0f, 1.0f, 0.0f); // 平面は上を向いているものとする(平面方程式の法線)
+					glm::vec3 p = m_RPPlanePos; // 平面内の任意の点
+					float d = (-1.0f) * glm::dot(n, p);
+					//m_PRProjection->EnabledObliqueMat(true, glm::vec4(n.x, n.y, n.z, d));
+				}
+			}
 		}
 
 		return true;

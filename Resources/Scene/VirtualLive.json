@@ -1,6 +1,10 @@
 {
     "materialframes": [
         {
+            "name": "PlanerReflection_Mat",
+            "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
+        },
+        {
             "name": "basic_toon_mat",
             "filename": "Resources/MaterialFrame/basic_toon_mf.json"
         },
@@ -11,6 +15,10 @@
         {
             "name": "pbr_mat",
             "filename": "Resources\\MaterialFrame\\PBR_MF.json"
+        },
+        {
+            "name": "pbr_stencil_mat",
+            "filename": "Resources\\MaterialFrame\\PBR_Stencil_MF.json"
         }
     ],
     "scenetextureset": {
@@ -43,7 +51,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainResultPass"
+                "MainResultPass",
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -105,7 +114,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1065353216
+                                1
                             ]
                         }
                     ],
@@ -140,7 +149,7 @@
                 {
                     "meshindex": 1,
                     "primitiveindex": 0,
-                    "materialframe": "pbr_mat",
+                    "materialframe": "pbr_stencil_mat",
                     "cull": "back",
                     "uniformvalues": [
                         {
@@ -178,7 +187,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1065353216
+                                1
                             ]
                         }
                     ],
@@ -234,9 +243,9 @@
                             "name": "baseColorFactor",
                             "type": "vec4",
                             "value": [
-                                0.8040764331817627,
-                                0.7567344903945923,
-                                0.7630512118339539,
+                                0.800000011920929,
+                                0.800000011920929,
+                                0.800000011920929,
                                 1.0
                             ]
                         },
@@ -251,7 +260,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1065353216
+                                1
                             ]
                         }
                     ],
@@ -324,7 +333,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1065353216
+                                1
                             ]
                         }
                     ],
@@ -888,16 +897,6 @@
                             ]
                         },
                         {
-                            "name": "baseColorFactor",
-                            "type": "vec4",
-                            "value": [
-                                0.800000011920929,
-                                0.800000011920929,
-                                0.800000011920929,
-                                1.0
-                            ]
-                        },
-                        {
                             "name": "roughnessFactor",
                             "type": "float",
                             "value": [
@@ -1014,7 +1013,8 @@
             ],
             "renderpasslist": [
                 "MainResultPass",
-                "ShadowPass"
+                "ShadowPass",
+                "PlanerReflectionPass"
             ],
             "animation": {
                 "blendshapes": [
@@ -16283,13 +16283,14 @@
             "filename": "",
             "renderpasslist": [
                 "MainResultPass",
-                "ShadowPass"
+                "ShadowPass",
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
                     0.0,
                     -0.5,
-                    -75.0
+                    0.0
                 ],
                 "rotate": [
                     0.0,
@@ -16316,14 +16317,14 @@
                             0.0
                         ],
                         "rotate": [
+                            -90.0,
                             0.0,
-                            -0.0,
                             0.0
                         ],
                         "scale": [
                             200.0,
-                            0.10000000149011612,
-                            200.0
+                            200.0,
+                            1.0
                         ]
                     },
                     "enable": true,
@@ -16334,7 +16335,7 @@
                 {
                     "primitives": [
                         {
-                            "type": "cube"
+                            "type": "board"
                         }
                     ]
                 }
@@ -16364,7 +16365,7 @@
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
-                                1318926965
+                                1318910976
                             ]
                         }
                     ],
@@ -16392,6 +16393,82 @@
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
                             "textureindex": -1,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Floor",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0
+            ],
+            "nodes": [
+                {
+                    "name": "Floor",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": 0
+                }
+            ],
+            "meshs": [
+                {
+                    "primitives": [
+                        {
+                            "type": "board"
+                        }
+                    ]
+                }
+            ],
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "PlanerReflection_Mat",
+                    "cull": "none",
+                    "textures": [
+                        {
+                            "texturebuffername": "frameTexture",
+                            "textureindex": 1,
                             "texturename": ""
                         }
                     ]

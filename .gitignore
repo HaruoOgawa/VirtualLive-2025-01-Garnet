@@ -9,6 +9,11 @@ Resources/Sound
 Resources/Model
 Resources/Motion
 
+WebRelease/Resources/Sound
+WebRelease/Resources/Model
+WebRelease/Resources/Motion
+
+
 # User-specific files
 *.rsuser
 *.suo
