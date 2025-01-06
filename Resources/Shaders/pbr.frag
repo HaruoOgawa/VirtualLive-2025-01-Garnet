@@ -367,9 +367,9 @@ vec3 ComputeReflectionColor(PBRParam pbrParam, vec3 v, vec3 n)
 		float mipCount = ubo.mipCount;
 		float lod = mipCount * pbrParam.perceptualRoughness;
 		#ifdef USE_OPENGL
-		reflectColor = LINEARtoSRGB(textureLod(cubemapTexture, reflect(v, n), lod)).rgb;
+		reflectColor = SRGBtoLINEAR(textureLod(cubemapTexture, reflect(v, n), lod)).rgb;
 		#else
-		reflectColor = LINEARtoSRGB(textureLod(samplerCube(cubemapTexture, cubemapTextureSampler), reflect(v, n), lod)).rgb;
+		reflectColor = SRGBtoLINEAR(textureLod(samplerCube(cubemapTexture, cubemapTextureSampler), reflect(v, n), lod)).rgb;
 		#endif
 	}
 	else if(ubo.useDirCubemap != 0)
@@ -379,9 +379,9 @@ vec3 ComputeReflectionColor(PBRParam pbrParam, vec3 v, vec3 n)
 		float mipCount = ubo.mipCount;
 		float lod = mipCount * pbrParam.perceptualRoughness;
 		#ifdef USE_OPENGL
-		reflectColor = LINEARtoSRGB(textureLod(cubeMap2DTexture, st, lod)).rgb;
+		reflectColor = SRGBtoLINEAR(textureLod(cubeMap2DTexture, st, lod)).rgb;
 		#else
-		reflectColor = LINEARtoSRGB(textureLod(sampler2D(cubeMap2DTexture, cubeMap2DTextureSampler), st, lod)).rgb;
+		reflectColor = SRGBtoLINEAR(textureLod(sampler2D(cubeMap2DTexture, cubeMap2DTextureSampler), st, lod)).rgb;
 		#endif
 	}
 
@@ -420,7 +420,7 @@ vec3 ComputeIBL(PBRParam pbrParam, vec3 v, vec3 n)
 	vec3 diffuse = diffuseLight * pbrParam.diffuseColor;
 	vec3 specular = specularLight * (pbrParam.specularColor * brdf.x + brdf.y);
 
-	return diffuse + specular;
+	return specular;
 }
 
 void main(){
