@@ -10,6 +10,7 @@ struct UniformBufferObject {
     baseColorFactor: vec4<f32>,
     emissiveFactor: vec4<f32>,
     spatialCullPos: vec4<f32>,
+    ambientColor: vec4<f32>,
     time: f32,
     metallicFactor: f32,
     roughnessFactor: f32,

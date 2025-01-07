@@ -23,6 +23,7 @@ layout(binding = 0) uniform UniformBufferObject{
 	vec4 baseColorFactor;
 	vec4 emissiveFactor;
 	vec4 spatialCullPos;
+	vec4 ambientColor;
 
     float time;
     float metallicFactor;
@@ -425,12 +426,9 @@ vec3 ComputeIBL(PBRParam pbrParam, vec3 v, vec3 n)
 
 void main(){
 	// 特定のオブジェクトよりも下にある時は描画を破棄する
-	if(ubo.useSpatialCulling != 0)
+	if(ubo.useSpatialCulling != 0 && f_WorldPos.y < ubo.spatialCullPos.y)
 	{
-		if(f_WorldPos.y < ubo.spatialCullPos.y)
-		{
-			discard;
-		}
+		discard;
 	}
 
 	vec3 col = vec3(0.0);
@@ -480,7 +478,7 @@ void main(){
 	// たぶんこの0.04という数値は経験から得られた値で物理学者がいい感じにチューニングして得た綺麗な描画結果を出すのにちょうどいい値ということだと思う
 	// → さらに調べてみるとこの0.04は入射反射率4%という意味らしく、たぶんどんな物体でも最低でも4%は反射するということなのかもしれない
 	vec3 diffuseColor = baseColor.rgb * (vec3(1.0) - f0); // 0.04だけ減衰させる. たぶん光エネルギーが色以外のとこで減衰した分を考慮している(?)
-	diffuseColor *= (1.0 - metallic); // metallicが1.0ならdiffuseColorは0になる。完全な金属の表面色は周りの映り込み色だけになることを表している
+	//diffuseColor *= (1.0 - metallic); // metallicが1.0ならdiffuseColorは0になる。完全な金属の表面色は周りの映り込み色だけになることを表している
 	// specularColor. 意味は鏡面色. サーフェイス上のハイライトの色らしい.
 	// https://help.autodesk.com/view/3DSMAX/2023/ENU/?guid=GUID-90065A74-C223-474C-8D85-7596D70E5004
 	// 金属であるほどハイライト色がベースカラーに近づく.
@@ -579,7 +577,7 @@ void main(){
 	{
 		// IBLやリフレクションプローブが有効な時はそれらが間接光の役割を果たすが、そうでない時はAmbientLight(単純な色の加算)を使用する
 		// https://cgworld.jp/terms/%E3%82%A2%E3%83%B3%E3%83%93%E3%82%A8%E3%83%B3%E3%83%88.html
-		vec3 gi_diffuse = vec3(0.1);
+		vec3 gi_diffuse = ubo.ambientColor.rgb;
 		col.rgb += gi_diffuse;
 	}
 

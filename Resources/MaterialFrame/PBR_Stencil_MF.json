@@ -112,6 +112,14 @@
               }
             },
             {
+              "name": "ambientColor",
+              "type": "vec4",
+              "initValue": [ 0.1, 0.1, 0.1, 1.0 ],
+              "input": {
+                "type": "color"
+              }
+            },
+            {
               "name": "time",
               "type": "float",
               "initValue": [ 0.0 ],
