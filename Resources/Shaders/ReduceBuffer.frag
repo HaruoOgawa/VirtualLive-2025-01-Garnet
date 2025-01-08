@@ -23,15 +23,16 @@ void main()
 
 	vec2 texelSize = 1.0 / textureSize(texImage, 0);
 	
+	col += GetTexColor(st);
 
 	// 2x2ピクセルを平均化して縮小
 	col += GetTexColor(st + texelSize * vec2(-0.5, -0.5));
-	col += GetTexColor(st + texelSize * vec2(-0.5, -0.5));
-	col += GetTexColor(st + texelSize * vec2(-0.5, -0.5));
-	col += GetTexColor(st + texelSize * vec2(-0.5, -0.5));
+	col += GetTexColor(st + texelSize * vec2(-0.5, 0.5));
+	col += GetTexColor(st + texelSize * vec2(0.5, -0.5));
+	col += GetTexColor(st + texelSize * vec2(0.5, 0.5));
 
 	// ピクセルの平均をとる
-	col *= 0.25;
+	col *= 0.2;
 
 	outColor = vec4(col, 1.0);
 }
