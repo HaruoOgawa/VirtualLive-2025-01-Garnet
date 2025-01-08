@@ -7,6 +7,9 @@ namespace gui { class CGraphicsEditingWindow; }
 namespace timeline { class CTimelineController; }
 namespace scene { class CSceneController; }
 namespace camera { class CTraceCamera; }
+namespace imageeffect {
+	class CBloomEffect;
+}
 
 namespace app
 {
@@ -54,6 +57,8 @@ namespace app
 		float	  m_LocalDeltaTime;
 
 		std::shared_ptr<object::C3DObject> m_Liver;
+
+		std::shared_ptr<imageeffect::CBloomEffect> m_BloomEffect;
 
 	public:
 		CScriptApp();
