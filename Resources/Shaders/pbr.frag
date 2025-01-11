@@ -35,6 +35,8 @@ layout(binding = 0) uniform UniformBufferObject{
     float ShadowMapX;
     float ShadowMapY;
 
+	float emissiveStrength;
+
     int   useBaseColorTexture;
     int   useMetallicRoughnessTexture;
     int   useEmissiveTexture;
@@ -593,17 +595,18 @@ void main(){
 		col.rgb = mix(col.rgb, col.rgb * ao, ubo.occlusionStrength);
 	}
 
-	// Emissive Map‚Ì“K‰ž
+	// Emissive
+	vec3 emissive = ubo.emissiveFactor.rgb * ubo.emissiveStrength;
 	if(ubo.useEmissiveTexture != 0)
 	{
 		#ifdef USE_OPENGL
-		vec3 emissive = SRGBtoLINEAR(texture(emissiveTexture, f_Texcoord)).rgb * ubo.emissiveFactor.rgb;
+		emissive *= SRGBtoLINEAR(texture(emissiveTexture, f_Texcoord)).rgb;
 		#else
-		vec3 emissive = SRGBtoLINEAR(texture(sampler2D(emissiveTexture, emissiveTextureSampler), f_Texcoord)).rgb * ubo.emissiveFactor.rgb;
+		emissive *= SRGBtoLINEAR(texture(sampler2D(emissiveTexture, emissiveTextureSampler), f_Texcoord)).rgb;
 		#endif
-		
-		col.rgb += emissive;
 	}
+
+	col.rgb += emissive;
 
 	// Shadow
 	// LightSpaceScreenPos

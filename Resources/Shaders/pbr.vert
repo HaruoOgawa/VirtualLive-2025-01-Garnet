@@ -33,6 +33,8 @@ layout(binding = 0) uniform UniformBufferObject{
     float ShadowMapX;
     float ShadowMapY;
 
+    float emissiveStrength;
+
     int   useBaseColorTexture;
     int   useMetallicRoughnessTexture;
     int   useEmissiveTexture;
