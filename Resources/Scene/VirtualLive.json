@@ -47,7 +47,12 @@
         }
     ],
     "scenetextureset": {
-        "frametextures": null
+        "frametextures": null,
+        "ibl": {
+            "diffuse": "Resources/IBL/output_iem.hdr",
+            "specular": "Resources/IBL/output_pmrem.hdr",
+            "ggx": "Resources/IBL/ggx_lut.jpg"
+        }
     },
     "animations": [
         {
