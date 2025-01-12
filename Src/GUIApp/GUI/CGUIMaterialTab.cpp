@@ -120,10 +120,14 @@ namespace gui
 							const bool IsSelected = (CurrentMaterialFrame == MaterialFrame.second);
 
 							std::string Label = MaterialFrame.second->GetMaterialFrameName();
+							// マテリアルの置き換え
 							if (ImGui::Selectable(Label.c_str(), IsSelected) && !IsSelected)
 							{
+								auto NewMaterial = MaterialFrame.second->CreateAndOverriteMaterial(pGraphicsAPI, Material);
+
+								if (!NewMaterial->Create(Object->GetPassNameList(), Object->GetTextureSet())) return false;
+
 								// マテリアルの置き換え
-								auto NewMaterial = MaterialFrame.second->CreateMaterial(pGraphicsAPI, Material->GetCullMode());
 								Primitive->ReplaceMaterial(Renderer, NewMaterial);
 							}
 						}
