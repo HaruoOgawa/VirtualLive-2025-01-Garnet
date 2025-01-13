@@ -21,6 +21,7 @@ layout(binding = 0) uniform UniformBufferObject{
 	vec4 baseColorFactor;
 	vec4 emissiveFactor;
     vec4 spatialCullPos;
+    vec4 ambientColor;
 
     float time;
     float metallicFactor;
@@ -31,6 +32,8 @@ layout(binding = 0) uniform UniformBufferObject{
     float mipCount;
     float ShadowMapX;
     float ShadowMapY;
+
+    float emissiveStrength;
 
     int   useBaseColorTexture;
     int   useMetallicRoughnessTexture;

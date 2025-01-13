@@ -18,6 +18,7 @@
 
 #include "../../GUIApp/GUI/CGraphicsEditingWindow.h"
 #include "../../GUIApp/Model/CFileModifier.h"
+#include "../../ImageEffect/CBloomEffect.h"
 
 namespace app
 {
@@ -38,13 +39,15 @@ namespace app
 		m_PRCamera(std::make_shared<camera::CCamera>()),
 		m_PRProjection(std::make_shared<projection::CProjection>()),
 		m_RPPlaneWorldMatrix(glm::mat4(1.0f)),
+		m_RPPlanePos(glm::vec3(0.0f)),
 		m_DrawInfo(std::make_shared<graphics::CDrawInfo>()),
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow(std::make_shared<gui::CGraphicsEditingWindow>()),
 #endif // USE_GUIENGINE
 		m_FileModifier(std::make_shared<CFileModifier>()),
 		m_TimelineController(std::make_shared<timeline::CTimelineController>()),
-		m_Liver(nullptr)
+		m_Liver(nullptr),
+		m_BloomEffect(std::make_shared<imageeffect::CBloomEffect>("MainResultPass"))
 	{
 		m_ViewCamera->SetPos(glm::vec3(-7.0f, 1.0f, 0.0f));
 		m_MainCamera = m_ViewCamera;
@@ -73,11 +76,15 @@ namespace app
 	{
 		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
 		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\PBRTest.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, true)) return false;
 		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, false, true, false)) return false;
 		if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, false)) return false;
+
+		// ブルームエフェクト
+		if (!m_BloomEffect->Initialize(pGraphicsAPI, pLoadWorker)) return false;
 
 		m_MainFrameRenderer = std::make_shared<graphics::CFrameRenderer>(pGraphicsAPI, "", pGraphicsAPI->FindOffScreenRenderPass("MainResultPass")->GetFrameTextureList());
 		if (!m_MainFrameRenderer->Create(pLoadWorker, "Resources\\MaterialFrame\\FrameTexture_MF.json")) return false;
@@ -209,6 +216,7 @@ namespace app
 
 		if (!m_SceneController->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState, m_TimelineController)) return false;
 
+		if (!m_BloomEffect->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
 		if (!m_MainFrameRenderer->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
 
 		return true;
@@ -259,6 +267,9 @@ namespace app
 			if (!pGraphicsAPI->EndRender()) return false;
 		}
 
+		// BloomEffect
+		if (!m_BloomEffect->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
+
 		// Main FrameBuffer
 		{
 			if (!pGraphicsAPI->BeginRender()) return false;
@@ -273,6 +284,7 @@ namespace app
 				GUIParams.CameraMode = (m_CameraSwitchToggle) ? "ViewCamera" : "TraceCamera";
 				GUIParams.Camera = m_MainCamera;
 				GUIParams.InputState = InputState;
+				GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
 
 				if (!GUIEngine->BeginFrame(pGraphicsAPI)) return false;
 				if (!m_GraphicsEditingWindow->Draw(pGraphicsAPI, GUIParams, GUIEngine))
@@ -311,6 +323,8 @@ namespace app
 	{
 		if (!m_SceneController->Create(pGraphicsAPI, pPhysicsEngine)) return false;
 
+		m_BloomEffect->OnLoaded(m_SceneController);
+
 		if (!m_TimelineController->Initialize(shared_from_this())) return false;
 
 #ifdef USE_GUIENGINE
@@ -340,29 +354,10 @@ namespace app
 			m_Liver = m_SceneController->FindObjectByName("koyori");
 		}
 
-		// 平面反射
+		// 平面反射の座標を指定
 		{
-			//const auto& Object = m_SceneController->FindObjectByName("LiveStage");
-			//const auto& Object = m_SceneController->FindObjectByName("Plane");
-			//if (Object)
-			{
-				//const auto& Node = Object->FindNodeByName("StageReflection");
-				//const auto& Node = Object->FindNodeByName("Plane");
-
-				//if (Node)
-				{
-					// ScaleとRotateは含めないようにする。Plane座標系への変換がおかしくなるため
-					//m_RPPlanePos = Object->GetObjectTransform()->GetPos() + Node->GetWorldPos();
-					m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
-					m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
-
-					// Projection行列をカメラと指定した平面の間を描画対象から外すものに変換する
-					glm::vec3 n = glm::vec3(0.0f, 1.0f, 0.0f); // 平面は上を向いているものとする(平面方程式の法線)
-					glm::vec3 p = m_RPPlanePos; // 平面内の任意の点
-					float d = (-1.0f) * glm::dot(n, p);
-					//m_PRProjection->EnabledObliqueMat(true, glm::vec4(n.x, n.y, n.z, d));
-				}
-			}
+			m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
+			m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
 		}
 
 		return true;

@@ -153,6 +153,11 @@
               }
             },
             {
+              "name": "emissiveStrength",
+              "type": "float",
+              "initValue": [ 1.0 ]
+            },
+            {
               "name": "useBaseColorTexture",
               "type": "int",
               "initValue": [ 0 ],

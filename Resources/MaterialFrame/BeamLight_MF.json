@@ -1,0 +1,149 @@
+{
+    "name": "BeamLight_Mat",
+    "blendtype" : "transparent",
+    "stencil":{
+        "enabled" : true,
+        "value" : 2,
+        "comp" : "always",
+        "pass" : "replace"
+    },
+    "shaderList": [
+      {
+        "name": "BeamLight_vert",
+        "shaderFile": "Resources\\Shaders\\BeamLight",
+        "autoShaderExtension": true,
+        "shadercode": "",
+        "shaderType": "vertex",
+        "uniformBlockList": [
+            {
+                "name": "VertUniformBufferObject",
+                "binding": 0,
+                "isWritable": false,
+                "type": "ubo",
+                "bufferUpdateType": "cpu",
+                "values": [
+                    {
+                        "name": "model",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "view",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "proj",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "lightVMat",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "LocalTopHeight",
+                        "type": "float",
+                        "initValue": [ 5.0 ]
+                    },
+                    {
+                        "name": "fPad0",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "fPad1",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "fPad2",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    }
+                ]
+            }
+        ]
+      },
+      {
+        "name": "BeamLight_frag",
+        "shaderFile": "Resources\\Shaders\\BeamLight",
+        "autoShaderExtension": true,
+        "shadercode": "",
+        "shaderType": "fragment",
+        "uniformBlockList": [
+            {
+                "name": "FragUniformBufferObject",
+                "binding": 1,
+                "isWritable": false,
+                "type": "ubo",
+                "bufferUpdateType": "cpu",
+                "values": [
+                    {
+                        "name": "model",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "view",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "proj",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "lightVMat",
+                        "type": "mat4",
+                        "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "baseColor",
+                        "type": "vec4",
+                        "initValue": [ 1.0, 1.0, 1.0, 1.0 ],
+                        "input": {
+                          "type": "color"
+                        }
+                    }
+                ]
+            }
+        ]
+      }
+    ]
+  }

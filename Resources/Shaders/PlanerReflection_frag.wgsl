@@ -9,15 +9,15 @@ fn main_1() {
     var st: vec2<f32>;
     var col: vec3<f32>;
 
-    let _e12 = v2f_UV_1;
-    st = _e12;
-    let _e14 = st[0u];
-    st[0u] = (1.0 - _e14);
-    let _e17 = st;
-    let _e18 = textureSample(frameTexture, frameTextureSampler, _e17);
-    col = _e18.xyz;
-    let _e20 = col;
-    outColor = vec4<f32>(_e20.x, _e20.y, _e20.z, 1.0);
+    let _e13 = v2f_UV_1;
+    st = _e13;
+    let _e15 = st[0u];
+    st[0u] = (1.0 - _e15);
+    let _e18 = st;
+    let _e19 = textureSample(frameTexture, frameTextureSampler, _e18);
+    col = _e19.xyz;
+    let _e21 = col;
+    outColor = vec4<f32>(_e21.x, _e21.y, _e21.z, 0.5);
     return;
 }
 

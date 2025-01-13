@@ -1,0 +1,77 @@
+{
+    "materialframes": [
+        {
+            "name": "pbr_mat",
+            "filename": "Resources\\MaterialFrame\\PBR_MF.json"
+        },
+        {
+            "name": "simple_texture_mat",
+            "filename": "Resources/MaterialFrame/SimpleTexture_MF.json"
+        }
+    ],
+    "valueregistries": [
+        {
+            "registryname": "BloomRegistry",
+            "values": [
+                {
+                    "name": "Intencity",
+                    "type": "float",
+                    "initValue": [
+                        1.5
+                    ]
+                },
+                {
+                    "name": "Threshold",
+                    "type": "float",
+                    "initValue": [
+                        1.0
+                    ]
+                }
+            ]
+        }
+    ],
+    "scenetextureset": {
+        "frametextures": null,
+        "ibl": {
+            "diffuse": "Resources/IBL/output_iem.hdr",
+            "specular": "Resources/IBL/output_pmrem.hdr",
+            "ggx": "Resources/IBL/ggx_lut.jpg"
+        }
+    },
+    "timeline": {
+        "filename": "Resources\\Scene\\PBRTest.tl"
+    },
+    "physics": {
+        "enabled": true
+    },
+    "objects": [
+        {
+            "name": "LiveStage",
+            "filename": "Resources/Model/MetalRoughSpheresNoTextures/MetalRoughSpheresNoTextures.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    100.0,
+                    100.0,
+                    100.0
+                ]
+            },
+            "enable": true
+        }
+    ]
+}

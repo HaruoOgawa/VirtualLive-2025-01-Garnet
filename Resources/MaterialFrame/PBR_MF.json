@@ -112,6 +112,14 @@
               }
             },
             {
+              "name": "ambientColor",
+              "type": "vec4",
+              "initValue": [ 0.0, 0.0, 0.0, 1.0 ],
+              "input": {
+                "type": "color"
+              }
+            },
+            {
               "name": "time",
               "type": "float",
               "initValue": [ 0.0 ],
@@ -170,6 +178,11 @@
               "initValue": [ 1.0 ],
               "input": {
               }
+            },
+            {
+              "name": "emissiveStrength",
+              "type": "float",
+              "initValue": [ 1.0 ]
             },
             {
               "name": "useBaseColorTexture",
