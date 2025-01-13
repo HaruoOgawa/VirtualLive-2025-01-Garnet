@@ -55,33 +55,32 @@
                         }
                     },
                     {
+                        "name": "cameraPos",
+                        "type": "vec4",
+                        "initValue": [ 0.0, 0.0, 0.0, 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
                         "name": "LocalTopHeight",
                         "type": "float",
                         "initValue": [ 5.0 ]
                     },
                     {
-                        "name": "fPad0",
+                        "name": "BeamRadius",
                         "type": "float",
-                        "initValue": [ 0.0 ],
-                        "input": {
-                            "hide": true
-                        }
+                        "initValue": [ 1.0 ]
                     },
                     {
-                        "name": "fPad1",
+                        "name": "BeamExpand",
                         "type": "float",
-                        "initValue": [ 0.0 ],
-                        "input": {
-                            "hide": true
-                        }
+                        "initValue": [ 1.0 ]
                     },
                     {
-                        "name": "fPad2",
+                        "name": "BeamHeight",
                         "type": "float",
-                        "initValue": [ 0.0 ],
-                        "input": {
-                            "hide": true
-                        }
+                        "initValue": [ 1.0 ]
                     }
                 ]
             }
@@ -134,11 +133,48 @@
                         }
                     },
                     {
-                        "name": "baseColor",
+                        "name": "emissionColor",
                         "type": "vec4",
                         "initValue": [ 1.0, 1.0, 1.0, 1.0 ],
                         "input": {
                           "type": "color"
+                        }
+                    },
+                    {
+                        "name": "cameraPos",
+                        "type": "vec4",
+                        "initValue": [ 0.0, 0.0, 0.0, 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "emissionPower",
+                        "type": "float",
+                        "initValue": [ 1.0 ]
+                    },
+                    {
+                        "name": "fPad0",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "fPad1",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "fPad2",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
                         }
                     }
                 ]
