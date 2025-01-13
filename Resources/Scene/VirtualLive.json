@@ -37,20 +37,6 @@
                     "name": "LightName",
                     "type": "string",
                     "initValue": "BeamLight_01"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
                 }
             ]
         },
@@ -18338,9 +18324,9 @@
                     0.0
                 ],
                 "scale": [
-                    0.5,
-                    0.5,
-                    0.5
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
                 ]
             },
             "enable": true,
@@ -18351,6 +18337,13 @@
                     "materialframe": "BeamLight_Mat",
                     "cull": "back",
                     "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
                         {
                             "name": "emissionColor",
                             "type": "vec4",
