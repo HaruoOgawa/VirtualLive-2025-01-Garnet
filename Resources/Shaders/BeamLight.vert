@@ -12,11 +12,21 @@ layout(binding = 0) uniform VertUniformBufferObject{
     mat4 view;
     mat4 proj;
 	mat4 lightVMat;
+
+    float LocalTopHeight; // ローカル座標系でのトップの高さ。DCCツールで値をみて設定
+    float fPad0;
+    float fPad1;
+    float fPad2;
 } v_ubo;
+
+layout(location = 0) out float v2g_HeightAlpha;
 
 void main()
 {
     vec4 pos = vec4(inPosition, 1.0);
 
+    float HeightAlpha = 1.0 - pos.y / v_ubo.LocalTopHeight;
+
     gl_Position = v_ubo.proj * v_ubo.view * v_ubo.model * pos;
+    v2g_HeightAlpha = clamp(HeightAlpha, 0.0, 1.0);
 }

@@ -53,6 +53,35 @@
                         "input": {
                             "hide": true
                         }
+                    },
+                    {
+                        "name": "LocalTopHeight",
+                        "type": "float",
+                        "initValue": [ 5.0 ]
+                    },
+                    {
+                        "name": "fPad0",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "fPad1",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
+                    },
+                    {
+                        "name": "fPad2",
+                        "type": "float",
+                        "initValue": [ 0.0 ],
+                        "input": {
+                            "hide": true
+                        }
                     }
                 ]
             }
@@ -102,6 +131,14 @@
                         "initValue": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ],
                         "input": {
                             "hide": true
+                        }
+                    },
+                    {
+                        "name": "baseColor",
+                        "type": "vec4",
+                        "initValue": [ 1.0, 1.0, 1.0, 1.0 ],
+                        "input": {
+                          "type": "color"
                         }
                     }
                 ]
