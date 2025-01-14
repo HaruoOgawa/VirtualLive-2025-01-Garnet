@@ -5,6 +5,10 @@
             "filename": "Resources/MaterialFrame/BeamLight_MF.json"
         },
         {
+            "name": "LiveScreen_mat",
+            "filename": "Resources/MaterialFrame/LiveScreen_MF.json"
+        },
+        {
             "name": "PlanerReflection_Mat",
             "filename": "Resources\\MaterialFrame\\PlanerReflection_MF.json"
         },
@@ -37,6 +41,20 @@
                     "name": "LightName",
                     "type": "string",
                     "initValue": "BeamLight_01"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
                 }
             ]
         },
@@ -2445,7 +2463,7 @@
                 {
                     "meshindex": 14,
                     "primitiveindex": 2,
-                    "materialframe": "pbr_mat",
+                    "materialframe": "LiveScreen_mat",
                     "cull": "back",
                     "uniformvalues": [
                         {
@@ -2492,40 +2510,13 @@
                             "value": [
                                 1
                             ]
-                        }
-                    ],
-                    "textures": [
-                        {
-                            "texturebuffername": "cubemapTexture",
-                            "textureindex": -1,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "shadowmapTexture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
                         }
                     ]
                 },
                 {
                     "meshindex": 15,
                     "primitiveindex": 0,
-                    "materialframe": "pbr_mat",
+                    "materialframe": "LiveScreen_mat",
                     "cull": "back",
                     "uniformvalues": [
                         {
@@ -2572,33 +2563,6 @@
                             "value": [
                                 1
                             ]
-                        }
-                    ],
-                    "textures": [
-                        {
-                            "texturebuffername": "cubemapTexture",
-                            "textureindex": -1,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "shadowmapTexture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
                         }
                     ]
                 },
