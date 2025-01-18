@@ -59,6 +59,222 @@
             ]
         },
         {
+            "registryname": "BeamLight_Controller_02",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_02"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_03",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_03"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_04",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_04"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_05",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_05"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_06",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_06"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_07",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_07"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_08",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_08"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_09",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_09"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_10",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_10"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
             "registryname": "BloomRegistry",
             "values": [
                 {
@@ -2543,7 +2759,7 @@
                 {
                     "meshindex": 15,
                     "primitiveindex": 0,
-                    "materialframe": "LiveScreen_mat",
+                    "materialframe": "pbr_mat",
                     "cull": "back",
                     "uniformvalues": [
                         {
@@ -2564,9 +2780,9 @@
                             "name": "baseColorFactor",
                             "type": "vec4",
                             "value": [
-                                0.10000000149011612,
-                                0.10000000149011612,
-                                0.10000000149011612,
+                                0.2696078419685364,
+                                0.0674019604921341,
+                                0.0674019604921341,
                                 1.0
                             ]
                         },
@@ -18077,6 +18293,16 @@
                             ]
                         },
                         {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.11764705181121826,
+                                0.11764705181121826,
+                                0.11764705181121826,
+                                1.0
+                            ]
+                        },
+                        {
                             "name": "metallicFactor",
                             "type": "float",
                             "value": [
@@ -18332,7 +18558,7 @@
             ],
             "transform": {
                 "pos": [
-                    0.0,
+                    -19.0,
                     0.10000000149011612,
                     -2.0
                 ],
@@ -18687,6 +18913,3354 @@
                         {
                             "type": "BeamLightController",
                             "valueregistry": "BeamLight_Controller_01"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_02",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    -13.579999923706055,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_02",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_02"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_03",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    -8.15999984741211,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_03",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_03"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_04",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    -2.740000009536743,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_04",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_04"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_05",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    2.680000066757202,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_05",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_05"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_06",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    8.100000381469727,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_06",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_06"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_07",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    13.520000457763672,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_07",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_07"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_08",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    18.940000534057617,
+                    0.10000000149011612,
+                    -2.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_08",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_08"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_09",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    22.360000610351563,
+                    0.10000000149011612,
+                    1.5
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_09",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_09"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_10",
+            "filename": "Resources/Stage/BeamLight.glb",
+            "defaultmaterialframes": [
+                "pbr_mat"
+            ],
+            "renderpasslist": [
+                "MainResultPass",
+                "PlanerReflectionPass"
+            ],
+            "transform": {
+                "pos": [
+                    -22.360000610351563,
+                    0.10000000149011612,
+                    1.5
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.3499999940395355,
+                    0.3499999940395355,
+                    0.3499999940395355
+                ]
+            },
+            "enable": true,
+            "materials": [
+                {
+                    "meshindex": 0,
+                    "primitiveindex": 0,
+                    "materialframe": "BeamLight_Mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                2.0
+                            ]
+                        },
+                        {
+                            "name": "emissionColor",
+                            "type": "vec4",
+                            "value": [
+                                0.9950980544090271,
+                                0.0,
+                                0.7024223804473877,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 1,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 2,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                },
+                {
+                    "meshindex": 3,
+                    "primitiveindex": 0,
+                    "materialframe": "pbr_mat",
+                    "cull": "back",
+                    "uniformvalues": [
+                        {
+                            "name": "ShadowMapX",
+                            "type": "float",
+                            "value": [
+                                1920.0
+                            ]
+                        },
+                        {
+                            "name": "ShadowMapY",
+                            "type": "float",
+                            "value": [
+                                1080.0
+                            ]
+                        },
+                        {
+                            "name": "baseColorFactor",
+                            "type": "vec4",
+                            "value": [
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                0.009999999776482582,
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
+                            "name": "roughnessFactor",
+                            "type": "float",
+                            "value": [
+                                0.5
+                            ]
+                        },
+                        {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "useShadowMap",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "textures": [
+                        {
+                            "texturebuffername": "cubemapTexture",
+                            "textureindex": -1,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "shadowmapTexture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Diffuse_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_Specular_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        },
+                        {
+                            "texturebuffername": "IBL_GGXLUT_Texture",
+                            "textureindex": 0,
+                            "texturename": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "BeamLight_Controller_10",
+            "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    1.5
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "nodes": [
+                {
+                    "name": "Controller",
+                    "transform": {
+                        "pos": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "components": [
+                        {
+                            "type": "BeamLightController",
+                            "valueregistry": "BeamLight_Controller_10"
                         }
                     ]
                 }
