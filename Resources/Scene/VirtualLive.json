@@ -2871,33 +2871,6 @@
                                 1
                             ]
                         }
-                    ],
-                    "textures": [
-                        {
-                            "texturebuffername": "cubemapTexture",
-                            "textureindex": -1,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "shadowmapTexture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        },
-                        {
-                            "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": 0,
-                            "texturename": ""
-                        }
                     ]
                 },
                 {
@@ -18378,7 +18351,7 @@
                     1.0
                 ]
             },
-            "enable": true,
+            "enable": false,
             "rootnodes": [
                 0
             ],
@@ -18529,7 +18502,7 @@
                     500.0
                 ]
             },
-            "enable": true,
+            "enable": false,
             "nodes": [
                 {
                     "name": "node",
@@ -18723,7 +18696,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -19095,7 +19068,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -19467,7 +19440,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -19839,7 +19812,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -20211,7 +20184,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -20583,7 +20556,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -20955,7 +20928,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -21327,7 +21300,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -21699,7 +21672,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -22071,7 +22044,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -22443,7 +22416,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -22815,7 +22788,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -23187,7 +23160,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -23559,7 +23532,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -23931,7 +23904,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
@@ -24303,7 +24276,7 @@
                     "meshindex": 0,
                     "primitiveindex": 0,
                     "materialframe": "BeamLight_Mat",
-                    "cull": "back",
+                    "cull": "none",
                     "uniformvalues": [
                         {
                             "name": "BeamHeight",
