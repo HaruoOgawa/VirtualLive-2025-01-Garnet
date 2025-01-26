@@ -29,6 +29,10 @@
             "filename": "Resources\\MaterialFrame\\PBR_Stencil_MF.json"
         },
         {
+            "name": "pbr_instance_mat",
+            "filename": "Resources\\MaterialFrame\\PBR_Instance_MF.json"
+        },
+        {
             "name": "simple_texture_mat",
             "filename": "Resources/MaterialFrame/SimpleTexture_MF.json"
         }
@@ -18477,6 +18481,40 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "Crowd",
+            "filename": "Resources/Stage/Crowd.glb",
+            "defaultmaterialframes": [
+                "pbr_instance_mat"
+            ],
+            "instancecount": 10,
+            "renderpasslist": [
+                "MainResultPass",
+                "ShadowPass",
+                "PlanerReflectionPass"
+            ],
+            "animation": {
+                "playmotion": "",
+                "playmotionindex": 0
+            },
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    -12.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
         },
         {
             "name": "Background",
