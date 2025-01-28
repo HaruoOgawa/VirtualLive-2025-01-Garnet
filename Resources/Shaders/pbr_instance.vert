@@ -51,7 +51,7 @@ layout(binding = 0) uniform UniformBufferObject{
     int   pad2;
 } ubo;
 
-layout(binding = 1) uniform SkinMatrixBuffer
+layout(binding = 25) uniform SkinMatrixBuffer
 {
     mat4 SkinMat[1024];
 } r_SkinMatrixBuffer;
@@ -73,30 +73,10 @@ void main(){
     vec3 WorldTangent;
     vec3 WorldBioTangent;
 
-    // スキンメッシュアニメーション
-    if(ubo.useSkinMeshAnimation != 0)
-    {
-        mat4 SkinMat =
-            inWeights0.x * r_SkinMatrixBuffer.SkinMat[inJoint0.x] +
-            inWeights0.y * r_SkinMatrixBuffer.SkinMat[inJoint0.y] +
-            inWeights0.z * r_SkinMatrixBuffer.SkinMat[inJoint0.z] +
-            inWeights0.w * r_SkinMatrixBuffer.SkinMat[inJoint0.w ] 
-        ;
-
-        // スキンメッシュアニメーションの時はubo.modelは乗算しないように注意
-        WorldPos = SkinMat * vec4(inPosition, 1.0);
-        WorldNormal = normalize((SkinMat * vec4(inNormal, 0.0)).xyz);
-        WorldTangent = normalize((SkinMat * inTangent).xyz);
-        WorldBioTangent = normalize((SkinMat * vec4(BioTangent, 0.0)).xyz);
-    }
-    else
-    {
-        // 通常の描画
-        WorldPos = ubo.model * vec4(inPosition, 1.0);
-        WorldNormal = normalize((ubo.model * vec4(inNormal, 0.0)).xyz);
-        WorldTangent = normalize((ubo.model * inTangent).xyz);
-        WorldBioTangent = normalize((ubo.model * vec4(BioTangent, 0.0)).xyz);
-    }
+    WorldPos = vec4(inPosition, 1.0);
+    WorldNormal = normalize((vec4(inNormal, 0.0)).xyz);
+    WorldTangent = normalize((inTangent).xyz);
+    WorldBioTangent = normalize((vec4(BioTangent, 0.0)).xyz);
 
     // インスタンス描画
     #ifdef USE_OPENGL
@@ -104,16 +84,26 @@ void main(){
 #else
     int id = gl_InstanceIndex;
 #endif
-    vec3 offset = vec3(float(id) * 0.5, 0.0, 0.0);
+    float sidenum = 64;
+    float yid = floor(float(id) / sidenum);
+    float xid = float(id) - yid * sidenum;
+
+    xid = xid - sidenum * 0.5;
+
+    vec3 base = vec3(0.0, 0.0, -15.0); 
+    float w = 1.0, h = 1.0;
+    vec3 offset = base + vec3(w * xid, 0.0, h * -yid);
     mat4 InsMat = mat4(
-        0.0, 0.0, 0.0, offset.x,
-        0.0, 0.0, 0.0, offset.y,
-        0.0, 0.0, 0.0, offset.z,
+        1.0, 0.0, 0.0, offset.x,
+        0.0, 1.0, 0.0, offset.y,
+        0.0, 0.0, 1.0, offset.z,
         0.0, 0.0, 0.0, 1.0
     );
 
+    WorldPos *= InsMat;
+
     //
-    gl_Position = ubo.proj * ubo.view * InsMat * WorldPos;
+    gl_Position = ubo.proj * ubo.view * WorldPos;
     f_WorldNormal = WorldNormal;
     f_Texcoord = inTexcoord;
     f_WorldPos = WorldPos;

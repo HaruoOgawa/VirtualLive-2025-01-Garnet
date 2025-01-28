@@ -18488,11 +18488,9 @@
             "defaultmaterialframes": [
                 "pbr_instance_mat"
             ],
-            "instancecount": 10,
+            "instancecount": 4096,
             "renderpasslist": [
-                "MainResultPass",
-                "ShadowPass",
-                "PlanerReflectionPass"
+                "MainResultPass"
             ],
             "animation": {
                 "playmotion": "",

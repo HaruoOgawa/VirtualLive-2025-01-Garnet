@@ -275,7 +275,7 @@
         },
         {
           "name": "SkinMatrixBuffer",
-          "binding": 1,
+          "binding": 25,
           "isWritable": false,
           "type": "ubo",
           "bufferUpdateType": "cpu",
