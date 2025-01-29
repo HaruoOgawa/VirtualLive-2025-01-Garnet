@@ -480,6 +480,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Component\CVATGenerator.cpp" />
     <ClCompile Include="Src\Component\CBeamLightController.cpp" />
     <ClCompile Include="Src\GUIApp\GUI\CGUIAnimationTab.cpp" />
     <ClCompile Include="Src\GUIApp\GUI\C3DView.cpp" />
@@ -501,6 +502,7 @@
     <ClCompile Include="Src\Main\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Component\CVATGenerator.h" />
     <ClInclude Include="Src\Component\CBeamLightController.h" />
     <ClInclude Include="Src\GUIApp\GUI\CGUIAnimationTab.h" />
     <ClInclude Include="Src\GUIApp\GUI\C3DView.h" />

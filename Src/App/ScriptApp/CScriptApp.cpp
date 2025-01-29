@@ -21,6 +21,7 @@
 #include "../../ImageEffect/CBloomEffect.h"
 
 #include "../../Component/CBeamLightController.h"
+#include "../../Component/CVATGenerator.h"
 
 namespace app
 {
@@ -317,6 +318,10 @@ namespace app
 		if (ComponentType == "BeamLightController")
 		{
 			return std::make_shared<component::CBeamLightController>(ComponentType, ValueRegistry);
+		}
+		else if (ComponentType == "VATGenerator")
+		{
+			return std::make_shared<component::CVATGenerator>(ComponentType, ValueRegistry);
 		}
 
 		return nullptr;
