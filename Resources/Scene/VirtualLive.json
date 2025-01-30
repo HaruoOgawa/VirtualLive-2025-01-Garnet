@@ -18499,7 +18499,7 @@
             ],
             "animation": {
                 "playmotion": "",
-                "playmotionindex": 0
+                "playmotionindex": -1
             },
             "transform": {
                 "pos": [
