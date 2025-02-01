@@ -56,6 +56,25 @@ layout(binding = 25) uniform SkinMatrixBuffer
     mat4 SkinMat[1024];
 } r_SkinMatrixBuffer;
 
+#ifdef USE_OPENGL
+layout(binding = 26) uniform sampler2D vertexAnimationTexture;
+#else
+layout(binding = 26) uniform texture2D vertexAnimationTexture;
+layout(binding = 27) uniform sampler vertexAnimationTextureSampler;
+#endif
+
+layout(binding = 28) uniform VATUniformBuffer{
+	mat4 mPad0;
+    mat4 mPad1;
+    mat4 mPad2;
+	mat4 mPad3;
+
+	float texW;
+	float texH;
+    float frameNum;
+    float fPad0;
+} vat_ubo;
+
 layout(location = 0) out vec3 f_WorldNormal;
 layout(location = 1) out vec2 f_Texcoord;
 layout(location = 2) out vec4 f_WorldPos;
@@ -64,6 +83,35 @@ layout(location = 4) out vec3 f_WorldBioTangent;
 layout(location = 5) out vec4 f_LightSpacePos;
 
 #define rot(a) mat2(cos(a), -sin(a), sin(a), cos(a))
+
+vec4 fetchElement(int FrameIndex, int Offset, float v)
+{
+    vec2 st = vec2(float(FrameIndex * 4 + Offset) / vat_ubo.texW, v);
+
+    #ifdef USE_OPENGL
+    vec4 val = texture(vertexAnimationTexture, st);
+    #else
+    vec4 val = texture(sampler2D(vertexAnimationTexture, vertexAnimationTextureSampler), st);
+    #endif
+
+    return val;
+}
+
+mat4 GetSkinMatFromVAT(uint JointIndex, int FrameIndex)
+{
+    if(JointIndex >= vat_ubo.frameNum) return mat4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+
+    float v = float(JointIndex) / vat_ubo.texH;
+
+    mat4 SkinMatrix = mat4(
+        fetchElement(FrameIndex, 0, v),
+        fetchElement(FrameIndex, 1, v),
+        fetchElement(FrameIndex, 2, v),
+        fetchElement(FrameIndex, 3, v)
+    );
+    
+    return SkinMatrix;
+}
 
 void main(){
     vec3 BioTangent = cross(inNormal, inTangent.xyz);
@@ -90,6 +138,15 @@ void main(){
 
     xid = xid - sidenum * 0.5;
 
+    int CurrentFrame = 0;
+
+    mat4 SkinMat =
+        inWeights0.x * GetSkinMatFromVAT(inJoint0.x, CurrentFrame) +
+        inWeights0.y * GetSkinMatFromVAT(inJoint0.y, CurrentFrame) +
+        inWeights0.z * GetSkinMatFromVAT(inJoint0.z, CurrentFrame) +
+        inWeights0.w * GetSkinMatFromVAT(inJoint0.w, CurrentFrame);
+
+    // 位置を決定
     vec3 base = vec3(0.0, 0.0, -15.0); 
     float w = 1.0, h = 1.0;
     vec3 offset = base + vec3(w * xid, 0.0, h * -yid);
@@ -100,6 +157,7 @@ void main(){
         0.0, 0.0, 0.0, 1.0
     );
 
+    WorldPos *= SkinMat;
     WorldPos *= InsMat;
 
     //
