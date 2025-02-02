@@ -74,7 +74,7 @@ namespace component
 
 		// テクスチャを生成
 		auto VertexAnimationTexture = pGraphicsAPI->CreateTexture();
-		if (!VertexAnimationTexture->Create(TextureData, TextureWidth, TextureHeight, 4)) return false;
+		if (!VertexAnimationTexture->Create(TextureData, TextureWidth, TextureHeight, 4, api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS)) return false;
 
 		// オブジェクトに渡す
 		int TextureIndex = static_cast<int>(Object->GetTextureSet()->Get2DTextureList().size());
@@ -91,6 +91,8 @@ namespace component
 					std::get<1>(Renderer)->SetUniformValue("texW", &glm::vec1(static_cast<float>(TextureWidth))[0], sizeof(float));
 					std::get<1>(Renderer)->SetUniformValue("texH", &glm::vec1(static_cast<float>(TextureHeight))[0], sizeof(float));
 					std::get<1>(Renderer)->SetUniformValue("frameNum", &glm::vec1(static_cast<float>(NumOfFrame))[0], sizeof(float));
+					
+					if (!std::get<1>(Renderer)->CreateRefTextureList(Object->GetTextureSet())) return false;
 				}
 			}
 		}
