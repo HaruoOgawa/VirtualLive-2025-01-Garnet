@@ -72,7 +72,7 @@ layout(binding = 28) uniform VATUniformBuffer{
 	float texW;
 	float texH;
     float frameNum;
-    float fPad0;
+    float endtime;
 } vat_ubo;
 
 layout(location = 0) out vec3 f_WorldNormal;
@@ -84,9 +84,10 @@ layout(location = 5) out vec4 f_LightSpacePos;
 
 #define rot(a) mat2(cos(a), -sin(a), sin(a), cos(a))
 
-vec4 fetchElement(int FrameIndex, int Offset, float v)
+vec4 fetchElement(float JointIndex, int Offset, float v)
 {
-    vec2 st = vec2(float(FrameIndex * 4 + Offset) / vat_ubo.texW, v);
+    // 1ピクセルずれているので補正する
+    vec2 st = vec2(float(JointIndex * 4 + Offset + 1) / (vat_ubo.texW), v);
 
     #ifdef USE_OPENGL
     vec4 val = texture(vertexAnimationTexture, st);
@@ -99,15 +100,17 @@ vec4 fetchElement(int FrameIndex, int Offset, float v)
 
 mat4 GetSkinMatFromVAT(uint JointIndex, int FrameIndex)
 {
-    if(JointIndex >= vat_ubo.frameNum) return mat4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+    float f_JointIndex = float(JointIndex);
 
-    float v = float(JointIndex) / vat_ubo.texH;
+    // if(f_JointIndex >= vat_ubo.frameNum) return mat4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+
+    float v = float(FrameIndex) / vat_ubo.texH;
 
     mat4 SkinMatrix = mat4(
-        fetchElement(FrameIndex, 0, v),
-        fetchElement(FrameIndex, 1, v),
-        fetchElement(FrameIndex, 2, v),
-        fetchElement(FrameIndex, 3, v)
+        fetchElement(f_JointIndex, 0, v),
+        fetchElement(f_JointIndex, 1, v),
+        fetchElement(f_JointIndex, 2, v),
+        fetchElement(f_JointIndex, 3, v)
     );
     
     return SkinMatrix;
@@ -121,11 +124,6 @@ void main(){
     vec3 WorldTangent;
     vec3 WorldBioTangent;
 
-    WorldPos = vec4(inPosition, 1.0);
-    WorldNormal = normalize((vec4(inNormal, 0.0)).xyz);
-    WorldTangent = normalize((inTangent).xyz);
-    WorldBioTangent = normalize((vec4(BioTangent, 0.0)).xyz);
-
     // インスタンス描画
     #ifdef USE_OPENGL
     int id = gl_InstanceID;
@@ -138,13 +136,19 @@ void main(){
 
     xid = xid - sidenum * 0.5;
 
-    int CurrentFrame = 0;
+    // フレームを計算
+    float LocalTime = mod(ubo.time, vat_ubo.endtime);
+    int CurrentFrame = int(floor((LocalTime / vat_ubo.endtime) * vat_ubo.frameNum));
+    // int CurrentFrame = 0;
 
     mat4 SkinMat =
         inWeights0.x * GetSkinMatFromVAT(inJoint0.x, CurrentFrame) +
         inWeights0.y * GetSkinMatFromVAT(inJoint0.y, CurrentFrame) +
         inWeights0.z * GetSkinMatFromVAT(inJoint0.z, CurrentFrame) +
         inWeights0.w * GetSkinMatFromVAT(inJoint0.w, CurrentFrame);
+
+    // mat4 SkinMat =
+        // 1.0 * GetSkinMatFromVAT(7, CurrentFrame);
 
     // 位置を決定
     vec3 base = vec3(0.0, 0.0, -15.0); 
@@ -157,7 +161,11 @@ void main(){
         0.0, 0.0, 0.0, 1.0
     );
 
-    WorldPos *= SkinMat;
+    WorldPos = SkinMat * vec4(inPosition, 1.0);
+    WorldNormal = normalize((SkinMat * vec4(inNormal, 0.0)).xyz);
+    WorldTangent = normalize((SkinMat * inTangent).xyz);
+    WorldBioTangent = normalize((SkinMat * vec4(BioTangent, 0.0)).xyz);
+
     WorldPos *= InsMat;
 
     //
