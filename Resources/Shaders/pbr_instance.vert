@@ -116,6 +116,11 @@ mat4 GetSkinMatFromVAT(uint JointIndex, int FrameIndex)
     return SkinMatrix;
 }
 
+float rand(vec2 st)
+{
+	return fract(sin(dot(st, vec2(12.9898, 78.233))) * 43758.5453123) * 2.0 - 1.0;
+}
+
 void main(){
     vec3 BioTangent = cross(inNormal, inTangent.xyz);
 
@@ -137,7 +142,7 @@ void main(){
     xid = xid - sidenum * 0.5;
 
     // フレームを計算
-    float LocalTime = mod(ubo.time, vat_ubo.endtime);
+    float LocalTime = mod(ubo.time + rand(vec2(xid, yid) * 10.0), vat_ubo.endtime);
     int CurrentFrame = int(floor((LocalTime / vat_ubo.endtime) * vat_ubo.frameNum));
     // int CurrentFrame = 0;
 
