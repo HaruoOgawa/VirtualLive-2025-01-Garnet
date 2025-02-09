@@ -20,6 +20,9 @@
 #include "../../GUIApp/Model/CFileModifier.h"
 #include "../../ImageEffect/CBloomEffect.h"
 
+#include "../../Component/CBeamLightController.h"
+#include "../../Component/CVATGenerator.h"
+
 namespace app
 {
 	CScriptApp::CScriptApp() :
@@ -307,6 +310,21 @@ namespace app
 	std::shared_ptr<graphics::CDrawInfo> CScriptApp::GetDrawInfo() const
 	{
 		return m_DrawInfo;
+	}
+
+	// コンポーネント作成
+	std::shared_ptr<scriptable::CComponent> CScriptApp::CreateComponent(const std::string& ComponentType, const std::string& ValueRegistry)
+	{
+		if (ComponentType == "BeamLightController")
+		{
+			return std::make_shared<component::CBeamLightController>(ComponentType, ValueRegistry);
+		}
+		else if (ComponentType == "VATGenerator")
+		{
+			return std::make_shared<component::CVATGenerator>(ComponentType, ValueRegistry);
+		}
+
+		return nullptr;
 	}
 
 	// 起動準備完了
