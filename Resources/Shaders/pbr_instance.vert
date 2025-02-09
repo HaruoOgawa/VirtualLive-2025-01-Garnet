@@ -86,8 +86,15 @@ layout(location = 5) out vec4 f_LightSpacePos;
 
 vec4 fetchElement(float JointIndex, int Offset, float v)
 {
-    // 1ピクセルずれているので補正する
-    vec2 st = vec2(float(JointIndex * 4 + Offset + 1) / (vat_ubo.texW), v);
+    // テクスチャに焼いたデータを使う時はピクセルの中心からサンプリングすることを心がける(texelSizeX * 0.5 を足す)
+    // これを足さない時の値はピクセルの左下、つまりピクセルとピクセルの境界線を差している
+    // もしこのままだと補完時にとなりのピクセルの影響を受けて、意図しない値が返ってくることがある
+    // この結果、ボーンの動きがブレたり、不安定になるといったことが起こる。
+    // VATにはGL_RGBA32F, GL_FLOATのテクスチャに対して、GL_NEAREST・CLAMP_TO_EDGEのサンプラーを適応している
+    // GL_NEARESTはサンプリングに最も近い値に補完して返す機能だが、ピクセル境界のままだとこれで混ざってしまう
+    float texelSizeX = 1.0 / vat_ubo.texW;
+
+    vec2 st = vec2(float(JointIndex * 4 + Offset + 0.5) * texelSizeX, v);
 
     #ifdef USE_OPENGL
     vec4 val = texture(vertexAnimationTexture, st);
@@ -102,9 +109,15 @@ mat4 GetSkinMatFromVAT(uint JointIndex, int FrameIndex)
 {
     float f_JointIndex = float(JointIndex);
 
-    // if(f_JointIndex >= vat_ubo.frameNum) return mat4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+    // テクスチャに焼いたデータを使う時はピクセルの中心からサンプリングすることを心がける(texelSizeX * 0.5 を足す)
+    // これを足さない時の値はピクセルの左下、つまりピクセルとピクセルの境界線を差している
+    // もしこのままだと補完時にとなりのピクセルの影響を受けて、意図しない値が返ってくることがある
+    // この結果、ボーンの動きがブレたり、不安定になるといったことが起こる。
+    // VATにはGL_RGBA32F, GL_FLOATのテクスチャに対して、GL_NEAREST・CLAMP_TO_EDGEのサンプラーを適応している
+    // GL_NEARESTはサンプリングに最も近い値に補完して返す機能だが、ピクセル境界のままだとこれで混ざってしまう
+    float texelSizeY = 1.0 / vat_ubo.texH;
 
-    float v = float(FrameIndex) / vat_ubo.texH;
+    float v = (float(FrameIndex) + 0.5) * texelSizeY;
 
     mat4 SkinMatrix = mat4(
         fetchElement(f_JointIndex, 0, v),
@@ -144,16 +157,12 @@ void main(){
     // フレームを計算
     float LocalTime = mod(ubo.time + rand(vec2(xid, yid) * 10.0), vat_ubo.endtime);
     int CurrentFrame = int(floor((LocalTime / vat_ubo.endtime) * vat_ubo.frameNum));
-    // int CurrentFrame = 0;
 
     mat4 SkinMat =
         inWeights0.x * GetSkinMatFromVAT(inJoint0.x, CurrentFrame) +
         inWeights0.y * GetSkinMatFromVAT(inJoint0.y, CurrentFrame) +
         inWeights0.z * GetSkinMatFromVAT(inJoint0.z, CurrentFrame) +
         inWeights0.w * GetSkinMatFromVAT(inJoint0.w, CurrentFrame);
-
-    // mat4 SkinMat =
-        // 1.0 * GetSkinMatFromVAT(7, CurrentFrame);
 
     // 位置を決定
     vec3 base = vec3(0.0, 0.0, -15.0); 
