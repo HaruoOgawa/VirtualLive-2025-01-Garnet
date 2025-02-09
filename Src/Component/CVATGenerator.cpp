@@ -22,6 +22,7 @@ namespace component
 
 		const auto& TargetClip = ClipList[0];
 		TargetClip->SetIsLoop(false); // ループはしない
+		TargetClip->SetMaxBlendTime(0.0f); // ブレンドしない
 
 		// 最初のクリップを再生
 		const auto& AnimationController = Object->GetAnimationController();
