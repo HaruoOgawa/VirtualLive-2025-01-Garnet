@@ -3264,7 +3264,7 @@
         },
         {
             "name": "Crowd",
-            "filename": "Resources/Stage/Crowd.glb",
+            "filename": "Resources/Stage/Crowd_Hard.glb",
             "defaultmaterialframes": [
                 "pbr_instance_mat"
             ],
