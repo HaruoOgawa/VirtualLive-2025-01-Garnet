@@ -369,7 +369,7 @@ namespace app
 
 		// シャドウマッピング
 		{
-			m_Liver = m_SceneController->FindObjectByName("koyori");
+			m_Liver = m_SceneController->FindObjectByName("Performer");
 		}
 
 		// 平面反射の座標を指定
