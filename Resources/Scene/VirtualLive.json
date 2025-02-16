@@ -39,12 +39,185 @@
     ],
     "valueregistries": [
         {
+            "registryname": "BeamLightsManager",
+            "values": [
+            ]
+        },
+        {
             "registryname": "BeamLight_Controller_1",
             "values": [
                 {
                     "name": "LightName",
                     "type": "string",
                     "initValue": "BeamLight_1"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_10",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_10"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_11",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_11"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_12",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_12"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_13",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_13"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_14",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_14"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_15",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_15"
+                },
+                {
+                    "name": "Rot_Pitch",
+                    "type": "float",
+                    "initValue": [
+                        -90.0
+                    ]
+                },
+                {
+                    "name": "Rot_Yaw",
+                    "type": "float",
+                    "initValue": [
+                        0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLight_Controller_16",
+            "values": [
+                {
+                    "name": "LightName",
+                    "type": "string",
+                    "initValue": "BeamLight_16"
                 },
                 {
                     "name": "Rot_Pitch",
@@ -237,174 +410,6 @@
                     "name": "LightName",
                     "type": "string",
                     "initValue": "BeamLight_9"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_10",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_10"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_11",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_11"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_12",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_12"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_13",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_13"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_14",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_14"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_15",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_15"
-                },
-                {
-                    "name": "Rot_Pitch",
-                    "type": "float",
-                    "initValue": [
-                        -90.0
-                    ]
-                },
-                {
-                    "name": "Rot_Yaw",
-                    "type": "float",
-                    "initValue": [
-                        0.0
-                    ]
-                }
-            ]
-        },
-        {
-            "registryname": "BeamLight_Controller_16",
-            "values": [
-                {
-                    "name": "LightName",
-                    "type": "string",
-                    "initValue": "BeamLight_16"
                 },
                 {
                     "name": "Rot_Pitch",
@@ -7731,7 +7736,7 @@
                     1.0
                 ]
             },
-            "enable": true,
+            "enable": false,
             "materials": [
                 {
                     "meshindex": 0,
@@ -8198,6 +8203,16 @@
             ]
         },
         {
+            "name": "BeamLightsManager",
+            "filename": "",
+            "components": [
+                {
+                    "type": "BeamLightsManager",
+                    "valueregistry": "BeamLightsManager"
+                }
+            ]
+        },
+        {
             "name": "BeamLight_11",
             "filename": "Resources/Stage/BeamLight.glb",
             "defaultmaterialframes": [
@@ -8251,8 +8266,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -8619,19 +8634,12 @@
                             ]
                         },
                         {
-                            "name": "BeamHeight",
-                            "type": "float",
-                            "value": [
-                                20.0
-                            ]
-                        },
-                        {
                             "name": "emissionColor",
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -9009,8 +9017,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -9388,8 +9396,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -9767,8 +9775,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -10146,8 +10154,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -10525,8 +10533,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -10904,8 +10912,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -11283,8 +11291,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -11662,8 +11670,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -12041,8 +12049,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -12420,8 +12428,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -12799,8 +12807,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -13178,8 +13186,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -13557,8 +13565,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }
@@ -13936,8 +13944,8 @@
                             "type": "vec4",
                             "value": [
                                 1.0,
-                                0.157,
-                                0.518,
+                                0.15700000524520874,
+                                0.5180000066757202,
                                 1.0
                             ]
                         }

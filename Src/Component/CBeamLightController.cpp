@@ -20,12 +20,8 @@ namespace component
 	bool CBeamLightController::OnLoaded(api::IGraphicsAPI* pGraphicsAPI, const std::shared_ptr<scene::CSceneController>& SceneController,
 		const std::shared_ptr<object::C3DObject>& Object, const std::shared_ptr<object::CNode>& SelfNode)
 	{
-		const auto& Value = GetValueRegistry()->GetValue("LightName");
-		if (Value.Buffer.empty()) return true;
-
-		std::string LightName = std::string();
-		LightName.resize(Value.Buffer.size());
-		std::memcpy(&LightName[0], &Value.Buffer[0], Value.ByteSize);
+		std::string LightName = GetValueRegistry()->GetValueString("LightName");
+		if (LightName.empty()) return false;
 
 		const auto& BeamLight = SceneController->FindObjectByName(LightName);
 
