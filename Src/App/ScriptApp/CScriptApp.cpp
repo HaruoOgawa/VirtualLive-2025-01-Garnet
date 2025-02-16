@@ -23,6 +23,7 @@
 #include "../../Component/CBeamLightController.h"
 #include "../../Component/CVATGenerator.h"
 #include "../../Component/CBeamLightsManager.h"
+#include "../../Component/CCameraSwitcher.h"
 
 namespace app
 {
@@ -50,6 +51,8 @@ namespace app
 #endif // USE_GUIENGINE
 		m_FileModifier(std::make_shared<CFileModifier>()),
 		m_TimelineController(std::make_shared<timeline::CTimelineController>()),
+		m_CameraSwitcher(nullptr),
+		m_CameraIndex(-1),
 		m_Liver(nullptr),
 		m_LightManager(nullptr),
 		m_BloomEffect(std::make_shared<imageeffect::CBloomEffect>("MainResultPass"))
@@ -140,6 +143,25 @@ namespace app
 			else
 			{
 				m_MainCamera = m_TraceCamera;
+			}
+		}
+
+		if (m_CameraSwitcher)
+		{
+			const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
+			int PrevIndex = m_CameraIndex;
+			m_CameraIndex = CameraSwitcherComp->GetValueRegistry()->GetValueInt("CameraIndex");
+
+			if (m_CameraIndex != -1)
+			{
+				std::string Target = "Camera_" + std::to_string(m_CameraIndex);
+
+				const auto& Node = m_CameraSwitcher->FindNodeByName(Target);
+
+				if (Node)
+				{
+					m_TraceCamera->SetTargetNode(Node);
+				}
 			}
 		}
 
@@ -297,6 +319,12 @@ namespace app
 					GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
 				}
 
+				if (!m_CameraSwitcher->GetComponentList().empty())
+				{
+					const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
+					GUIParams.ValueRegistryList.emplace(CameraSwitcherComp->GetRegistryName(), CameraSwitcherComp->GetValueRegistry());
+				}
+
 				if (!GUIEngine->BeginFrame(pGraphicsAPI)) return false;
 				if (!m_GraphicsEditingWindow->Draw(pGraphicsAPI, GUIParams, GUIEngine))
 				{
@@ -335,6 +363,10 @@ namespace app
 		{
 			return std::make_shared<component::CBeamLightsManager>(ComponentType, ValueRegistry);
 		}
+		else if (ComponentType == "CameraSwitcher")
+		{
+			return std::make_shared<component::CCameraSwitcher>(ComponentType, ValueRegistry);
+		}
 
 		return nullptr;
 	}
@@ -358,19 +390,8 @@ namespace app
 		if (!m_TimelineController->Initialize(shared_from_this())) return false;
 
 		// カメラ
-		{
-			const auto& Object = m_SceneController->FindObjectByName("CameraObject");
-			if (Object)
-			{
-				const auto& Node = Object->FindNodeByName("CameraNode");
-
-				if (Node)
-				{
-					m_TraceCamera->SetTargetNode(Node);
-				}
-			}
-		}
-
+		m_CameraSwitcher = m_SceneController->FindObjectByName("CameraSwitcher");
+		
 		// シャドウマッピング
 		m_Liver = m_SceneController->FindObjectByName("Performer");
 
@@ -393,6 +414,12 @@ namespace app
 			{
 				const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
 				GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
+			}
+
+			if (!m_CameraSwitcher->GetComponentList().empty())
+			{
+				const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
+				GUIParams.ValueRegistryList.emplace(CameraSwitcherComp->GetRegistryName(), CameraSwitcherComp->GetValueRegistry());
 			}
 
 			if (!m_GraphicsEditingWindow->OnLoaded(pGraphicsAPI, GUIParams, GUIEngine)) return false;

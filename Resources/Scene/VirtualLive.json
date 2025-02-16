@@ -432,7 +432,7 @@
                     "name": "BeamHeight",
                     "type": "float",
                     "initValue": [
-                        20.0
+                        0.0
                     ]
                 }
             ]
@@ -452,6 +452,21 @@
                     "type": "float",
                     "initValue": [
                         1.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "CameraSwitcher",
+            "trackids": [
+                "69fae055-25f5-4510-ae9f-be756cbc434b"
+            ],
+            "values": [
+                {
+                    "name": "CameraIndex",
+                    "type": "int",
+                    "initValue": [
+                        0
                     ]
                 }
             ]
@@ -8289,7 +8304,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -8668,7 +8683,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -9047,7 +9062,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -9426,7 +9441,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -9805,7 +9820,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -10184,7 +10199,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -10563,7 +10578,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -10942,7 +10957,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -11321,7 +11336,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -11700,7 +11715,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -12079,7 +12094,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -12458,7 +12473,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -12837,7 +12852,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -13216,7 +13231,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -13595,7 +13610,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -13974,7 +13989,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -14304,6 +14319,83 @@
                             "valueregistry": "BeamLight_Controller_10"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "CameraSwitcher",
+            "filename": "",
+            "renderpasslist": [
+                ""
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
+            "rootnodes": [
+                0,
+                1
+            ],
+            "nodes": [
+                {
+                    "name": "Camera_0",
+                    "transform": {
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "trackids": [
+                        "06360a6e-4fc6-448b-b22c-5ce24951e97a"
+                    ]
+                },
+                {
+                    "name": "Camera_1",
+                    "transform": {
+                        "rotate": [
+                            0.0,
+                            -0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "enable": true,
+                    "meshindex": -1,
+                    "trackids": [
+                        "864abbc2-ae33-4ad6-bfb7-9dab3650ff75"
+                    ]
+                }
+            ],
+            "components": [
+                {
+                    "type": "CameraSwitcher",
+                    "valueregistry": "CameraSwitcher"
                 }
             ]
         }
