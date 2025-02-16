@@ -44,5 +44,7 @@ void main()
     float EdgeAlpha = abs(dot(VertDir, normalize(ObjectViewDir.xz)));
     float alpha = clamp(HeightAlpha * EdgeAlpha, 0.0, 1.0);
 
-    outColor = vec4(col, alpha);
+    float EmitPower = 1.5;
+
+    outColor = vec4(col * EmitPower, alpha);
 }
