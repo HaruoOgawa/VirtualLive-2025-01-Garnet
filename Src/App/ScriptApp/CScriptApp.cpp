@@ -51,6 +51,7 @@ namespace app
 		m_FileModifier(std::make_shared<CFileModifier>()),
 		m_TimelineController(std::make_shared<timeline::CTimelineController>()),
 		m_Liver(nullptr),
+		m_LightManager(nullptr),
 		m_BloomEffect(std::make_shared<imageeffect::CBloomEffect>("MainResultPass"))
 	{
 		m_ViewCamera->SetPos(glm::vec3(-7.0f, 1.0f, 0.0f));
@@ -290,6 +291,12 @@ namespace app
 				GUIParams.InputState = InputState;
 				GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
 
+				if (!m_LightManager->GetComponentList().empty())
+				{
+					const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
+					GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
+				}
+
 				if (!GUIEngine->BeginFrame(pGraphicsAPI)) return false;
 				if (!m_GraphicsEditingWindow->Draw(pGraphicsAPI, GUIParams, GUIEngine))
 				{
@@ -350,14 +357,6 @@ namespace app
 
 		if (!m_TimelineController->Initialize(shared_from_this())) return false;
 
-#ifdef USE_GUIENGINE
-		{
-			gui::SGUIParams GUIParams = gui::SGUIParams(shared_from_this(), GetObjectList(), m_SceneController, m_FileModifier, m_TimelineController, pLoadWorker, {}, pPhysicsEngine);
-
-			if (!m_GraphicsEditingWindow->OnLoaded(pGraphicsAPI, GUIParams, GUIEngine)) return false;
-		}
-#endif
-
 		// カメラ
 		{
 			const auto& Object = m_SceneController->FindObjectByName("CameraObject");
@@ -373,15 +372,32 @@ namespace app
 		}
 
 		// シャドウマッピング
-		{
-			m_Liver = m_SceneController->FindObjectByName("Performer");
-		}
+		m_Liver = m_SceneController->FindObjectByName("Performer");
 
+		// ライト
+		m_LightManager = m_SceneController->FindObjectByName("BeamLightsManager");
+		
 		// 平面反射の座標を指定
 		{
 			m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
 			m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
 		}
+
+#ifdef USE_GUIENGINE
+		{
+			gui::SGUIParams GUIParams = gui::SGUIParams(shared_from_this(), GetObjectList(), m_SceneController, m_FileModifier, m_TimelineController, pLoadWorker, {}, pPhysicsEngine);
+			
+			GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
+
+			if (!m_LightManager->GetComponentList().empty())
+			{
+				const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
+				GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
+			}
+
+			if (!m_GraphicsEditingWindow->OnLoaded(pGraphicsAPI, GUIParams, GUIEngine)) return false;
+		}
+#endif
 
 		return true;
 	}

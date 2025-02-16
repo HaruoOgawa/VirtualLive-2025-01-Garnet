@@ -21,7 +21,7 @@ namespace component
 
 		for (int ID = 1; ID <= NumOfLight; ID++)
 		{
-			std::string Target = "BeamLight_Controller_" + std::to_string(ID);
+			std::string Target = "BeamLight_" + std::to_string(ID);
 			const auto& BeamLight = SceneController->FindObjectByName(Target);
 
 			if (!BeamLight) continue;

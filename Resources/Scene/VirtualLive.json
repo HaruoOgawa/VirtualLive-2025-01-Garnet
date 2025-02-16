@@ -39,11 +39,6 @@
     ],
     "valueregistries": [
         {
-            "registryname": "BeamLightsManager",
-            "values": [
-            ]
-        },
-        {
             "registryname": "BeamLight_Controller_1",
             "values": [
                 {
@@ -423,6 +418,21 @@
                     "type": "float",
                     "initValue": [
                         0.0
+                    ]
+                }
+            ]
+        },
+        {
+            "registryname": "BeamLightsManager",
+            "trackids": [
+                "211b7254-9fd2-4fd9-93b4-2f6a89fedf52"
+            ],
+            "values": [
+                {
+                    "name": "BeamHeight",
+                    "type": "float",
+                    "initValue": [
+                        20.0
                     ]
                 }
             ]
@@ -8205,6 +8215,27 @@
         {
             "name": "BeamLightsManager",
             "filename": "",
+            "renderpasslist": [
+                "MainResultPass"
+            ],
+            "transform": {
+                "pos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "enable": true,
             "components": [
                 {
                     "type": "BeamLightsManager",
@@ -8631,6 +8662,13 @@
                             "type": "float",
                             "value": [
                                 2.5
+                            ]
+                        },
+                        {
+                            "name": "BeamHeight",
+                            "type": "float",
+                            "value": [
+                                20.0
                             ]
                         },
                         {
