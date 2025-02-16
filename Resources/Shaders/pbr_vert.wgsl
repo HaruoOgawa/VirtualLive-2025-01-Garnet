@@ -19,6 +19,7 @@ struct UniformBufferObject {
     mipCount: f32,
     ShadowMapX: f32,
     ShadowMapY: f32,
+    emissiveStrength: f32,
     useBaseColorTexture: i32,
     useMetallicRoughnessTexture: i32,
     useEmissiveTexture: i32,
