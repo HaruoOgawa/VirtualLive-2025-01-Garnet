@@ -7761,7 +7761,7 @@
                     1.0
                 ]
             },
-            "enable": false,
+            "enable": true,
             "materials": [
                 {
                     "meshindex": 0,
@@ -7794,10 +7794,17 @@
                             ]
                         },
                         {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
                             "name": "roughnessFactor",
                             "type": "float",
                             "value": [
-                                0.5527864098548889
+                                0.38600000739097595
                             ]
                         },
                         {
@@ -7879,10 +7886,17 @@
                             ]
                         },
                         {
+                            "name": "metallicFactor",
+                            "type": "float",
+                            "value": [
+                                1.0
+                            ]
+                        },
+                        {
                             "name": "roughnessFactor",
                             "type": "float",
                             "value": [
-                                0.5527864098548889
+                                0.36500000953674316
                             ]
                         },
                         {
@@ -7981,17 +7995,17 @@
                             ]
                         },
                         {
-                            "name": "roughnessFactor",
+                            "name": "metallicFactor",
                             "type": "float",
                             "value": [
-                                0.5527864098548889
+                                1.0
                             ]
                         },
                         {
-                            "name": "useIBL",
-                            "type": "int",
+                            "name": "roughnessFactor",
+                            "type": "float",
                             "value": [
-                                1
+                                1.0
                             ]
                         },
                         {
@@ -8015,22 +8029,22 @@
                         },
                         {
                             "texturebuffername": "shadowmapTexture",
-                            "textureindex": 0,
+                            "textureindex": -1,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": 0,
+                            "textureindex": -1,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": 0,
+                            "textureindex": -1,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": 0,
+                            "textureindex": -1,
                             "texturename": ""
                         }
                     ]
