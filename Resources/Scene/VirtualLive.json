@@ -8009,6 +8009,13 @@
                             ]
                         },
                         {
+                            "name": "useIBL",
+                            "type": "int",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
                             "name": "useShadowMap",
                             "type": "int",
                             "value": [
@@ -8029,22 +8036,22 @@
                         },
                         {
                             "texturebuffername": "shadowmapTexture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Diffuse_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_Specular_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         },
                         {
                             "texturebuffername": "IBL_GGXLUT_Texture",
-                            "textureindex": -1,
+                            "textureindex": 0,
                             "texturename": ""
                         }
                     ]
@@ -14368,11 +14375,6 @@
                 {
                     "name": "Camera_0",
                     "transform": {
-                        "rotate": [
-                            0.0,
-                            -0.0,
-                            0.0
-                        ],
                         "scale": [
                             1.0,
                             1.0,
@@ -14382,17 +14384,13 @@
                     "enable": true,
                     "meshindex": -1,
                     "trackids": [
-                        "06360a6e-4fc6-448b-b22c-5ce24951e97a"
+                        "06360a6e-4fc6-448b-b22c-5ce24951e97a",
+                        "b77f1965-e3dc-4217-9046-50660929258b"
                     ]
                 },
                 {
                     "name": "Camera_1",
                     "transform": {
-                        "rotate": [
-                            0.0,
-                            -0.0,
-                            0.0
-                        ],
                         "scale": [
                             1.0,
                             1.0,
@@ -14402,7 +14400,8 @@
                     "enable": true,
                     "meshindex": -1,
                     "trackids": [
-                        "864abbc2-ae33-4ad6-bfb7-9dab3650ff75"
+                        "864abbc2-ae33-4ad6-bfb7-9dab3650ff75",
+                        "5d5af711-7d62-4ef6-951a-0da0b2e63e63"
                     ]
                 }
             ],
