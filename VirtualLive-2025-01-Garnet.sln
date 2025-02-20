@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VirtualLive-2025-01-Garnet", "VirtualLive-2025-01-Garnet.vcxproj", "{F591028C-9D82-408C-998F-A52973597C46}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Garnet", "E:\CppDev\Garnet\Garnet/Garnet.vcxproj", "{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Garnet", "..\Garnet\Garnet\Garnet.vcxproj", "{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,8 @@ Global
 		Release|x86 = Release|x86
 		ReleaseGL|x64 = ReleaseGL|x64
 		ReleaseGL|x86 = ReleaseGL|x86
+		ReleaseGLFW|x64 = ReleaseGLFW|x64
+		ReleaseGLFW|x86 = ReleaseGLFW|x86
 		ReleaseWG|x64 = ReleaseWG|x64
 		ReleaseWG|x86 = ReleaseWG|x86
 	EndGlobalSection
@@ -55,6 +57,10 @@ Global
 		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGL|x64.Build.0 = ReleaseGL|x64
 		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGL|x86.ActiveCfg = Release|Win32
 		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGL|x86.Build.0 = Release|Win32
+		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGLFW|x64.ActiveCfg = ReleaseGLFW|x64
+		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGLFW|x64.Build.0 = ReleaseGLFW|x64
+		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGLFW|x86.ActiveCfg = ReleaseGLFW|Win32
+		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseGLFW|x86.Build.0 = ReleaseGLFW|Win32
 		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseWG|x64.ActiveCfg = ReleaseWG|x64
 		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseWG|x64.Build.0 = ReleaseWG|x64
 		{F591028C-9D82-408C-998F-A52973597C46}.ReleaseWG|x86.ActiveCfg = Release|Win32
@@ -87,6 +93,10 @@ Global
 		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGL|x64.Build.0 = ReleaseGL|x64
 		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGL|x86.ActiveCfg = ReleaseGL|Win32
 		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGL|x86.Build.0 = ReleaseGL|Win32
+		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGLFW|x64.ActiveCfg = ReleaseGLFW|x64
+		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGLFW|x64.Build.0 = ReleaseGLFW|x64
+		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGLFW|x86.ActiveCfg = ReleaseGLFW|Win32
+		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseGLFW|x86.Build.0 = ReleaseGLFW|Win32
 		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseWG|x64.ActiveCfg = ReleaseWG|x64
 		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseWG|x64.Build.0 = ReleaseWG|x64
 		{9BB5F0A3-4CD3-470F-8D71-8C187FA3332B}.ReleaseWG|x86.ActiveCfg = ReleaseWG|Win32
