@@ -60,6 +60,10 @@ namespace app
 		m_ViewCamera->SetPos(glm::vec3(-7.0f, 1.0f, 0.0f));
 		m_MainCamera = m_ViewCamera;
 
+		// 何もしないと0,0,0の位置が一瞬見えるのでトレースカメラの初期値を設定
+		m_TraceCamera->SetPos(glm::vec3(-13.0f, 3.0f, -25.0f));
+		m_TraceCamera->SetCenter(glm::vec3(-12.5f, 3.0f, -24.133974f));
+
 		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(0.5f, 1.5f, -1.0f));
 		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
 		m_DrawInfo->GetLightProjection()->SetFar(10.0f);
@@ -68,6 +72,11 @@ namespace app
 
 #ifdef _DEBUG
 		m_PlayMode = EPlayMode::Stop;
+#else
+		m_PlayMode = EPlayMode::Play;
+
+		// 初めからトレースカメラにする
+		m_MainCamera = m_TraceCamera;
 #endif // _DEBUG
 
 #ifdef USE_GUIENGINE
@@ -132,6 +141,7 @@ namespace app
 		// カメラはローカル時間の影響を受けたくないので先に計算
 		m_MainCamera->Update(m_DrawInfo->GetDeltaSecondsTime(), InputState);
 
+#ifdef _DEBUG
 		if (InputState->IsKeyUp(input::EKeyType::KEY_TYPE_SPACE))
 		{
 			m_CameraSwitchToggle = !m_CameraSwitchToggle;
@@ -145,6 +155,9 @@ namespace app
 				m_MainCamera = m_TraceCamera;
 			}
 		}
+#endif // _DEBUG
+
+		
 
 		if (m_CameraSwitcher)
 		{
@@ -425,6 +438,11 @@ namespace app
 			if (!m_GraphicsEditingWindow->OnLoaded(pGraphicsAPI, GUIParams, GUIEngine)) return false;
 		}
 #endif
+
+#ifndef _DEBUG
+		// デバッグでなければ自動再生する
+		OnChangeScenePlayMode("Play");
+#endif // !_DEBUG
 
 		return true;
 	}
