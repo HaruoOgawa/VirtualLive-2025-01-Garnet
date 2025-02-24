@@ -3088,7 +3088,7 @@
         },
         {
             "name": "Performer",
-            "filename": "Resources\\Model\\Tda_kasane_teto_TypeS\\Tda_kasane_teto_TypeS.pmx",
+            "filename": "Resources\\Model\\Performer\\Performer.pmx",
             "defaultmaterialframes": [
                 "basic_toon_mat",
                 "basic_toon_outline_mat"

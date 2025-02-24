@@ -157,8 +157,6 @@ namespace app
 		}
 #endif // _DEBUG
 
-		
-
 		if (m_CameraSwitcher)
 		{
 			const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
@@ -258,6 +256,12 @@ namespace app
 
 		if (!m_BloomEffect->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
 		if (!m_MainFrameRenderer->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
+
+		// タイムライン再生が終了したら実行ファイルを終了させる
+#ifndef _DEBUG
+			// 再生終了
+		if (m_TimelineController->GetPlayBackTime() > m_TimelineController->GetMaxTime()) return false;
+#endif // !_DEBUG
 
 		return true;
 	}
