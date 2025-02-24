@@ -432,7 +432,7 @@
                     "name": "BeamHeight",
                     "type": "float",
                     "initValue": [
-                        20.0
+                        0.0
                     ]
                 }
             ]
@@ -466,7 +466,7 @@
                     "name": "CameraIndex",
                     "type": "int",
                     "initValue": [
-                        1065353216
+                        0
                     ]
                 }
             ]
@@ -3090,8 +3090,7 @@
             "name": "Performer",
             "filename": "Resources\\Model\\Performer\\Performer.pmx",
             "defaultmaterialframes": [
-                "basic_toon_mat",
-                "basic_toon_outline_mat"
+                "basic_toon_mat"
             ],
             "renderpasslist": [
                 "MainResultPass",
@@ -3410,31 +3409,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 0,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                1.0
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 1,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -3504,31 +3478,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 1,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                1.0
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 2,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -3586,31 +3535,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 1,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 2,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                1.0
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
                         }
                     ]
                 },
@@ -3685,31 +3609,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 3,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                1.0
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 4,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -3779,31 +3678,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 4,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.5
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 5,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -3861,31 +3735,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 6,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 5,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                1.0
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
                         }
                     ]
                 },
@@ -3955,31 +3804,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 6,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                1.0
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.5
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 7,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -4042,31 +3866,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 7,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 8,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -4119,31 +3918,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 6,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 8,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 },
@@ -4206,31 +3980,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 10,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 9,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 },
@@ -4350,31 +4099,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 11,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.10000000149011612,
-                                0.0,
-                                0.20000000298023224,
-                                0.6000000238418579
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 12,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -4427,31 +4151,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 12,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.10000000149011612,
-                                0.0,
-                                0.20000000298023224,
-                                0.6000000238418579
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 13,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -4509,31 +4208,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 10,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 13,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.10000000149011612,
-                                0.0,
-                                0.20000000298023224,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 },
@@ -4601,31 +4275,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 14,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.10000000149011612,
-                                0.0,
-                                0.20000000298023224,
-                                0.6000000238418579
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 15,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -4683,31 +4332,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 10,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 15,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 },
@@ -4765,31 +4389,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 1,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 16,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 },
@@ -4906,31 +4505,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 18,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 19,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -4990,31 +4564,6 @@
                             "texturebuffername": "SphereTexture",
                             "textureindex": 10,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 19,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.10000000149011612,
-                                0.0,
-                                0.20000000298023224,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 },
@@ -5089,31 +4638,6 @@
                 },
                 {
                     "meshindex": 0,
-                    "primitiveindex": 20,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.10000000149011612,
-                                0.0,
-                                0.20000000298023224,
-                                0.6000000238418579
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
                     "primitiveindex": 21,
                     "materialframe": "basic_toon_mat",
                     "cull": "back",
@@ -5161,31 +4685,6 @@
                             "texturebuffername": "MainTexture",
                             "textureindex": 11,
                             "texturename": ""
-                        }
-                    ]
-                },
-                {
-                    "meshindex": 0,
-                    "primitiveindex": 21,
-                    "materialframe": "basic_toon_outline_mat",
-                    "cull": "front",
-                    "uniformvalues": [
-                        {
-                            "name": "edgeSize",
-                            "type": "float",
-                            "value": [
-                                0.6000000238418579
-                            ]
-                        },
-                        {
-                            "name": "edgeColor",
-                            "type": "vec4",
-                            "value": [
-                                0.4431372880935669,
-                                0.20000000298023224,
-                                0.29411768913269043,
-                                0.6000000238418579
-                            ]
                         }
                     ]
                 }
@@ -8325,7 +7824,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -8704,7 +8203,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -9083,7 +8582,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -9462,7 +8961,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -9841,7 +9340,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -10220,7 +9719,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -10599,7 +10098,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -10978,7 +10477,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -11357,7 +10856,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -11736,7 +11235,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -12115,7 +11614,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -12494,7 +11993,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -12873,7 +12372,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -13252,7 +12751,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -13631,7 +13130,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
@@ -14010,7 +13509,7 @@
                             "name": "BeamHeight",
                             "type": "float",
                             "value": [
-                                20.0
+                                0.0
                             ]
                         },
                         {
