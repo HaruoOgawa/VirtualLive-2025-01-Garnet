@@ -3091,8 +3091,8 @@
             "name": "Performer",
             "filename": "Resources\\Model\\Performer\\Performer.pmx",
             "defaultmaterialframes": [
-                "basic_toon_mat",
-                "basic_toon_outline_mat"
+                "basic_toon_outline_mat",
+                "basic_toon_mat"
             ],
             "renderpasslist": [
                 "MainAAPass",
