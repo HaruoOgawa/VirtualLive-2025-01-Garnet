@@ -56,7 +56,11 @@ namespace app
 		float	  m_LocalTime;
 		float	  m_LocalDeltaTime;
 
+		std::shared_ptr<object::C3DObject> m_CameraSwitcher;
+		int								   m_CameraIndex;
+
 		std::shared_ptr<object::C3DObject> m_Liver;
+		std::shared_ptr<object::C3DObject> m_LightManager;
 
 		std::shared_ptr<imageeffect::CBloomEffect> m_BloomEffect;
 

@@ -22,6 +22,8 @@
 
 #include "../../Component/CBeamLightController.h"
 #include "../../Component/CVATGenerator.h"
+#include "../../Component/CBeamLightsManager.h"
+#include "../../Component/CCameraSwitcher.h"
 
 namespace app
 {
@@ -49,20 +51,33 @@ namespace app
 #endif // USE_GUIENGINE
 		m_FileModifier(std::make_shared<CFileModifier>()),
 		m_TimelineController(std::make_shared<timeline::CTimelineController>()),
+		m_CameraSwitcher(nullptr),
+		m_CameraIndex(-1),
 		m_Liver(nullptr),
+		m_LightManager(nullptr),
 		m_BloomEffect(std::make_shared<imageeffect::CBloomEffect>("MainResultPass"))
 	{
 		m_ViewCamera->SetPos(glm::vec3(-7.0f, 1.0f, 0.0f));
 		m_MainCamera = m_ViewCamera;
 
+		// 何もしないと0,0,0の位置が一瞬見えるのでトレースカメラの初期値を設定
+		m_TraceCamera->SetPos(glm::vec3(-13.0f, 3.0f, -25.0f));
+		m_TraceCamera->SetCenter(glm::vec3(-12.5f, 3.0f, -24.133974f));
+
 		m_DrawInfo->GetLightCamera()->SetPos(glm::vec3(0.5f, 1.5f, -1.0f));
 		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
 		m_DrawInfo->GetLightProjection()->SetFar(10.0f);
 
-		m_SceneController->SetDefaultPass("MainResultPass");
+		//m_SceneController->SetDefaultPass("MainResultPass");
+		m_SceneController->SetDefaultPass("MainAAPass");
 
 #ifdef _DEBUG
 		m_PlayMode = EPlayMode::Stop;
+#else
+		m_PlayMode = EPlayMode::Play;
+
+		// 初めからトレースカメラにする
+		m_MainCamera = m_TraceCamera;
 #endif // _DEBUG
 
 #ifdef USE_GUIENGINE
@@ -82,9 +97,53 @@ namespace app
 		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\PBRTest.json", m_SceneController));
 
 		// オフスクリーンレンダリング
-		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, true)) return false;
-		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, false, true, false)) return false;
-		if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, false)) return false;
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.DepthBuffer = true;
+			PassState.Stencil = true;
+			PassState.EnabledAA = true;
+			PassState.AASampleNum = 8;
+			if (!pGraphicsAPI->CreateRenderPass("MainAAPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+		
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.ColorTexture = true;
+			PassState.DepthBuffer = true;
+			PassState.Stencil = true;
+			if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true; // Shadowなのでいらないけど互換性でいるにしておく(Vulkan, WebGPUでFragmentShaderなしパターンにまだ対応していない)
+			PassState.ColorTexture = true;
+			PassState.DepthBuffer = true;
+			PassState.DepthTexture = true;
+
+			if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+		
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.DepthBuffer = true;
+			PassState.EnabledAA = true;
+			PassState.AASampleNum = 8;
+
+			if (!pGraphicsAPI->CreateRenderPass("PlanerAAPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.ColorTexture = true;
+			PassState.DepthBuffer = true;
+			
+			if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
 
 		// ブルームエフェクト
 		if (!m_BloomEffect->Initialize(pGraphicsAPI, pLoadWorker)) return false;
@@ -127,6 +186,7 @@ namespace app
 		// カメラはローカル時間の影響を受けたくないので先に計算
 		m_MainCamera->Update(m_DrawInfo->GetDeltaSecondsTime(), InputState);
 
+#ifdef _DEBUG
 		if (InputState->IsKeyUp(input::EKeyType::KEY_TYPE_SPACE))
 		{
 			m_CameraSwitchToggle = !m_CameraSwitchToggle;
@@ -138,6 +198,26 @@ namespace app
 			else
 			{
 				m_MainCamera = m_TraceCamera;
+			}
+		}
+#endif // _DEBUG
+
+		if (m_CameraSwitcher)
+		{
+			const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
+			int PrevIndex = m_CameraIndex;
+			m_CameraIndex = CameraSwitcherComp->GetValueRegistry()->GetValueInt("CameraIndex");
+
+			if (m_CameraIndex != -1)
+			{
+				std::string Target = "Camera_" + std::to_string(m_CameraIndex);
+
+				const auto& Node = m_CameraSwitcher->FindNodeByName(Target);
+
+				if (Node)
+				{
+					m_TraceCamera->SetTargetNode(Node);
+				}
 			}
 		}
 
@@ -222,6 +302,12 @@ namespace app
 		if (!m_BloomEffect->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
 		if (!m_MainFrameRenderer->Update(pGraphicsAPI, pPhysicsEngine, pLoadWorker, m_MainCamera, m_Projection, m_DrawInfo, InputState)) return false;
 
+		// タイムライン再生が終了したら実行ファイルを終了させる
+#ifndef _DEBUG
+			// 再生終了
+		if (m_TimelineController->GetPlayBackTime() > m_TimelineController->GetMaxTime()) return false;
+#endif // !_DEBUG
+
 		return true;
 	}
 
@@ -256,18 +342,29 @@ namespace app
 			m_DrawInfo->SetSpatialCulling(true);
 			m_DrawInfo->SetSpatialCullPos(glm::vec4(m_RPPlanePos.x, m_RPPlanePos.y, m_RPPlanePos.z, 1.0f));
 
-			if (!pGraphicsAPI->BeginRender("PlanerReflectionPass")) return false;
+			if (!pGraphicsAPI->BeginRender("PlanerAAPass")) return false;
 			if (!m_SceneController->Draw(pGraphicsAPI, m_PRCamera, m_PRProjection, m_DrawInfo)) return false;
 			if (!pGraphicsAPI->EndRender()) return false;
 
 			m_DrawInfo->SetSpatialCulling(false);
+
+			pGraphicsAPI->CopyRenderPass("PlanerAAPass", "PlanerReflectionPass", true, true);
 		}
 		
 		// MainResultPass
 		{
+#ifdef USE_OPENGL
+			// ひとまずアンチエイリアスはOpenGLしか対応していない
+			if (!pGraphicsAPI->BeginRender("MainAAPass")) return false;
+			if (!m_SceneController->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
+			if (!pGraphicsAPI->EndRender()) return false;
+
+			pGraphicsAPI->CopyRenderPass("MainAAPass", "MainResultPass", true, true);
+#else
 			if (!pGraphicsAPI->BeginRender("MainResultPass")) return false;
 			if (!m_SceneController->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
 			if (!pGraphicsAPI->EndRender()) return false;
+#endif // USE_OPENGL
 		}
 
 		// BloomEffect
@@ -288,6 +385,18 @@ namespace app
 				GUIParams.Camera = m_MainCamera;
 				GUIParams.InputState = InputState;
 				GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
+
+				if (m_LightManager && !m_LightManager->GetComponentList().empty())
+				{
+					const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
+					GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
+				}
+
+				if (m_CameraSwitcher && !m_CameraSwitcher->GetComponentList().empty())
+				{
+					const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
+					GUIParams.ValueRegistryList.emplace(CameraSwitcherComp->GetRegistryName(), CameraSwitcherComp->GetValueRegistry());
+				}
 
 				if (!GUIEngine->BeginFrame(pGraphicsAPI)) return false;
 				if (!m_GraphicsEditingWindow->Draw(pGraphicsAPI, GUIParams, GUIEngine))
@@ -323,6 +432,14 @@ namespace app
 		{
 			return std::make_shared<component::CVATGenerator>(ComponentType, ValueRegistry);
 		}
+		else if (ComponentType == "BeamLightsManager")
+		{
+			return std::make_shared<component::CBeamLightsManager>(ComponentType, ValueRegistry);
+		}
+		else if (ComponentType == "CameraSwitcher")
+		{
+			return std::make_shared<component::CCameraSwitcher>(ComponentType, ValueRegistry);
+		}
 
 		return nullptr;
 	}
@@ -345,38 +462,47 @@ namespace app
 
 		if (!m_TimelineController->Initialize(shared_from_this())) return false;
 
-#ifdef USE_GUIENGINE
-		{
-			gui::SGUIParams GUIParams = gui::SGUIParams(shared_from_this(), GetObjectList(), m_SceneController, m_FileModifier, m_TimelineController, pLoadWorker, {}, pPhysicsEngine);
-
-			if (!m_GraphicsEditingWindow->OnLoaded(pGraphicsAPI, GUIParams, GUIEngine)) return false;
-		}
-#endif
-
 		// カメラ
-		{
-			const auto& Object = m_SceneController->FindObjectByName("CameraObject");
-			if (Object)
-			{
-				const auto& Node = Object->FindNodeByName("CameraNode");
-
-				if (Node)
-				{
-					m_TraceCamera->SetTargetNode(Node);
-				}
-			}
-		}
-
+		m_CameraSwitcher = m_SceneController->FindObjectByName("CameraSwitcher");
+		
 		// シャドウマッピング
-		{
-			m_Liver = m_SceneController->FindObjectByName("koyori");
-		}
+		m_Liver = m_SceneController->FindObjectByName("Performer");
 
+		// ライト
+		m_LightManager = m_SceneController->FindObjectByName("BeamLightsManager");
+		
 		// 平面反射の座標を指定
 		{
 			m_RPPlanePos = glm::vec3(0.0f, 0.125f, 0.0f);
 			m_RPPlaneWorldMatrix = glm::translate(glm::mat4(1.0f), m_RPPlanePos);
 		}
+
+#ifdef USE_GUIENGINE
+		{
+			gui::SGUIParams GUIParams = gui::SGUIParams(shared_from_this(), GetObjectList(), m_SceneController, m_FileModifier, m_TimelineController, pLoadWorker, {}, pPhysicsEngine);
+			
+			GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
+
+			if (m_LightManager && !m_LightManager->GetComponentList().empty())
+			{
+				const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
+				GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
+			}
+
+			if (m_CameraSwitcher &&!m_CameraSwitcher->GetComponentList().empty())
+			{
+				const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
+				GUIParams.ValueRegistryList.emplace(CameraSwitcherComp->GetRegistryName(), CameraSwitcherComp->GetValueRegistry());
+			}
+
+			if (!m_GraphicsEditingWindow->OnLoaded(pGraphicsAPI, GUIParams, GUIEngine)) return false;
+		}
+#endif
+
+#ifndef _DEBUG
+		// デバッグでなければ自動再生する
+		OnChangeScenePlayMode("Play");
+#endif // !_DEBUG
 
 		return true;
 	}

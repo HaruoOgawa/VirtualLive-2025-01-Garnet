@@ -34,6 +34,9 @@ layout(binding = 0) uniform UniformBufferObject{
     float ShadowMapY;
 
     float emissiveStrength;
+	float fPad0;
+    float fPad1;
+    float fPad2;
 
     int   useBaseColorTexture;
     int   useMetallicRoughnessTexture;
@@ -163,7 +166,7 @@ void main(){
     xid = xid - sidenum * 0.5;
 
     // フレームを計算
-    float LocalTime = mod(ubo.time + rand(vec2(xid, yid) * 10.0), vat_ubo.endtime);
+    float LocalTime = mod(ubo.time + rand(vec2(xid, yid) * 0.5), vat_ubo.endtime);
     int CurrentFrame = int(floor((LocalTime / vat_ubo.endtime) * vat_ubo.frameNum));
 
     mat4 SkinMat =
@@ -188,6 +191,20 @@ void main(){
     WorldTangent = normalize((SkinMat * inTangent).xyz);
     WorldBioTangent = normalize((SkinMat * vec4(BioTangent, 0.0)).xyz);
 
+    float angle = 0.0;
+    {
+        vec3 pfm = vec3(0.0, 0.125, 0.0);
+        vec3 tmp = offset;
+        vec3 forward = vec3(0.0, 0.0, -1.0);
+        vec3 view = normalize(vec3(tmp.x, 0.0, tmp.z) - vec3(pfm.x, 0.0, pfm.z));
+        // view = vec3(0.0, 0.0, 1.0);
+
+        angle = acos(dot(view, forward));
+        angle *= (tmp.x > 0.0)? 1.0 : -1.0;
+    }
+
+    WorldPos.xz *= rot(angle);
+    WorldPos.xz *= rot(-0.45);
     WorldPos *= InsMat;
 
     //

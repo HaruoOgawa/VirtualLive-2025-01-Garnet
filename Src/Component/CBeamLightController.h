@@ -10,6 +10,11 @@ namespace component
 	{
 		std::shared_ptr<object::CNode> m_Base_RotYaw;
 		std::shared_ptr<object::CNode> m_Base_RotPitch;
+
+	private:
+		int GetLightID();
+		float rand(const glm::vec2& st);
+
 	public:
 		CBeamLightController(const std::string& ComponentName, const std::string& RegistryName);
 		virtual ~CBeamLightController();

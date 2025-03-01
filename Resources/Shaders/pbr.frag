@@ -36,6 +36,9 @@ layout(binding = 0) uniform UniformBufferObject{
     float ShadowMapY;
 
 	float emissiveStrength;
+	float fPad0;
+    float fPad1;
+    float fPad2;
 
     int   useBaseColorTexture;
     int   useMetallicRoughnessTexture;
@@ -426,13 +429,8 @@ vec3 ComputeIBL(PBRParam pbrParam, vec3 v, vec3 n)
 	return specular;
 }
 
-void main(){
-	// 特定のオブジェクトよりも下にある時は描画を破棄する
-	if(ubo.useSpatialCulling != 0 && f_WorldPos.y < ubo.spatialCullPos.y)
-	{
-		discard;
-	}
-
+vec4 CalcSurface()
+{
 	vec3 col = vec3(0.0);
 
 	// ラフネスとメタリックを取得。テクスチャにパッキングされていることもある
@@ -636,5 +634,25 @@ void main(){
 	// アルファを指定
 	float alpha = baseColor.a;
 
-	outColor = vec4(col, alpha);
+	vec4 result = vec4(col, alpha);
+	return result;
+}
+
+void main()
+{
+	vec4 result = vec4(0.0);
+
+	// 特定のオブジェクトよりも下にある時は描画を破棄する
+	if(ubo.useSpatialCulling != 0 && f_WorldPos.y < ubo.spatialCullPos.y)
+	{
+		#ifdef USE_OPENGL
+		discard;
+		#endif
+	}
+	else
+	{
+		result = CalcSurface();
+	}
+
+	outColor = result;
 }
