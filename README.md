@@ -7,3 +7,6 @@
 3. 任意のPMXを用意し、(クローンしたディレクトリ)/VirtualLive-2025-01-Garnet/Resources/Model/Performer/Performer.pmxとして配置(pmxとその親フォルダをPerformerにリネーム)
 4. [デコレートのMV](https://www.youtube.com/watch?v=xIpIbc7IEWo)よりMMD配布モーションをダウンロードしResources/Motion/decorate.vmdとして配置
 5. (任意) [デコレートのMV](https://www.youtube.com/watch?v=xIpIbc7IEWo)より曲を購入。ショート動画用に55.5秒から86.0秒の間でトリミング後、Resources/Sound/decorate_short.wavとして配置
+6. ソリューション構成をReleaseGLFWでビルドする
+7. ビルドしてできたx64/ReleseGLFWにResourcesフォルダをコピー
+8. VirtualLive-2025-01-Garnet.exeを実行
