@@ -68,7 +68,8 @@ namespace app
 		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
 		m_DrawInfo->GetLightProjection()->SetFar(10.0f);
 
-		m_SceneController->SetDefaultPass("MainResultPass");
+		//m_SceneController->SetDefaultPass("MainResultPass");
+		m_SceneController->SetDefaultPass("MainAAPass");
 
 #ifdef _DEBUG
 		m_PlayMode = EPlayMode::Stop;
@@ -96,9 +97,53 @@ namespace app
 		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\PBRTest.json", m_SceneController));
 
 		// オフスクリーンレンダリング
-		if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, true)) return false;
-		if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, false, true, false)) return false;
-		if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, 1, true, false, false)) return false;
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.DepthBuffer = true;
+			PassState.Stencil = true;
+			PassState.EnabledAA = true;
+			PassState.AASampleNum = 8;
+			if (!pGraphicsAPI->CreateRenderPass("MainAAPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+		
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.ColorTexture = true;
+			PassState.DepthBuffer = true;
+			PassState.Stencil = true;
+			if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true; // Shadowなのでいらないけど互換性でいるにしておく(Vulkan, WebGPUでFragmentShaderなしパターンにまだ対応していない)
+			PassState.ColorTexture = true;
+			PassState.DepthBuffer = true;
+			PassState.DepthTexture = true;
+
+			if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+		
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.DepthBuffer = true;
+			PassState.EnabledAA = true;
+			PassState.AASampleNum = 8;
+
+			if (!pGraphicsAPI->CreateRenderPass("PlanerAAPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
+
+		{
+			graphics::SRenderPassState PassState{};
+			PassState.ColorBuffer = true;
+			PassState.ColorTexture = true;
+			PassState.DepthBuffer = true;
+			
+			if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+		}
 
 		// ブルームエフェクト
 		if (!m_BloomEffect->Initialize(pGraphicsAPI, pLoadWorker)) return false;
@@ -297,18 +342,29 @@ namespace app
 			m_DrawInfo->SetSpatialCulling(true);
 			m_DrawInfo->SetSpatialCullPos(glm::vec4(m_RPPlanePos.x, m_RPPlanePos.y, m_RPPlanePos.z, 1.0f));
 
-			if (!pGraphicsAPI->BeginRender("PlanerReflectionPass")) return false;
+			if (!pGraphicsAPI->BeginRender("PlanerAAPass")) return false;
 			if (!m_SceneController->Draw(pGraphicsAPI, m_PRCamera, m_PRProjection, m_DrawInfo)) return false;
 			if (!pGraphicsAPI->EndRender()) return false;
 
 			m_DrawInfo->SetSpatialCulling(false);
+
+			pGraphicsAPI->CopyRenderPass("PlanerAAPass", "PlanerReflectionPass", true, true);
 		}
 		
 		// MainResultPass
 		{
+#ifdef USE_OPENGL
+			// ひとまずアンチエイリアスはOpenGLしか対応していない
+			if (!pGraphicsAPI->BeginRender("MainAAPass")) return false;
+			if (!m_SceneController->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
+			if (!pGraphicsAPI->EndRender()) return false;
+
+			pGraphicsAPI->CopyRenderPass("MainAAPass", "MainResultPass", true, true);
+#else
 			if (!pGraphicsAPI->BeginRender("MainResultPass")) return false;
 			if (!m_SceneController->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
 			if (!pGraphicsAPI->EndRender()) return false;
+#endif // USE_OPENGL
 		}
 
 		// BloomEffect
@@ -330,13 +386,13 @@ namespace app
 				GUIParams.InputState = InputState;
 				GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
 
-				if (!m_LightManager->GetComponentList().empty())
+				if (m_LightManager && !m_LightManager->GetComponentList().empty())
 				{
 					const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
 					GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
 				}
 
-				if (!m_CameraSwitcher->GetComponentList().empty())
+				if (m_CameraSwitcher && !m_CameraSwitcher->GetComponentList().empty())
 				{
 					const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
 					GUIParams.ValueRegistryList.emplace(CameraSwitcherComp->GetRegistryName(), CameraSwitcherComp->GetValueRegistry());
@@ -427,13 +483,13 @@ namespace app
 			
 			GUIParams.ValueRegistryList.emplace(m_BloomEffect->GetRegistryName(), m_BloomEffect);
 
-			if (!m_LightManager->GetComponentList().empty())
+			if (m_LightManager && !m_LightManager->GetComponentList().empty())
 			{
 				const auto& BeamLightsManager = m_LightManager->GetComponentList()[0];
 				GUIParams.ValueRegistryList.emplace(BeamLightsManager->GetRegistryName(), BeamLightsManager->GetValueRegistry());
 			}
 
-			if (!m_CameraSwitcher->GetComponentList().empty())
+			if (m_CameraSwitcher &&!m_CameraSwitcher->GetComponentList().empty())
 			{
 				const auto& CameraSwitcherComp = m_CameraSwitcher->GetComponentList()[0];
 				GUIParams.ValueRegistryList.emplace(CameraSwitcherComp->GetRegistryName(), CameraSwitcherComp->GetValueRegistry());
