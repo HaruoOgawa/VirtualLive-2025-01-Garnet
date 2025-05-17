@@ -30,7 +30,7 @@
                 "MainAAPass",
                 "MainResultPass",
                 "ShadowPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -292,7 +292,7 @@
             "renderpasslist": [
                 "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [

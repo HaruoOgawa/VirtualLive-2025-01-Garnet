@@ -182,9 +182,7 @@
             {
               "name": "emissiveStrength",
               "type": "float",
-              "initValue": [ 1.0 ],
-              "input": {
-              }
+              "initValue": [ 1.0 ]
             },
             {
               "name": "fPad0",
