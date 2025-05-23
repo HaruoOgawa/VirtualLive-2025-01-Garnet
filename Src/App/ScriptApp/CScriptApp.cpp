@@ -68,8 +68,8 @@ namespace app
 		m_DrawInfo->GetLightProjection()->SetNear(1.0f);
 		m_DrawInfo->GetLightProjection()->SetFar(10.0f);
 
-		m_SceneController->SetDefaultPass("MainResultPass");
-		//m_SceneController->SetDefaultPass("MainAAPass"); // いったんAAオフ
+		//m_SceneController->SetDefaultPass("MainResultPass");
+		m_SceneController->SetDefaultPass("MainAAPass");
 
 #ifdef _DEBUG
 		m_PlayMode = EPlayMode::Stop;
@@ -92,8 +92,9 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\PBRTest.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		{
@@ -112,8 +113,6 @@ namespace app
 			PassState.ColorTexture = true;
 			PassState.DepthBuffer = true;
 			PassState.Stencil = true;
-			PassState.EnabledAA = true;
-			PassState.AASampleNum = 8;
 			if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
 		}
 
@@ -343,14 +342,13 @@ namespace app
 			m_DrawInfo->SetSpatialCulling(true);
 			m_DrawInfo->SetSpatialCullPos(glm::vec4(m_RPPlanePos.x, m_RPPlanePos.y, m_RPPlanePos.z, 1.0f));
 
-			//if (!pGraphicsAPI->BeginRender("PlanerAAPass")) return false;
-			if (!pGraphicsAPI->BeginRender("PlanerReflectionPass")) return false;
+			if (!pGraphicsAPI->BeginRender("PlanerAAPass")) return false;
 			if (!m_SceneController->Draw(pGraphicsAPI, m_PRCamera, m_PRProjection, m_DrawInfo)) return false;
 			if (!pGraphicsAPI->EndRender()) return false;
 
 			m_DrawInfo->SetSpatialCulling(false);
 
-			//pGraphicsAPI->CopyRenderPass("PlanerAAPass", "PlanerReflectionPass", true, true);
+			pGraphicsAPI->CopyRenderPass("PlanerAAPass", "PlanerReflectionPass", true, true);
 		}
 		
 		// MainResultPass
@@ -363,37 +361,20 @@ namespace app
 
 			pGraphicsAPI->CopyRenderPass("MainAAPass", "MainResultPass", true, true);
 #else
-			if (!pGraphicsAPI->BeginRender("MainResultPass"))
-			{
-				return false;
-			}
-			if (!m_SceneController->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo))
-			{
-				return false;
-			}
-			if (!pGraphicsAPI->EndRender())
-			{
-				return false;
-			}
+			if (!pGraphicsAPI->BeginRender("MainResultPass")) return false;
+			if (!m_SceneController->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
+			if (!pGraphicsAPI->EndRender()) return false;
 #endif // USE_OPENGL
 		}
 
 		// BloomEffect
-		if (!m_BloomEffect->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo))
-		{
-			return false;
-		}
+		if (!m_BloomEffect->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
 
 		// Main FrameBuffer
 		{
-			if (!pGraphicsAPI->BeginRender())
-			{
-				return false;
-			}
+			if (!pGraphicsAPI->BeginRender()) return false;
 
-			if (!m_MainFrameRenderer->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) {
-				return false;
-			}
+			if (!m_MainFrameRenderer->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
 
 			// GUIEngine
 #ifdef USE_GUIENGINE
@@ -427,15 +408,9 @@ namespace app
 			}
 #endif // USE_GUIENGINE
 
-			if (!pLoadWorker->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo))
-			{
-				return false;
-			}
+			if (!pLoadWorker->Draw(pGraphicsAPI, m_MainCamera, m_Projection, m_DrawInfo)) return false;
 
-			if (!pGraphicsAPI->EndRender())
-			{
-				return false;
-			}
+			if (!pGraphicsAPI->EndRender()) return false;
 		}
 
 		return true;

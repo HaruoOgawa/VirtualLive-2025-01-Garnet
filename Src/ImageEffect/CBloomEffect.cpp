@@ -144,10 +144,7 @@ namespace imageeffect
 	{
 		// BrigtnessPass
 		{
-			if (!pGraphicsAPI->BeginRender("BrigtnessPass"))
-			{
-				return false;
-			}
+			if (!pGraphicsAPI->BeginRender("BrigtnessPass")) return false;
 			const auto& Material = m_BrightFrameRenderer->GetMaterial();
 			if (Material)
 			{
@@ -157,14 +154,8 @@ namespace imageeffect
 				Material->SetUniformValue("Threshold", &Threshold.Buffer[0], Threshold.ByteSize);
 				Material->SetUniformValue("Intencity", &Intencity.Buffer[0], Intencity.ByteSize);
 			}
-			if (!m_BrightFrameRenderer->Draw(pGraphicsAPI, Camera, Projection, DrawInfo))
-			{
-				return false;
-			}
-			if (!pGraphicsAPI->EndRender())
-			{
-				return false;
-			}
+			if (!m_BrightFrameRenderer->Draw(pGraphicsAPI, Camera, Projection, DrawInfo)) return false;
+			if (!pGraphicsAPI->EndRender()) return false;
 		}
 
 		for (int i = 0; i < static_cast<int>(m_ReduceBufList.size()); i++)
@@ -178,18 +169,9 @@ namespace imageeffect
 			{
 				const auto& ReduceBuf = std::get<0>(ReduceBufTuple);
 
-				if (!pGraphicsAPI->BeginRender(ReduceBuf.DstPass))
-				{
-					return false;
-				}
-				if (!FrameRenderer_0->Draw(pGraphicsAPI, Camera, Projection, DrawInfo))
-				{
-					return false;
-				}
-				if (!pGraphicsAPI->EndRender())
-				{
-					return false;
-				}
+				if (!pGraphicsAPI->BeginRender(ReduceBuf.DstPass)) return false;
+				if (!FrameRenderer_0->Draw(pGraphicsAPI, Camera, Projection, DrawInfo)) return false;
+				if (!pGraphicsAPI->EndRender()) return false;
 			}
 
 			// ReducePass_XBlur
@@ -198,23 +180,14 @@ namespace imageeffect
 			{
 				const auto& ReduceBuf = std::get<1>(ReduceBufTuple);
 
-				if (!pGraphicsAPI->BeginRender(ReduceBuf.DstPass))
-				{
-					return false;
-				}
+				if (!pGraphicsAPI->BeginRender(ReduceBuf.DstPass)) return false;
 				const auto& Material = FrameRenderer_1->GetMaterial();
 				if (Material)
 				{
 					Material->SetUniformValue("IsXBlur", &glm::ivec1(1)[0], sizeof(int));
 				}
-				if (!FrameRenderer_1->Draw(pGraphicsAPI, Camera, Projection, DrawInfo))
-				{
-					return false;
-				}
-				if (!pGraphicsAPI->EndRender())
-				{
-					return false;
-				}
+				if (!FrameRenderer_1->Draw(pGraphicsAPI, Camera, Projection, DrawInfo)) return false;
+				if (!pGraphicsAPI->EndRender()) return false;
 			}
 
 			// ReducePass_YBlur
@@ -223,40 +196,22 @@ namespace imageeffect
 			{
 				const auto& ReduceBuf = std::get<2>(ReduceBufTuple);
 
-				if (!pGraphicsAPI->BeginRender(ReduceBuf.DstPass))
-				{
-					return false;
-				}
+				if (!pGraphicsAPI->BeginRender(ReduceBuf.DstPass)) return false;
 				const auto& Material = FrameRenderer_2->GetMaterial();
 				if (Material)
 				{
 					Material->SetUniformValue("IsXBlur", &glm::ivec1(0)[0], sizeof(int));
 				}
-				if (!FrameRenderer_2->Draw(pGraphicsAPI, Camera, Projection, DrawInfo))
-				{
-					return false;
-				}
-				if (!pGraphicsAPI->EndRender())
-				{
-					return false;
-				}
+				if (!FrameRenderer_2->Draw(pGraphicsAPI, Camera, Projection, DrawInfo)) return false;
+				if (!pGraphicsAPI->EndRender()) return false;
 			}
 		}
 
 		// BloomMixPass
 		{
-			if (!pGraphicsAPI->BeginRender(m_TargetPassName))
-			{
-				return false;
-			}
-			if (!m_BloomMixPassRenderer->Draw(pGraphicsAPI, Camera, Projection, DrawInfo))
-			{
-				return false;
-			}
-			if (!pGraphicsAPI->EndRender())
-			{
-				return false;
-			}
+			if (!pGraphicsAPI->BeginRender(m_TargetPassName)) return false;
+			if (!m_BloomMixPassRenderer->Draw(pGraphicsAPI, Camera, Projection, DrawInfo)) return false;
+			if (!pGraphicsAPI->EndRender()) return false;
 		}
 
 		return true;
