@@ -27,10 +27,9 @@
             "name": "SampleObj",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
                 "ShadowPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -290,9 +289,8 @@
             "name": "Plane",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -418,7 +416,6 @@
             "name": "Floor",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {

@@ -1,7 +1,7 @@
 #include "CVATGenerator.h"
-#include "../../Scene/CSceneController.h"
-#include "../../Object/C3DObject.h"
-#include "../../Debug/Message/Console.h"
+#include <Scene/CSceneController.h>
+#include <Object/C3DObject.h>
+#include <Message/Console.h>
 
 namespace component
 {
