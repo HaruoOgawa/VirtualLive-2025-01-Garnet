@@ -91,8 +91,8 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
+		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
 		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\PBRTest.json", m_SceneController));
 
 		// オフスクリーンレンダリング

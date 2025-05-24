@@ -645,9 +645,7 @@ void main()
 	// 特定のオブジェクトよりも下にある時は描画を破棄する
 	if(ubo.useSpatialCulling != 0 && f_WorldPos.y < ubo.spatialCullPos.y)
 	{
-		#ifdef USE_OPENGL
 		discard;
-		#endif
 	}
 	else
 	{
