@@ -76,6 +76,7 @@ namespace component
 		// テクスチャを生成
 		graphics::STextureSamplerParam SamplerParam{};
 		SamplerParam.FilterMode = graphics::ETextureFilterMode::NEAREST;
+		SamplerParam.EnabledAnisotropy = false;
 
 		auto VertexAnimationTexture = pGraphicsAPI->CreateTexture(false, SamplerParam);
 		if (!VertexAnimationTexture->Create(TextureData, TextureWidth, TextureHeight, 4, api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS)) return false;
