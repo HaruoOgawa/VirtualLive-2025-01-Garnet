@@ -507,9 +507,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
-                "MainAAPass",
-                "PlanerAAPass"
+                "MainResultPass",
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -3095,10 +3094,9 @@
                 "basic_toon_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
                 "ShadowPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "animation": {
                 "blendshapes": [
@@ -5732,10 +5730,9 @@
             "name": "Plane",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
                 "ShadowPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -5889,7 +5886,6 @@
             ],
             "instancecount": 4096,
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "animation": {
@@ -6219,9 +6215,8 @@
             "name": "Background",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -6329,7 +6324,6 @@
             "name": "Floor",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -6406,7 +6400,6 @@
             "name": "BeamLightsManager",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -6441,9 +6434,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -6763,7 +6755,6 @@
             "name": "BeamLight_Controller_11",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -6822,9 +6813,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -7144,7 +7134,6 @@
             "name": "BeamLight_Controller_12",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -7203,9 +7192,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -7525,7 +7513,6 @@
             "name": "BeamLight_Controller_13",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -7584,9 +7571,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -7906,7 +7892,6 @@
             "name": "BeamLight_Controller_14",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -7965,9 +7950,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -8287,7 +8271,6 @@
             "name": "BeamLight_Controller_15",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -8346,9 +8329,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -8668,7 +8650,6 @@
             "name": "BeamLight_Controller_16",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -8727,9 +8708,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -9049,7 +9029,6 @@
             "name": "BeamLight_Controller_1",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -9108,9 +9087,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -9430,7 +9408,6 @@
             "name": "BeamLight_Controller_2",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -9489,9 +9466,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -9811,7 +9787,6 @@
             "name": "BeamLight_Controller_3",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -9870,9 +9845,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -10192,7 +10166,6 @@
             "name": "BeamLight_Controller_4",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -10251,9 +10224,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -10573,7 +10545,6 @@
             "name": "BeamLight_Controller_5",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -10632,9 +10603,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -10954,7 +10924,6 @@
             "name": "BeamLight_Controller_6",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -11013,9 +10982,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -11335,7 +11303,6 @@
             "name": "BeamLight_Controller_7",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -11394,9 +11361,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -11716,7 +11682,6 @@
             "name": "BeamLight_Controller_8",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -11775,9 +11740,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -12097,7 +12061,6 @@
             "name": "BeamLight_Controller_9",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {
@@ -12156,9 +12119,8 @@
                 "pbr_mat"
             ],
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass",
-                "PlanerAAPass"
+                "PlanerReflectionPass"
             ],
             "transform": {
                 "pos": [
@@ -12478,7 +12440,6 @@
             "name": "BeamLight_Controller_10",
             "filename": "",
             "renderpasslist": [
-                "MainAAPass",
                 "MainResultPass"
             ],
             "transform": {

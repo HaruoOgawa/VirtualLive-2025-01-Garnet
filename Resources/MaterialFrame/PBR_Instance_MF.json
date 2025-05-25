@@ -321,7 +321,9 @@
           "samplerBinding": 27,
           "textureIndex": -1,
           "type": "texture",
-          "textureUsage": "2d"
+          "textureUsage": "2d",
+          "readOnFragment": true,
+          "readOnVertex": true
         },
         {
           "name": "VATUniformBuffer",

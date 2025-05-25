@@ -1,7 +1,7 @@
 #include "CVATGenerator.h"
-#include "../../Scene/CSceneController.h"
-#include "../../Object/C3DObject.h"
-#include "../../Debug/Message/Console.h"
+#include <Scene/CSceneController.h>
+#include <Object/C3DObject.h>
+#include <Message/Console.h>
 
 namespace component
 {
@@ -76,6 +76,7 @@ namespace component
 		// テクスチャを生成
 		graphics::STextureSamplerParam SamplerParam{};
 		SamplerParam.FilterMode = graphics::ETextureFilterMode::NEAREST;
+		SamplerParam.EnabledAnisotropy = false;
 
 		auto VertexAnimationTexture = pGraphicsAPI->CreateTexture(false, SamplerParam);
 		if (!VertexAnimationTexture->Create(TextureData, TextureWidth, TextureHeight, 4, api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS)) return false;
