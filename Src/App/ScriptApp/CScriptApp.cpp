@@ -70,14 +70,14 @@ namespace app
 
 		m_SceneController->SetDefaultPass("MainResultPass");
 
-#ifdef _DEBUG
+/*#ifdef _DEBUG
 		m_PlayMode = EPlayMode::Stop;
-#else
+#else*/
 		m_PlayMode = EPlayMode::Play;
 
 		// 初めからトレースカメラにする
 		m_MainCamera = m_TraceCamera;
-#endif // _DEBUG
+//#endif // _DEBUG
 
 #ifdef USE_GUIENGINE
 		m_GraphicsEditingWindow->SetDefaultPass("MainResultPass", "");
@@ -91,9 +91,7 @@ namespace app
 
 	bool CScriptApp::Initialize(api::IGraphicsAPI* pGraphicsAPI, physics::IPhysicsEngine* pPhysicsEngine, resource::CLoadWorker* pLoadWorker)
 	{
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\Sample.json", m_SceneController));
-		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive.json", m_SceneController));
-		//pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\PBRTest.json", m_SceneController));
+		pLoadWorker->AddScene(std::make_shared<resource::CSceneLoader>("Resources\\Scene\\VirtualLive_Sample.json", m_SceneController));
 
 		// オフスクリーンレンダリング
 		{
@@ -104,7 +102,7 @@ namespace app
 			PassState.Stencil = true;
 			PassState.EnabledAA = true;
 			PassState.AASampleNum = 8;
-			if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+			if (!pGraphicsAPI->CreateRenderPass("MainResultPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, -1, -1, PassState)) return false;
 		}
 
 		{
@@ -114,7 +112,7 @@ namespace app
 			PassState.DepthBuffer = true;
 			PassState.DepthTexture = true;
 
-			if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+			if (!pGraphicsAPI->CreateRenderPass("ShadowPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, -1, -1, PassState)) return false;
 		}
 
 		{
@@ -125,7 +123,7 @@ namespace app
 			PassState.EnabledAA = true;
 			PassState.AASampleNum = 8;
 			
-			if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), -1, -1, PassState)) return false;
+			if (!pGraphicsAPI->CreateRenderPass("PlanerReflectionPass", api::ERenderPassFormat::COLOR_FLOAT_RENDERPASS, -1, -1, PassState)) return false;
 		}
 
 		// ブルームエフェクト
@@ -471,10 +469,10 @@ namespace app
 		}
 #endif
 
-#ifndef _DEBUG
+//#ifndef _DEBUG
 		// デバッグでなければ自動再生する
 		OnChangeScenePlayMode("Play");
-#endif // !_DEBUG
+//#endif // !_DEBUG
 
 		return true;
 	}
